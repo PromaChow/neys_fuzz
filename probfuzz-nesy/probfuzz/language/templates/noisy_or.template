@@ -1,0 +1,8 @@
+n : int
+a := DISTX[n]
+b := DISTX[n]
+c := DISTX[n]
+rule q(X) :- a(X)
+rule q(X) :- b(X)
+rule q(X) :- c(X)
+posterior(q)

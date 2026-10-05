@@ -1,0 +1,6 @@
+template: reach
+domain: ??DOM(3,4)
+fact e/2 : ??FACTS(3,6)
+idb r/2
+rule r(X,Y) :- e(X,Y).
+rule r(X,Y) :- e(X,Z), r(Z,Y).

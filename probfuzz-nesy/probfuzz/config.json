@@ -1,0 +1,27 @@
+{
+  "max_threads": 6,
+  "output_dir": "output",
+  "structured": true,
+  "current_template": "reach",
+  "metric": "nesy_smape",
+  "smape_threshold": 1e-4,
+  "runConfigurations": [
+    {"tool": "oracle",      "enabled": true, "algorithm": "exact",      "timeout": 40, "python": "python"},
+    {"tool": "scallop",     "enabled": true, "algorithm": "topkproofs", "timeout": 40, "python": "python"},
+    {"tool": "scallop",     "enabled": true, "algorithm": "wmcdisj",    "timeout": 40, "python": "python"},
+    {"tool": "deepproblog", "enabled": true, "algorithm": "exact",      "timeout": 40, "python": "python"},
+    {"tool": "deepproblog", "enabled": true, "algorithm": "approximate","timeout": 40, "python": "python"},
+    {"tool": "problog",     "enabled": true, "algorithm": "sdd",        "timeout": 40, "python": "python"},
+    {"tool": "neurasp",     "enabled": true, "algorithm": "mvpp",       "timeout": 40, "python": "python"}
+  ],
+  "templates": {
+    "reach":          "language/templates/reach.template",
+    "chain":          "language/templates/chain.template",
+    "noisy_or":       "language/templates/noisy_or.template",
+    "join":           "language/templates/join.template",
+    "negation":       "language/templates/negation.template",
+    "disjunction":    "language/templates/disjunction.template",
+    "disjunction_join": "language/templates/disjunction_join.template",
+    "diamond":        "language/templates/diamond.template"
+  }
+}

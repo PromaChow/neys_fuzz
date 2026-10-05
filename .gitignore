@@ -1,0 +1,16 @@
+# environments, build output, third-party clones (see README: shallow clones of the libraries under test)
+.venv/
+.cargo-target/
+.cargo-target-release/
+frameworks/
+# logs and caches
+logs/
+LNN_INFO.log
+__pycache__/
+*.pyc
+.DS_Store
+# generated ProbFuzz programs and the large per-run snapshots of the LNN test mutation (summary.json is kept)
+probfuzz-nesy/probfuzz/output/
+probfuzz-nesy/probfuzz/*.log
+results/lnn_test_mutation/*.json
+!results/lnn_test_mutation/summary.json

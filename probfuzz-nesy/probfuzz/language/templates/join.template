@@ -1,0 +1,5 @@
+n : int
+a := DISTX[n,n]
+b := DISTX[n,n]
+rule j(X,Z) :- a(X,Y), b(Y,Z)
+posterior(j)

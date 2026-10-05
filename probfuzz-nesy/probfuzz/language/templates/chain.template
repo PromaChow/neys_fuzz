@@ -1,0 +1,4 @@
+n : int
+a := bernoulli(CONST)[n,n]
+rule path3(X,W) :- a(X,Y), a(Y,Z), a(Z,W)
+posterior(path3)

@@ -1,0 +1,9 @@
+quantifier data       add_knowledge   set_query    (world OPEN, P(a), P(b) as listed)
+Exists     all_true   NEVER RETURNS   returns   
+Exists     one_false  NEVER RETURNS   returns   
+Exists     all_false  returns         returns   
+Exists     bounds     NEVER RETURNS   returns   
+Forall     all_true   returns         returns   
+Forall     one_false  NEVER RETURNS   returns   
+Forall     all_false  NEVER RETURNS   returns   
+Forall     bounds     NEVER RETURNS   returns   

@@ -1,0 +1,108 @@
+[chain] done  (9s)
+[diamond] done  (36s)
+[disjunction] done  (39s)
+[disjunction_join] done  (44s)
+[join] done  (49s)
+[negation] done  (50s)
+[nn_sum] done  (56s)
+[noisy_or] done  (58s)
+[reach] done  (66s)
+
+== chain
+   dpl_approx: mismatch [known:F4-dpl-approx-zero-prob] x2
+   dpl_approx: ok x38
+   dpl_approx~dpl_exact: disagree x2
+   dpl_approx~neurasp: disagree x2
+   dpl_approx~problog: disagree x2
+   dpl_approx~scallop_topk: disagree x2
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== diamond
+   dpl_approx: mismatch [known:F4-dpl-approx-zero-prob] x7
+   dpl_approx: ok x33
+   dpl_approx~dpl_exact: disagree x7
+   dpl_approx~neurasp: disagree x7
+   dpl_approx~problog: disagree x7
+   dpl_approx~scallop_topk: disagree x7
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== disjunction
+   dpl_approx: ok x40
+   dpl_approx~scallop_wmcdisj: disagree x34
+   dpl_exact: ok x40
+   dpl_exact~scallop_wmcdisj: disagree x34
+   neurasp: ok x40
+   neurasp~scallop_wmcdisj: disagree x34
+   problog: ok x40
+   problog~scallop_wmcdisj: disagree x34
+   scallop_topk: ok x40
+   scallop_topk~scallop_wmcdisj: disagree x34
+   scallop_wmcdisj: mismatch [known:F3-scallop-disjunction] x34
+   scallop_wmcdisj: ok x6
+
+== disjunction_join
+   dpl_approx: ok x40
+   dpl_approx~scallop_wmcdisj: disagree x40
+   dpl_exact: ok x40
+   dpl_exact~scallop_wmcdisj: disagree x40
+   neurasp: ok x40
+   neurasp~scallop_wmcdisj: disagree x40
+   problog: ok x40
+   problog~scallop_wmcdisj: disagree x40
+   scallop_topk: ok x40
+   scallop_topk~scallop_wmcdisj: disagree x40
+   scallop_wmcdisj: mismatch [known:F3-scallop-disjunction] x40
+
+== join
+   dpl_approx: mismatch [known:F4-dpl-approx-zero-prob] x1
+   dpl_approx: ok x39
+   dpl_approx~dpl_exact: disagree x1
+   dpl_approx~neurasp: disagree x1
+   dpl_approx~problog: disagree x1
+   dpl_approx~scallop_topk: disagree x1
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== negation
+   dpl_approx: crash [candidate:dpl-approx-negation-unsupported] x40
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== nn_sum
+   dpl_approx_nn: mismatch [new] x11
+   dpl_approx_nn: ok x29
+   dpl_approx_nn~dpl_exact_nn: disagree x11
+   dpl_approx_nn~scallop_nn: disagree x33
+   dpl_exact_nn: ok x40
+   dpl_exact_nn~scallop_nn: disagree x25
+   scallop_nn: mismatch [known:F22-family-forward_function-categorical] x25
+   scallop_nn: ok x15
+
+== noisy_or
+   dpl_approx: mismatch [known:F4-dpl-approx-zero-prob] x7
+   dpl_approx: ok x33
+   dpl_approx~dpl_exact: disagree x7
+   dpl_approx~neurasp: disagree x7
+   dpl_approx~problog: disagree x7
+   dpl_approx~scallop_topk: disagree x7
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== reach
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+results -> /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/probfuzz-nesy/results/run_special0.4_s2.jsonl

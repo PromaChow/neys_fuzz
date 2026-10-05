@@ -1,0 +1,305 @@
+{
+ "runs": {
+  "none:0": {
+   "tests": 132,
+   "outcomes": {
+    "pass": 132
+   },
+   "findings": {}
+  },
+  "none:1": {
+   "tests": 132,
+   "outcomes": {
+    "pass": 132
+   },
+   "findings": {}
+  },
+  "boundary:1": {
+   "tests": 132,
+   "outcomes": {
+    "assertion": 68,
+    "pass": 62,
+    "exception": 2
+   },
+   "findings": {
+    "exception": 2
+   }
+  },
+  "boundary:2": {
+   "tests": 132,
+   "outcomes": {
+    "assertion": 60,
+    "pass": 68,
+    "exception": 2,
+    "hang": 2
+   },
+   "findings": {
+    "exception": 2,
+    "hang": 2
+   }
+  },
+  "boundary:3": {
+   "tests": 132,
+   "outcomes": {
+    "assertion": 59,
+    "pass": 69,
+    "exception": 2,
+    "hang": 2
+   },
+   "findings": {
+    "exception": 2,
+    "hang": 2
+   }
+  },
+  "perturb:1": {
+   "tests": 132,
+   "outcomes": {
+    "assertion": 46,
+    "pass": 83,
+    "exception": 1,
+    "hang": 2
+   },
+   "findings": {
+    "exception": 1,
+    "hang": 2
+   }
+  },
+  "perturb:2": {
+   "tests": 132,
+   "outcomes": {
+    "assertion": 43,
+    "pass": 84,
+    "exception": 2,
+    "hang": 3
+   },
+   "findings": {
+    "hang": 4,
+    "exception": 2
+   }
+  },
+  "perturb:3": {
+   "tests": 132,
+   "outcomes": {
+    "pass": 85,
+    "assertion": 45,
+    "exception": 1,
+    "hang": 1
+   },
+   "findings": {
+    "exception": 1,
+    "hang": 1
+   }
+  },
+  "complement:1": {
+   "tests": 132,
+   "outcomes": {
+    "assertion": 80,
+    "pass": 47,
+    "exception": 2,
+    "hang": 3
+   },
+   "findings": {
+    "exception": 2,
+    "hang": 3
+   }
+  },
+  "reorder:1": {
+   "tests": 132,
+   "outcomes": {
+    "pass": 132
+   },
+   "findings": {}
+  }
+ },
+ "findings": [
+  {
+   "run": "boundary:1",
+   "test": "reasoning/gm/test_bool_and_2.py::test",
+   "kind": "boundary",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "boundary:1",
+   "test": "reasoning/gm/test_bool_and_3.py::test",
+   "kind": "boundary",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "boundary:2",
+   "test": "reasoning/gm/test_bool_and_2.py::test",
+   "kind": "boundary",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "boundary:2",
+   "test": "reasoning/gm/test_bool_and_3.py::test",
+   "kind": "boundary",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "boundary:2",
+   "test": "reasoning/logic/fol/test_american.py::test_2",
+   "kind": "boundary",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "boundary:2",
+   "test": "reasoning/logic/fol/test_nested_quantifiers.py::test_fully_quantified_formula",
+   "kind": "boundary",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "boundary:3",
+   "test": "reasoning/gm/test_bool_and_2.py::test",
+   "kind": "boundary",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "boundary:3",
+   "test": "reasoning/gm/test_bool_and_3.py::test",
+   "kind": "boundary",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "boundary:3",
+   "test": "reasoning/logic/fol/test_american.py::test_2",
+   "kind": "boundary",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "boundary:3",
+   "test": "reasoning/logic/fol/test_nested_quantifiers.py::test_fully_quantified_formula",
+   "kind": "boundary",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "perturb:1",
+   "test": "reasoning/gm/test_bool_and_2.py::test",
+   "kind": "perturb",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "perturb:1",
+   "test": "reasoning/logic/fol/test_american.py::test_1",
+   "kind": "perturb",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "perturb:1",
+   "test": "reasoning/logic/fol/test_american.py::test_2",
+   "kind": "perturb",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "perturb:2",
+   "test": "(import-time code)",
+   "kind": "perturb",
+   "finding": "hang",
+   "detail": "an inference at import time did not finish within 8 s"
+  },
+  {
+   "run": "perturb:2",
+   "test": "reasoning/gm/test_bool_and_2.py::test",
+   "kind": "perturb",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "perturb:2",
+   "test": "reasoning/gm/test_bool_and_3.py::test",
+   "kind": "perturb",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "perturb:2",
+   "test": "reasoning/logic/fol/test_american.py::test_1",
+   "kind": "perturb",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "perturb:2",
+   "test": "reasoning/logic/fol/test_nested_quantifiers.py::test_axiom_fully_quantified_formula_as_proposition",
+   "kind": "perturb",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "perturb:2",
+   "test": "reasoning/logic/fol/test_nested_quantifiers.py::test_fully_quantified_formula_as_proposition",
+   "kind": "perturb",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "perturb:3",
+   "test": "reasoning/gm/test_bool_and_3.py::test",
+   "kind": "perturb",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "perturb:3",
+   "test": "reasoning/logic/fol/test_american.py::test_1",
+   "kind": "perturb",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "complement:1",
+   "test": "reasoning/gm/test_bool_and_2.py::test",
+   "kind": "complement",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "complement:1",
+   "test": "reasoning/gm/test_bool_and_3.py::test",
+   "kind": "complement",
+   "finding": "exception",
+   "detail": "TypeError: list indices must be integers or slices, not tuple"
+  },
+  {
+   "run": "complement:1",
+   "test": "reasoning/logic/fol/test_nested_quantifiers.py::test_fully_quantified_formula",
+   "kind": "complement",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "complement:1",
+   "test": "reasoning/logic/fol/test_nested_quantifiers.py::test_axiom_fully_quantified_formula_as_proposition",
+   "kind": "complement",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  },
+  {
+   "run": "complement:1",
+   "test": "reasoning/logic/fol/test_nested_quantifiers.py::test_fully_quantified_formula_as_proposition",
+   "kind": "complement",
+   "finding": "hang",
+   "detail": "an inference did not finish within 8 s"
+  }
+ ],
+ "order_dependence": [],
+ "tests_with_snapshots": 79,
+ "nondeterministic_tests": [
+  "learning/propositional/test_bool_and_1.py::test_multiple",
+  "reasoning/gm/test_bool_and_5.py::test_2"
+ ],
+ "deterministic_tests": 77
+}

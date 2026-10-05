@@ -1,0 +1,5 @@
+n : int
+e := DISTX[n,n]
+rule r(X,Y) :- e(X,Y)
+rule r(X,Y) :- e(X,Z), r(Z,Y)
+posterior(r)

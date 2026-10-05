@@ -111,19 +111,66 @@ for example "what is the price per item, given these receipts?". Their bugs are 
 
 It reported **67 new bugs**, 51 accepted by developers.
 
-### What we did with it
-We took its **actual source code** (commit 2914413, MIT licence), ported it to Python 3 and pointed it at the neurosymbolic
-libraries ([probfuzz-nesy/probfuzz/](probfuzz-nesy/probfuzz/)):
-- **Language:** extended its grammar with `rule ... :- ..., not ...` and the distributions `bernoulli` and `categorical`.
-  A line such as `d := categorical(CONST,CONST,CONST)` is a group of mutually exclusive alternatives.
-- **Backends:** new ones for Scallop (two modes), DeepProbLog (exact, approximate), ProbLog and NeurASP.
-- **Checker:** rejects invalid completions (probability outside [0,1], a group summing above 1, unsafe rules).
-- **Oracle:** an exact possible-worlds answer replaces "compare with other tools", because our programs are small and discrete.
-- **Special values** (0, 1, 1e-12, 1-1e-9...) are switched on with `--special`.
-- **Eight templates**: recursion, chain, noisy-or, join, negation, two disjunction shapes, diamond.
+### The dimensions ProbFuzz fuzzes
+ProbFuzz varies the following dimensions of a test program. Each sentence names one dimension and what is changed in it.
 
-**Result** (96 programs per run, one seed each): it re-found F3, F4 and F23 without hand-written cases. Special values
-mattered only for F4. It found nothing beyond what the other methods had found, so its contribution is the method, not new bugs.
+1. **Program structure.** The model comes from one of four templates: a simple posterior, a linear regression, a multiple linear regression and a conditional model.
+2. **Distribution of the model.** The distribution that connects the parameters to the observed data is chosen at random among the distributions that fit the template.
+3. **Distributions of the priors.** Each unknown variable receives a prior distribution whose range of values fits the model's parameters.
+4. **Parameter values.** Each parameter is set either to a random value inside its legal range or to a value at or beyond the edge of that range, legal or illegal, with a probability the developer sets.
+5. **Data.** The input vectors, their sizes and the expected outputs are generated for every program.
+6. **System and inference algorithm.** The same program is run on Edward, Pyro and Stan, each with one of its inference algorithms.
+7. **Checks.** Each run is checked for crashes, NaN or overflow values, slow convergence, and accuracy against an exact result, the true parameters or the other systems, using the SMAPE metric.
+8. **Amount of domain knowledge.** An informed generator that respects each distribution's valid ranges is compared with an uninformed one.
+
+### How we adopted it
+We took ProbFuzz's source code (commit 2914413, MIT licence), ported it to Python 3 and replaced its targets and its checker
+([probfuzz-nesy/probfuzz/](probfuzz-nesy/probfuzz/)). The table shows what each ProbFuzz dimension became in our case.
+
+| ProbFuzz dimension | In our adapted version |
+|---|---|
+| Program structure (4 regression templates) | 8 templates of small logic programs: recursion, chain, noisy-or, join, negation, one and two groups of exclusive options, diamond |
+| Distribution of the model and of the priors | Two distributions: `bernoulli` (an independent probabilistic fact) and `categorical` (a group of mutually exclusive alternatives); `DISTX` picks one |
+| Parameter values: random or at the edge | Random probabilities by default; with `--special` they are sometimes 0, 1, 1e-12, 1e-9, 1e-6, 1e-5, 1-1e-5 or 1-1e-9 |
+| Data and sizes | The domain size `n` (2 or 3 constants) and the dimensions of each relation decide how many facts a program has |
+| System and algorithm | Scallop (`topkproofs`, and with `wmc_with_disjunctions`), DeepProbLog (exact and approximate engine), ProbLog and NeurASP |
+| Checks and metric | Crash (including timeouts of 40 s), NaN or out-of-range value, and accuracy as SMAPE against an exact possible-worlds answer |
+| Domain knowledge | A completed template is rejected and drawn again if a probability is outside [0,1], a group sums above 1, or a rule is unsafe |
+
+In addition to the table:
+- **Language.** We extended ProbFuzz's grammar with `rule ... :- ..., not ...`. A line such as `d := categorical(CONST,CONST,CONST)` declares a group of three mutually exclusive alternatives, and `a := DISTX[n]` declares `n` independent facts.
+- **Translators.** One translator per system walks the template's parse tree and writes a standalone program that prints `RESULT <relation> <tuple> <probability>`.
+- **Reference answer.** The exact possible-worlds answer replaces the comparison between tools, because our programs are small and discrete.
+- **Summary.** `summary.csv` gives, per program and per system, the three flags Crash, Num and Acc, and the largest SMAPE.
+
+### Results of the adapted ProbFuzz
+We ran two campaigns of 96 programs each (8 templates x 12 programs, 7 configurations per program, one random seed per campaign).
+One campaign used ordinary random values and one used `--special`.
+
+| System | Ordinary values | Special values |
+|---|---|---|
+| ProbLog | no problem | no problem |
+| DeepProbLog, exact engine | no problem | no problem |
+| Scallop, default `topkproofs` | 9 timeouts | 6 timeouts |
+| Scallop, `wmc_with_disjunctions` | **24 wrong answers**, 9 timeouts | **24 wrong answers**, 6 timeouts |
+| DeepProbLog, approximate engine | 12 crashes | 11 crashes, **4 wrong answers** |
+| NeurASP | 10 timeouts | 11 timeouts |
+
+Per template:
+
+| Template | What happened |
+|---|---|
+| disjunction, disjunction_join | Scallop with `wmc_with_disjunctions` was wrong in 12 of 12 programs in both campaigns (F3) |
+| negation | DeepProbLog's approximate engine crashed in 12 of 12 programs with ordinary values and 11 of 12 with special values (F23) |
+| noisy_or, diamond | DeepProbLog's approximate engine was wrong in 3 and 1 programs, only with special values, always when a fact had probability exactly 0 (F4) |
+| reach (recursion) | Scallop timed out in 9 of 12 and 6 of 12 programs |
+| join, diamond | NeurASP timed out in 5 to 6 of 12 programs once a program had about 18 facts or more |
+| chain, noisy_or (ordinary values) | no system deviated from the exact answer |
+
+In words: the adapted ProbFuzz found three of the known defects (F3, F4, F23) without any hand-written test case. Special values
+mattered for F4 only, which appears when a probability is exactly 0. ProbLog, DeepProbLog's exact engine and Scallop's default
+mode agreed with the exact answer on every program they finished. The timeouts are limits of the algorithms and are not wrong answers.
+The adapted ProbFuzz found no defect that the other methods had not already found, so its contribution is the template-based generation method.
 
 <!-- **Not adopted from ProbFuzz:** continuous distributions, conditioning on data (`observe`), regression templates, comparison
 with true parameters, the Stan, Edward and Pyro translators, the paper's pairwise tool comparison, its exact solver (PSI),

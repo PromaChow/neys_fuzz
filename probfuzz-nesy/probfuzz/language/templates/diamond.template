@@ -1,0 +1,8 @@
+n : int
+s := DISTX[n,n]
+t := DISTX[n,n]
+u := DISTX[n,n]
+v := DISTX[n,n]
+rule top(X,Z) :- s(X,Y), t(Y,Z)
+rule top(X,Z) :- u(X,Y), v(Y,Z)
+posterior(top)
