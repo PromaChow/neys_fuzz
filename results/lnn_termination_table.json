@@ -1,0 +1,50 @@
+[
+ {
+  "quantifier": "Exists",
+  "data": "all_true",
+  "add_knowledge": "NEVER RETURNS",
+  "set_query": "returns"
+ },
+ {
+  "quantifier": "Exists",
+  "data": "one_false",
+  "add_knowledge": "NEVER RETURNS",
+  "set_query": "returns"
+ },
+ {
+  "quantifier": "Exists",
+  "data": "all_false",
+  "add_knowledge": "returns",
+  "set_query": "returns"
+ },
+ {
+  "quantifier": "Exists",
+  "data": "bounds",
+  "add_knowledge": "NEVER RETURNS",
+  "set_query": "returns"
+ },
+ {
+  "quantifier": "Forall",
+  "data": "all_true",
+  "add_knowledge": "returns",
+  "set_query": "returns"
+ },
+ {
+  "quantifier": "Forall",
+  "data": "one_false",
+  "add_knowledge": "NEVER RETURNS",
+  "set_query": "returns"
+ },
+ {
+  "quantifier": "Forall",
+  "data": "all_false",
+  "add_knowledge": "NEVER RETURNS",
+  "set_query": "returns"
+ },
+ {
+  "quantifier": "Forall",
+  "data": "bounds",
+  "add_knowledge": "NEVER RETURNS",
+  "set_query": "returns"
+ }
+]

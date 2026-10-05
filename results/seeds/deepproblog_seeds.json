@@ -1,0 +1,938 @@
+[
+ {
+  "test": "src/deepproblog/tests/test_builtin.py::test_tensor_index",
+  "program": "\nP :: a(I) :-  list_to_tensor([0.25,0.1,0.4,0.15], Tensor), between(0,3,I), tensor_index(Tensor,[I],P).\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "a(X)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_builtin.py::test_less_than",
+  "program": "\n    a :- list_to_tensor([0.8],T1), list_to_tensor([0.2],T2), less_than(T1,T2).\n    b :- list_to_tensor([0.2],T1), list_to_tensor([0.8],T2), less_than(T1,T2).\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "a",
+   "b"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_cache_error",
+  "program": "",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": []
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_ad",
+  "program": "\n0.5 :: a; 0.5 :: b.\nc :- a,b.\nd :- a,a.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "c",
+   "d"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_ad2",
+  "program": "\n0.5 :: a; 0.5 :: b.\n0.5 :: a; 0.5 :: b.\nc :- a,b.\nd :- a,a.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "c",
+   "d"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_ad3",
+  "program": "\n0.5 :: a(X); 0.5 :: b(X).\nc :- a(1),b(1).\nd :- a(1),b(2).\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "c",
+   "d"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_fact",
+  "program": "\n0.8::d(_).\ne :- d(1),d(2).\nf :- d(1),e.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "e",
+   "f"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_fact2",
+  "program": "\n0.6::a(_).\n0.5::a(_).\nc :- a(1),a(2).\nd :- a(1),a(1).\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "c",
+   "d"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_foreign",
+  "program": "\na(T,Out) :- evaluate(T, Out).\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "a(2,X)",
+   "a(2,4)",
+   "a(2,5)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_foreign_text",
+  "program": "\na(Text,I,Word) :- ith_word(Text,I,Word).\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "a(one two three,0,X)",
+   "a(one two three,1,X)",
+   "a(one two three,2,X)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_assignment",
+  "program": "\na(X) :- X=3.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "a(X)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_engine.py::test_assignment",
+  "program": "\n0.5 :: a.\n\nequal(X,X).\n\n0.1 :: multiple_answers(dummy1).\n0.2 :: multiple_answers(dummy2). \n",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 2,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": []
+ },
+ {
+  "test": "src/deepproblog/tests/test_model.py::test_model_basics[model0]",
+  "program": "\n0.5 :: a.\n\nequal(X,X).\n\n0.1 :: multiple_answers(dummy1).\n0.2 :: multiple_answers(dummy2). \n",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": []
+ },
+ {
+  "test": "src/deepproblog/tests/test_model.py::test_model_basics[model1]",
+  "program": "\n0.5 :: a.\n\nequal(X,X).\n\n0.1 :: multiple_answers(dummy1).\n0.2 :: multiple_answers(dummy2). \n",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": []
+ },
+ {
+  "test": "src/deepproblog/tests/test_model.py::test_model_basics[model2]",
+  "program": "\n0.5 :: a.\n\nequal(X,X).\n\n0.1 :: multiple_answers(dummy1).\n0.2 :: multiple_answers(dummy2). \n",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 2,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "equal(dummy,dummy)",
+   "equal(dummy,notequal)",
+   "multiple_answers(X)",
+   "a"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_model.py::test_solve[model0]",
+  "program": "\n0.5 :: a.\n\nequal(X,X).\n\n0.1 :: multiple_answers(dummy1).\n0.2 :: multiple_answers(dummy2). \n",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "equal(dummy,dummy)",
+   "equal(dummy,notequal)",
+   "multiple_answers(X)",
+   "a"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_model.py::test_solve[model1]",
+  "program": "\n0.5 :: a.\n\nequal(X,X).\n\n0.1 :: multiple_answers(dummy1).\n0.2 :: multiple_answers(dummy2). \n",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": [
+   "equal(dummy,dummy)",
+   "equal(dummy,notequal)",
+   "multiple_answers(X)",
+   "a"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_model.py::test_solve[model2]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": []
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_model_basics[model0]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": []
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_model_basics[model1]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": []
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_model_basics[model2]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "test1(i1,a,i2,b)",
+   "test1(i1,a,i2,a)",
+   "test1(i1,a,i1,b)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_ad_network[model0]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "test1(i1,a,i2,b)",
+   "test1(i1,a,i2,a)",
+   "test1(i1,a,i1,b)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_ad_network[model1]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": [
+   "test1(i1,a,i2,b)",
+   "test1(i1,a,i2,a)",
+   "test1(i1,a,i1,b)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_ad_network[model2]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "test2(i1,i2)",
+   "test2(i1,i1)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_fact_network[model0]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "test2(i1,i2)",
+   "test2(i1,i1)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_fact_network[model1]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": [
+   "test2(i1,i2)",
+   "test2(i1,i1)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_fact_network[model2]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "test3(i1,X)",
+   "test3(i2,X)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_det_network[model0]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "test3(i1,X)",
+   "test3(i2,X)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_det_network[model1]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": [
+   "test3(i1,X)",
+   "test3(i2,X)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_det_network[model2]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "test3(a,X)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_det_network_substitution[model0]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "test3(a,X)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_det_network_substitution[model1]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": []
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_det_network_substitution[model2]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ApproximateEngine",
+   "k": 10,
+   "heuristic": "geometric_mean",
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "net4(tensor(dummy(a)),1)",
+   "net4(tensor(dummy(b)),2)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_multi_input_network[model0]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "False"
+   }
+  },
+  "queries": [
+   "net4(tensor(dummy(a)),1)",
+   "net4(tensor(dummy(b)),2)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_neural_predicate.py::test_multi_input_network[model1]",
+  "program": "\nnn(dummy1,[X],Y,[a,b,c]) :: net1(X,Y).\nnn(dummy2,[X]) :: net2(X).\nnn(dummy3,[X],Y) :: net3(X,Y).\nnn(dummy4,[X,Y]) :: net4(X,Y).\n\ntest1(X1,Y1,X2,Y2) :- net1(X1,Y1), net1(X2,Y2).\ntest2(X1,X2) :- net2(X1), net2(X2).\ntest3(X,Y) :- net3(X,Y).\n",
+  "loaded_from_file": false,
+  "networks": [
+   "dummy1",
+   "dummy2",
+   "dummy3",
+   "dummy4"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {
+    "cache": "True"
+   }
+  },
+  "queries": [
+   "net4(tensor(dummy(a)),1)",
+   "net4(tensor(dummy(b)),2)"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[1e-08]",
+  "program": "\n1e-08 :: a; 1e-08 :: b; 0.99999998 :: c.\nq :- a.\nq :- b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[1e-06]",
+  "program": "\n1e-06 :: a; 1e-06 :: b; 0.999998 :: c.\nq :- a.\nq :- b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[5e-06]",
+  "program": "\n5e-06 :: a; 5e-06 :: b; 0.99999 :: c.\nq :- a.\nq :- b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[1e-05]",
+  "program": "\n1e-05 :: a; 1e-05 :: b; 0.99998 :: c.\nq :- a.\nq :- b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[1.0001e-05]",
+  "program": "\n1.0001e-05 :: a; 1.0001e-05 :: b; 0.999979998 :: c.\nq :- a.\nq :- b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[0.1]",
+  "program": "\n0.1 :: a; 0.1 :: b; 0.8 :: c.\nq :- a.\nq :- b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[0.3]",
+  "program": "\n0.3 :: a; 0.3 :: b; 0.4 :: c.\nq :- a.\nq :- b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_probabilities_near_one_are_multiplied[0.99999999]",
+  "program": "\n0.99999999 :: a.\n0.5 :: b.\nq :- a, b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_probabilities_near_one_are_multiplied[0.999999]",
+  "program": "\n0.999999 :: a.\n0.5 :: b.\nq :- a, b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_probabilities_near_one_are_multiplied[0.99999]",
+  "program": "\n0.99999 :: a.\n0.5 :: b.\nq :- a, b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_probabilities_near_one_are_multiplied[0.9]",
+  "program": "\n0.9 :: a.\n0.5 :: b.\nq :- a, b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_small_probabilities_keep_their_gradient",
+  "program": "\nt(0.00000001) :: a; t(0.00000001) :: b; t(0.99999998) :: c.\nq :- a.\nq :- b.\n    ",
+  "loaded_from_file": false,
+  "networks": [],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_saturated_network_keeps_gradient_and_finite_loss",
+  "program": "\nnn(sat,[X],Y,[a,b]) :: c(X,Y).\nq :- c(i,b).\n    ",
+  "loaded_from_file": false,
+  "networks": [
+   "sat"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_exhaustive_ad_stays_a_probability",
+  "program": "\nnn(sat,[X],Y,[c0,c1,c2,c3,c4,c5,c6,c7,c8,c9]) :: c(X,Y).\nq :- c(i,_).\nr :- \\+ q.\n    ",
+  "loaded_from_file": false,
+  "networks": [
+   "sat"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "q",
+   "r"
+  ]
+ },
+ {
+  "test": "src/deepproblog/tests/test_semiring.py::test_training_through_the_circuit_is_stable",
+  "program": "\nnn(net,[X],Y,[0,1,2]) :: digit(X,Y).\naddition(X1,X2,S) :- digit(X1,Y1), digit(X2,Y2), S is Y1+Y2.\n    ",
+  "loaded_from_file": false,
+  "networks": [
+   "net"
+  ],
+  "engine": {
+   "cls": "ExactEngine",
+   "k": null,
+   "heuristic": null,
+   "kwargs": {}
+  },
+  "queries": [
+   "addition(tensor(d(0)),tensor(d(1)),1)",
+   "addition(tensor(d(2)),tensor(d(3)),2)",
+   "addition(tensor(d(4)),tensor(d(5)),3)",
+   "addition(tensor(d(6)),tensor(d(7)),1)",
+   "addition(tensor(d(8)),tensor(d(9)),2)",
+   "addition(tensor(d(10)),tensor(d(11)),3)"
+  ]
+ }
+]

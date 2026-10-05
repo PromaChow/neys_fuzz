@@ -1,0 +1,9 @@
+[
+ {
+  "statements": [
+   "choice_bound"
+  ],
+  "verdict": "IndexError",
+  "program": "1 {h(1); h(2)} 1.\n"
+ }
+]

@@ -1,0 +1,4 @@
+// three mutually exclusive alternatives (semicolons), probabilities sum to 0.8272
+rel a = {0.0313::(1); 0.392::(0); 0.4039::(2)}
+rel some() = a(y)
+query some

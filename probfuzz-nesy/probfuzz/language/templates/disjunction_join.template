@@ -1,0 +1,5 @@
+n : int
+d := categorical(CONST,CONST,CONST)
+f := categorical(CONST,CONST,CONST)
+rule q(X,Y) :- d(X), f(Y)
+posterior(q)

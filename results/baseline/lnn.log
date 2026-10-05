@@ -1,0 +1,87 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.12, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LNN
+configfile: pyproject.toml
+plugins: hypothesis-6.168.3
+collected 117 items
+
+tests/learning/propositional/test_bool_and_1.py ......                   [  5%]
+tests/learning/propositional/test_bool_implies_1.py ....                 [  8%]
+tests/learning/propositional/test_bool_or_1.py .                         [  9%]
+tests/learning/propositional/test_logical_1.py .                         [ 10%]
+tests/learning/propositional/test_simple_graph_1.py .                    [ 11%]
+tests/learning/propositional/test_supervised_1.py .                      [ 11%]
+tests/reasoning/gm/test_bool_and_5.py ....                               [ 15%]
+tests/reasoning/gm/test_gm_binding.py .....                              [ 19%]
+tests/reasoning/gm/test_gm_qa.py ..                                      [ 21%]
+tests/reasoning/gm/test_ilp_and_implies_1.py ..                          [ 23%]
+tests/reasoning/gm/test_shared_var_set.py ....                           [ 26%]
+tests/reasoning/logic/fol/test_american.py ..                            [ 28%]
+tests/reasoning/logic/fol/test_duplicate_grounding_rows.py .             [ 29%]
+tests/reasoning/logic/fol/test_nested_quantifiers.py ..................  [ 44%]
+tests/reasoning/logic/fol/test_predicate_and_proposition.py ......       [ 49%]
+tests/reasoning/logic/fol/test_quantifier_bound_var.py ..                [ 51%]
+tests/reasoning/logic/fol/test_rv_and_2.py ...                           [ 53%]
+tests/reasoning/logic/fol/test_square_rectangle.py .                     [ 54%]
+tests/reasoning/logic/propositional/test_bool_and_1.py ..                [ 56%]
+tests/reasoning/logic/propositional/test_bool_and_n.py ..                [ 58%]
+tests/reasoning/logic/propositional/test_bool_implies_1.py ..            [ 59%]
+tests/reasoning/logic/propositional/test_bool_or_1.py ..                 [ 61%]
+tests/reasoning/logic/propositional/test_bool_or_n.py ..                 [ 63%]
+tests/reasoning/logic/propositional/test_inference_rules.py ............ [ 73%]
+......                                                                   [ 78%]
+tests/reasoning/logic/propositional/test_not_1.py ..                     [ 80%]
+tests/reasoning/logic/propositional/test_rv_and_n.py ..                  [ 82%]
+tests/reasoning/logic/propositional/test_rv_or_n.py ..                   [ 83%]
+tests/reasoning/logic/propositional/test_tri_and_1.py ..                 [ 85%]
+tests/reasoning/logic/propositional/test_tri_and_n.py ..                 [ 87%]
+tests/reasoning/logic/propositional/test_tri_implies_1.py ..             [ 88%]
+tests/reasoning/logic/propositional/test_tri_not_1.py ..                 [ 90%]
+tests/reasoning/logic/propositional/test_tri_or_1.py ..                  [ 92%]
+tests/reasoning/logic/propositional/test_tri_or_n.py ..                  [ 94%]
+tests/reasoning/logic/test_bool_inputs.py ...                            [ 96%]
+tests/reasoning/logic/test_get_data.py ....                              [100%]
+
+=============================== warnings summary ===============================
+lnn/neural/activations/node.py:251: 1 warning
+tests/learning/propositional/test_bool_and_1.py: 5 warnings
+tests/learning/propositional/test_bool_implies_1.py: 4 warnings
+tests/learning/propositional/test_bool_or_1.py: 1 warning
+tests/learning/propositional/test_logical_1.py: 1 warning
+tests/learning/propositional/test_simple_graph_1.py: 1 warning
+tests/learning/propositional/test_supervised_1.py: 1 warning
+tests/reasoning/gm/test_gm_binding.py: 5 warnings
+tests/reasoning/gm/test_gm_qa.py: 2 warnings
+tests/reasoning/gm/test_ilp_and_implies_1.py: 2 warnings
+tests/reasoning/logic/fol/test_american.py: 2 warnings
+tests/reasoning/logic/fol/test_nested_quantifiers.py: 15 warnings
+tests/reasoning/logic/fol/test_predicate_and_proposition.py: 6 warnings
+tests/reasoning/logic/fol/test_quantifier_bound_var.py: 2 warnings
+tests/reasoning/logic/fol/test_square_rectangle.py: 1 warning
+tests/reasoning/logic/propositional/test_bool_and_1.py: 2 warnings
+tests/reasoning/logic/propositional/test_bool_and_n.py: 2 warnings
+tests/reasoning/logic/propositional/test_bool_implies_1.py: 2 warnings
+tests/reasoning/logic/propositional/test_bool_or_1.py: 2 warnings
+tests/reasoning/logic/propositional/test_bool_or_n.py: 2 warnings
+tests/reasoning/logic/propositional/test_inference_rules.py: 18 warnings
+tests/reasoning/logic/propositional/test_not_1.py: 2 warnings
+tests/reasoning/logic/propositional/test_tri_and_1.py: 2 warnings
+tests/reasoning/logic/propositional/test_tri_and_n.py: 2 warnings
+tests/reasoning/logic/propositional/test_tri_implies_1.py: 2 warnings
+tests/reasoning/logic/propositional/test_tri_not_1.py: 2 warnings
+tests/reasoning/logic/propositional/test_tri_or_1.py: 2 warnings
+tests/reasoning/logic/propositional/test_tri_or_n.py: 2 warnings
+tests/reasoning/logic/test_bool_inputs.py: 3 warnings
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LNN/lnn/neural/activations/node.py:251: FutureWarning: In the future `np.bool` will be defined as the corresponding NumPy scalar.
+    if hasattr(np, "bool") and isinstance(t, np.bool):
+
+tests/learning/propositional/test_logical_1.py::test_1
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/.venv/lib/python3.11/site-packages/_pytest/python.py:171: PytestReturnNotNoneWarning: Test functions should return None, but tests/learning/propositional/test_logical_1.py::test_1 returned <class 'tuple'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/results/baseline/lnn.xml -
+====================== 117 passed, 95 warnings in 40.91s =======================
+done-lnn

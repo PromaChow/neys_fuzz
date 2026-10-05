@@ -1,0 +1,4157 @@
+[
+ {
+  "id": 0,
+  "file": "core/tests/compiler/adt.rs",
+  "test": "adt_entity",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type Expr = Const(i32) | Add(Expr, Expr)\n      const MY_EXPR = Add(Const(5), Const(3))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "adt#Add: {(entity(0xa7025f735ea995e4), entity(0x1bfd1b095796e00c), entity(0x227e398a3c6185f9))}\nadt#Const: {(entity(0x1bfd1b095796e00c), 5), (entity(0x227e398a3c6185f9), 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 1,
+  "file": "core/tests/compiler/adt.rs",
+  "test": "adt_add_dynamic_entity_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n      type Expr = Const(i32) | Add(Expr, Expr)\n      type root(e: Expr)\n      rel eval(e, y) = case e is Const(y)\n      rel eval(e, y1 + y2) = case e is Add(e1, e2) and eval(e1, y1) and eval(e2, y2)\n      rel result(y) = root(e) and eval(e, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {}\nadt#Add: {}\nadt#Add#perm#(1,(0,2)): {}\nadt#Const: {}\neval: {}\nresult: {}\nroot: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 2,
+  "file": "core/tests/compiler/adt.rs",
+  "test": "adt_add_dynamic_entity_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n      type Expr = Const(i32) | Add(Expr, Expr)\n      type root(id: i32, e: Expr)\n      rel eval(e, y) = case e is Const(y)\n      rel eval(e, y1 + y2) = case e is Add(e1, e2) and eval(e1, y1) and eval(e2, y2)\n      rel result(id, y) = root(id, e) and eval(e, y)\n      ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {}\nadt#Add: {}\nadt#Add#perm#(1,(0,2)): {}\nadt#Const: {}\neval: {}\nresult: {}\nroot: {}\nroot#perm#(1,0): {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 3,
+  "file": "core/tests/compiler/adt.rs",
+  "test": "parse_destructor_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type Expr = Const(i32) | Add(Expr, Expr)\n      rel eval(Const(i), i)\n      rel eval(Add(e1, e2), i1 + i2) = eval(e1, i1) and eval(e2, i2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {}\nadt#Add: {}\nadt#Add#perm#(1,(0,2)): {}\nadt#Const: {}\neval: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 4,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path(y, 2)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\npath(y, 2): {(0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 5,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_1",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path(0, x)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\npath(0, x): {(0, 1), (0, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 6,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path(y, 2)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\npath(y, 2): {(0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 7,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_2",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2), (2, 3)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path(y, 2)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2), (2, 3)}\npath: {(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2)}\npath(y, 2): {(0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 8,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path(y, 2)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\npath(y, 2): {(0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 9,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_3",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ edge(a, b) /\\ path(b, c)\n    query path(y, 2)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\nedge#perm#(1,0): {(1, 0), (2, 1)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\npath(y, 2): {(0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 10,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_4",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel R = {(0, 1), (1, 2)}\n    rel Q(0, b) = R(0, b)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "Q: {(0, 1)}\nR: {(0, 1), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 11,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_4",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel R = {(0, 1), (1, 2)}\n    rel Q(1, b) = R(1, b)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "Q: {(1, 2)}\nR: {(0, 1), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 12,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_5",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 13,
+  "file": "core/tests/compiler/incremental/basic.rs",
+  "test": "incr_5",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path(1, _)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\npath(1, _): {(1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 14,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "parse_constant_set",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel edge :- { 0.9::(0, 1), 0.8::(1, 2) }",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 15,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "parse_constant_set",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel color :- { 0.9::(0, \"blue\"), 0.8::(1, \"green\") }",
+  "baseline": {
+   "rc": 0,
+   "out": "color: {(0, \"blue\"), (1, \"green\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 16,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "parse_rule",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel path(a, b) :- edge(a, b)",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {}\npath: {}\n",
+   "err": "[Warning] relation `edge` is not computed but directly used; consider adding a type declaration: \n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmp_4urmv50.scl:\n  1 | rel path(a, b) :- edge(a, b)\n    |                   ^^^^^^^^^^\n\n"
+  }
+ },
+ {
+  "id": 17,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "parse_rule",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel path(a, b) :- path(a, c), edge(c, b)",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {}\npath: {}\npath#perm#(1,0): {}\n",
+   "err": "[Warning] relation `edge` is not computed but directly used; consider adding a type declaration: \n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpj322qap9.scl:\n  1 | rel path(a, b) :- path(a, c), edge(c, b)\n    |                               ^^^^^^^^^^\n\n"
+  }
+ },
+ {
+  "id": 18,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "parse_rule",
+  "idx": 2,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel path(a, b) :- path(a, c) /\\ edge(c, b)",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {}\npath: {}\npath#perm#(1,0): {}\n",
+   "err": "[Warning] relation `edge` is not computed but directly used; consider adding a type declaration: \n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmp0s0pac7m.scl:\n  1 | rel path(a, b) :- path(a, c) /\\ edge(c, b)\n    |                                 ^^^^^^^^^^\n\n"
+  }
+ },
+ {
+  "id": 19,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "parse_rule",
+  "idx": 3,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel path(a, b) :- edge(a, b) \\/ path(a, c) /\\ edge(c, b)",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {}\npath: {}\npath#perm#(1,0): {}\n",
+   "err": "[Warning] relation `edge` is not computed but directly used; consider adding a type declaration: \n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpj9qdlsge.scl:\n  1 | rel path(a, b) :- edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n    |                                               ^^^^^^^^^^\n\n"
+  }
+ },
+ {
+  "id": 20,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "ignore_comment_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel relate = { /* this is a comment */ }",
+  "baseline": {
+   "rc": 0,
+   "out": "",
+   "err": ""
+  }
+ },
+ {
+  "id": 21,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "ignore_comment_1",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel relate = /* this is a comment */ {  }",
+  "baseline": {
+   "rc": 0,
+   "out": "",
+   "err": ""
+  }
+ },
+ {
+  "id": 22,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "ignore_comment_1",
+  "idx": 2,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "rel relate /* this is a comment */ = {  }",
+  "baseline": {
+   "rc": 0,
+   "out": "",
+   "err": ""
+  }
+ },
+ {
+  "id": 23,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "ignore_comment_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel relate = { /* this is a comment */ }\n    rel another_relate() = // this is another comment\n      some_atom() /* this is another comment */\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "another_relate: {}\nsome_atom: {}\n",
+   "err": "[Warning] relation `some_atom` is not computed but directly used; consider adding a type declaration: \n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpq2odh_55.scl:\n  4 |       some_atom() /* this is another comment */\n    |       ^^^^^^^^^^^\n\n"
+  }
+ },
+ {
+  "id": 24,
+  "file": "core/tests/compiler/parse.rs",
+  "test": "ignore_comment_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel relate = { (3, 5 /* , 4, pretending to be commented out */) }\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "relate: {(3, 5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 25,
+  "file": "core/tests/compiler/ram2rs/basics.rs",
+  "test": "ram2rs_edge_path",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2), (2, 3)}\n    rel path(a, b) = edge(a, b) or (path(a, c) and edge(c, b))\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2), (2, 3)}\npath: {(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 26,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_arith_formula_eval_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type Expr = Const(i32) | Add(Expr, Expr)\n\n      rel eval(x, y)       = case x is Const(y)\n      rel eval(x, y1 + y2) = case x is Add(x1, x2) and\n                             eval(x1, y1) and eval(x2, y2)\n\n      const MY_EXPR = Add(Const(5), Add(Const(3), Const(6)))\n\n      rel result(y) = eval(MY_EXPR, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(entity(0x87a9f93f07681da6), (entity(0x9303aa26d3fabdf9), 3)), (entity(0x9303aa26d3fabdf9), (entity(0x706e81f12e7dfaa), 5))}\nadt#Add: {(entity(0x706e81f12e7dfaa), entity(0x36c4f15b85c8a315), entity(0x9303aa26d3fabdf9)), (entity(0x9303aa26d3fabdf9), entity(0x76a967cf1c2df6a4), entity(0x87a9f93f07681da6))}\nadt#Add#perm#(1,(0,2)): {(entity(0x36c4f15b85c8a315), (entity(0x706e81f12e7dfaa), entity(0x9303aa26d3fabdf9))), (entity(0x76a967cf1c2df6a4), (entity(0x9303aa26d3fabdf9), entity(0x87a9f93f07681da6)))}\nadt#Const: {(entity(0x36c4f15b85c8a315), 5), (entity(0x76a967cf1c2df6a4), 3), (entity(0x87a9f93f07681da6), 6)}\neval: {(entity(0x706e81f12e7dfaa), 14), (entity(0x36c4f15b85c8a315), 5), (entity(0x76a967cf1c2df6a4), 3), (entity(0x87a9f93f07681da6), 6), (entity(0x9303aa26d3fabdf9), 9)}\nresult: {(14)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 27,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_arith_formula_eval_w_destruct_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type Expr = Const(i32) | Add(Expr, Expr)\n      const MY_EXPR = Add(Const(5), Add(Const(3), Const(6)))\n      rel eval(Const(y), y)\n      rel eval(Add(x1, x2), y1 + y2) = eval(x1, y1) and eval(x2, y2)\n      rel result(y) = eval(MY_EXPR, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(entity(0x4ee06035ab6de1ef), (entity(0xb55662c09cd794d), 5)), (entity(0x89b784c656a9ebed), (entity(0x4ee06035ab6de1ef), 3))}\nadt#Add: {(entity(0xb55662c09cd794d), entity(0x1bfd1b095796e00c), entity(0x4ee06035ab6de1ef)), (entity(0x4ee06035ab6de1ef), entity(0x752c5834b24b8512), entity(0x89b784c656a9ebed))}\nadt#Add#perm#(1,(0,2)): {(entity(0x1bfd1b095796e00c), (entity(0xb55662c09cd794d), entity(0x4ee06035ab6de1ef))), (entity(0x752c5834b24b8512), (entity(0x4ee06035ab6de1ef), entity(0x89b784c656a9ebed)))}\nadt#Const: {(entity(0x1bfd1b095796e00c), 5), (entity(0x752c5834b24b8512), 3), (entity(0x89b784c656a9ebed), 6)}\neval: {(entity(0xb55662c09cd794d), 14), (entity(0x1bfd1b095796e00c), 5), (entity(0x4ee06035ab6de1ef), 9), (entity(0x752c5834b24b8512), 3), (entity(0x89b784c656a9ebed), 6)}\nresult: {(14)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 28,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_list_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type List = Nil() | Cons(i32, List)\n\n      rel list_sum(l, 0)      = case l is Nil()\n      rel list_sum(l, hd + s) = case l is Cons(hd, tl) and list_sum(tl, s)\n\n      const MY_LIST = Cons(1, Cons(2, Cons(3, Nil())))\n\n      rel result(y) = list_sum(MY_LIST, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "adt#Cons: {(entity(0x1fc00dce572a6cd9), 3, entity(0xc602be95f85193bf)), (entity(0xaf830d9d35e78a03), 1, entity(0xd03d029a3154762e)), (entity(0xd03d029a3154762e), 2, entity(0x1fc00dce572a6cd9))}\nadt#Cons#perm#(2,(1,0)): {(entity(0x1fc00dce572a6cd9), (2, entity(0xd03d029a3154762e))), (entity(0xc602be95f85193bf), (3, entity(0x1fc00dce572a6cd9))), (entity(0xd03d029a3154762e), (1, entity(0xaf830d9d35e78a03)))}\nadt#Nil: {(entity(0xc602be95f85193bf))}\nlist_sum: {(entity(0x1fc00dce572a6cd9), 3), (entity(0xaf830d9d35e78a03), 6), (entity(0xc602be95f85193bf), 0), (entity(0xd03d029a3154762e), 5)}\nresult: {(6)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 29,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_list_w_destruct_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type List = Nil() | Cons(i32, List)\n\n      const MY_LIST = Cons(1, Cons(2, Cons(3, Nil())))\n\n      rel list_sum(Nil(), 0)\n      rel list_sum(Cons(hd, tl), hd + s) = list_sum(tl, s)\n\n      rel result(y) = list_sum(MY_LIST, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "adt#Cons: {(entity(0x988030ca930526ac), 2, entity(0xd774463a5b728961)), (entity(0xafa22dc604ddbbcf), 1, entity(0x988030ca930526ac)), (entity(0xd774463a5b728961), 3, entity(0xc602be95f85193bf))}\nadt#Cons#perm#(2,(0,1)): {(entity(0x988030ca930526ac), (entity(0xafa22dc604ddbbcf), 1)), (entity(0xc602be95f85193bf), (entity(0xd774463a5b728961), 3)), (entity(0xd774463a5b728961), (entity(0x988030ca930526ac), 2))}\nadt#Nil: {(entity(0xc602be95f85193bf))}\nlist_sum: {(entity(0x988030ca930526ac), 5), (entity(0xafa22dc604ddbbcf), 6), (entity(0xc602be95f85193bf), 0), (entity(0xd774463a5b728961), 3)}\nresult: {(6)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 30,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "destruct_in_body_atom_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type List = Nil() | Cons(i32, List)\n\n      const EMPTY = Nil()\n\n      rel print(Nil(), \"[]\")\n      rel print(Cons(x, Nil()), $format(\"[{}]\", x))\n\n      rel empty_array_string(x) = print(Nil(), x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "adt#Cons: {}\nadt#Cons#perm#(2,(0,1)): {}\nadt#Nil: {(entity(0xc602be95f85193bf))}\nempty_array_string: {(\"[]\")}\nprint: {(entity(0xc602be95f85193bf), \"[]\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 31,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_binary_tree_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type Tree = Nil() | Node(i32, Tree, Tree)\n\n      rel tree_depth(t, 0)                = case t is Nil()\n      rel tree_depth(t, $max(ld, rd) + 1) = case t is Node(_, lt, rt) and\n                                            tree_depth(lt, ld) and tree_depth(rt, rd)\n\n      const MY_TREE = Node(1, Node(2, Nil(), Node(3, Nil(), Nil())), Node(4, Nil(), Nil()))\n\n      rel result(y) = tree_depth(MY_TREE, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(entity(0xe987d68aac6a7c3), (0, entity(0x4157caa00f01a93d))), (entity(0xc602be95f85193bf), (0, entity(0xe987d68aac6a7c3))), (entity(0xc602be95f85193bf), (0, entity(0xfc5a0250cd2c91aa))), (entity(0xfc5a0250cd2c91aa), (2, entity(0x539e0bae54d2cfa)))}\nadt#Nil: {(entity(0xc602be95f85193bf))}\nadt#Node: {(entity(0x539e0bae54d2cfa), 1, entity(0x4157caa00f01a93d), entity(0xfc5a0250cd2c91aa)), (entity(0xe987d68aac6a7c3), 3, entity(0xc602be95f85193bf), entity(0xc602be95f85193bf)), (entity(0x4157caa00f01a93d), 2, entity(0xc602be95f85193bf), entity(0xe987d68aac6a7c3)), (entity(0xfc5a0250cd2c91aa), 4, entity(0xc602be95f85193bf), entity(0xc602be95f85193bf))}\nadt#Node#perm#(2,(3,0)): {(entity(0x4157caa00f01a93d), (entity(0xfc5a0250cd2c91aa), entity(0x539e0bae54d2cfa))), (entity(0xc602be95f85193bf), (entity(0xe987d68aac6a7c3), entity(0x4157caa00f01a93d))), (entity(0xc602be95f85193bf), (entity(0xc602be95f85193bf), entity(0xe987d68aac6a7c3))), (entity(0xc602be95f85193bf), (entity(0xc602be95f85193bf), entity(0xfc5a0250cd2c91aa)))}\nresult: {(3)}\ntree_depth: {(entity(0x539e0bae54d2cfa), 3), (entity(0xe987d68aac6a7c3), 1), (entity(0x4157caa00f01a93d), 2), (entity(0xc602be95f85193bf), 0), (entity(0xfc5a0250cd2c91aa), 1)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 32,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_binary_tree_w_destruct_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type Tree = Nil() | Node(i32, Tree, Tree)\n\n      rel tree_depth(Nil(), 0)\n      rel tree_depth(Node(_, lt, rt), $max(ld, rd) + 1) = tree_depth(lt, ld) and tree_depth(rt, rd)\n\n      const MY_TREE = Node(1, Node(2, Nil(), Node(3, Nil(), Nil())), Node(4, Nil(), Nil()))\n\n      rel result(y) = tree_depth(MY_TREE, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(entity(0x27a9e7e54c5d9463), (entity(0xf7786d8ad1f4103b), 0)), (entity(0x5b6561f0122b4dcc), (entity(0xe1c377ccb8b87b68), 2)), (entity(0xc602be95f85193bf), (entity(0x27a9e7e54c5d9463), 0)), (entity(0xc602be95f85193bf), (entity(0x5b6561f0122b4dcc), 0))}\nadt#Nil: {(entity(0xc602be95f85193bf))}\nadt#Node: {(entity(0x27a9e7e54c5d9463), 3, entity(0xc602be95f85193bf), entity(0xc602be95f85193bf)), (entity(0x5b6561f0122b4dcc), 4, entity(0xc602be95f85193bf), entity(0xc602be95f85193bf)), (entity(0xe1c377ccb8b87b68), 1, entity(0xf7786d8ad1f4103b), entity(0x5b6561f0122b4dcc)), (entity(0xf7786d8ad1f4103b), 2, entity(0xc602be95f85193bf), entity(0x27a9e7e54c5d9463))}\nadt#Node#perm#(2,(0,3)): {(entity(0xc602be95f85193bf), (entity(0x27a9e7e54c5d9463), entity(0xc602be95f85193bf))), (entity(0xc602be95f85193bf), (entity(0x5b6561f0122b4dcc), entity(0xc602be95f85193bf))), (entity(0xc602be95f85193bf), (entity(0xf7786d8ad1f4103b), entity(0x27a9e7e54c5d9463))), (entity(0xf7786d8ad1f4103b), (entity(0xe1c377ccb8b87b68), entity(0x5b6561f0122b4dcc)))}\nresult: {(3)}\ntree_depth: {(entity(0x27a9e7e54c5d9463), 1), (entity(0x5b6561f0122b4dcc), 1), (entity(0xc602be95f85193bf), 0), (entity(0xe1c377ccb8b87b68), 3), (entity(0xf7786d8ad1f4103b), 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 33,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_regex_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        const MY_RE = Con(Char('a'), Char('b'))\n        rel input_string(\"ab\")\n        rel result() = match(MY_RE, 0, 2)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "m4l2l139lb0l3_v1tnr_k00000gn/T/tmpidw47p_3.scl:\n  2 |         const MY_RE = Con(Char('a'), Char('b'))\n    |                                      ^^^^\n[Error] unknown algebraic data type variant `Con`:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpidw47p_3.scl:\n  2 |         const MY_RE = Con(Char('a'), Char('b'))\n    |                       ^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 34,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_regex_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        const MY_RE = Con(Star(Char('a')), Char('b'))\n        rel input_string(\"aaaaaaaab\")\n        rel result() = match(MY_RE, 0, 9)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "r_k00000gn/T/tmp2mx82xrt.scl:\n  2 |         const MY_RE = Con(Star(Char('a')), Char('b'))\n    |                                            ^^^^\n[Error] unknown algebraic data type variant `Con`:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmp2mx82xrt.scl:\n  2 |         const MY_RE = Con(Star(Char('a')), Char('b'))\n    |                       ^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 35,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_regex_w_destruct_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        const MY_RE = Con(Char('a'), Char('b'))\n        rel input_string(\"ab\")\n        rel result() = match(MY_RE, 0, 2)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "m4l2l139lb0l3_v1tnr_k00000gn/T/tmpemjapd2t.scl:\n  2 |         const MY_RE = Con(Char('a'), Char('b'))\n    |                                      ^^^^\n[Error] unknown algebraic data type variant `Con`:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpemjapd2t.scl:\n  2 |         const MY_RE = Con(Char('a'), Char('b'))\n    |                       ^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 36,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_regex_w_destruct_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        const MY_RE = Con(Star(Char('a')), Char('b'))\n        rel input_string(\"aaaaaaaab\")\n        rel result() = match(MY_RE, 0, 9)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "r_k00000gn/T/tmpii53mwlt.scl:\n  2 |         const MY_RE = Con(Star(Char('a')), Char('b'))\n    |                                            ^^^^\n[Error] unknown algebraic data type variant `Con`:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpii53mwlt.scl:\n  2 |         const MY_RE = Con(Star(Char('a')), Char('b'))\n    |                       ^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 37,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_clevr_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        rel input_obj_ids = {0, 1}\n        rel input_obj_color = {(0, RED), (1, GREEN)}\n        rel input_obj_size = {(0, LARGE), (1, SMALL)}\n        rel input_obj_rela = {(0, 1, LEFT), (1, 0, RIGHT)}\n\n        const MY_EXPR = Color(RED, Scene())\n\n        rel result(o) = eval(MY_EXPR, o)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "n7w74.scl:\n  5 |         rel input_obj_rela = {(0, 1, LEFT), (1, 0, RIGHT)}\n    |                                                    ^^^^^\n[Error] non-constant expression found in constant entity:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpvntn7w74.scl:\n  7 |         const MY_EXPR = Color(RED, Scene())\n    |                               ^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 38,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "equality_saturation_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        const PROGRAM = Add(Add(Const(3), Const(-3)), Var(\"a\"))\n        rel input_program(PROGRAM)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "2 |         const PROGRAM = Add(Add(Const(3), Const(-3)), Var(\"a\"))\n    |                                                       ^^^\n[Error] unknown algebraic data type variant `Add`:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmp2az3q6wf.scl:\n  2 |         const PROGRAM = Add(Add(Const(3), Const(-3)), Var(\"a\"))\n    |                         ^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 39,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "equality_saturation_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        const PROGRAM = Add(Add(Const(3), Const(-3)), Const(5))\n        rel input_program(PROGRAM)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "|         const PROGRAM = Add(Add(Const(3), Const(-3)), Const(5))\n    |                                                       ^^^^^\n[Error] unknown algebraic data type variant `Add`:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpw2qmtka2.scl:\n  2 |         const PROGRAM = Add(Add(Const(3), Const(-3)), Const(5))\n    |                         ^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 40,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "type_inf_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        const PROGRAM = Let(\"x\", Number(3), Binary(EQ, Variable(\"x\"), Number(4)))\n        rel input_program(PROGRAM)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "gn/T/tmp2bqv8o5b.scl:\n  2 |         const PROGRAM = Let(\"x\", Number(3), Binary(EQ, Variable(\"x\"), Number(4)))\n    |                                                    ^^\n[Error] unknown variable `PROGRAM`:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmp2bqv8o5b.scl:\n  3 |         rel input_program(PROGRAM)\n    |                           ^^^^^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 41,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "type_inf_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        const PROGRAM = Let(\"x\", Number(3), Binary(ADD, Variable(\"x\"), Boolean(false)))\n        rel input_program(PROGRAM)\n      ",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "ps5luvq8a.scl:\n  2 |         const PROGRAM = Let(\"x\", Number(3), Binary(ADD, Variable(\"x\"), Boolean(false)))\n    |                                                    ^^^\n[Error] unknown variable `PROGRAM`:\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmps5luvq8a.scl:\n  3 |         rel input_program(PROGRAM)\n    |                           ^^^^^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 42,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "adt_dynamic_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    type Expr = Const(f32) | Add(Expr, Expr) | Sub(Expr, Expr)\n\n    rel my_entity($parse_entity(\"Add(Const(1), Const(3))\"))\n\n    type eval(bound e: Expr, v: f32)\n    rel eval(e, v) = case e is Const(v)\n    rel eval(e, v1 + v2) = case e is Add(e1, e2) and eval(e1, v1) and eval(e2, v2)\n    rel eval(e, v1 - v2) = case e is Sub(e1, e2) and eval(e1, v1) and eval(e2, v2)\n\n    rel result(v) = my_entity(e) and eval(e, v)\n\n    query result\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(entity(0x568d75fdeee5b32c), (entity(0x86f0f201b693b9d6), entity(0x84ca8065545e1b35)))}\n#temp#1: {(entity(0x84ca8065545e1b35), (entity(0x86f0f201b693b9d6), 1))}\n#temp#2: {}\n#temp#3: {}\nadt#Add: {(entity(0x86f0f201b693b9d6), entity(0x568d75fdeee5b32c), entity(0x84ca8065545e1b35))}\nadt#Add#perm#(0,2): {(entity(0x86f0f201b693b9d6), entity(0x84ca8065545e1b35))}\nadt#Const: {(entity(0x568d75fdeee5b32c), 1), (entity(0x84ca8065545e1b35), 3)}\nadt#Sub: {}\nadt#Sub#perm#(0,2): {}\nd#eval#bf: {(entity(0x568d75fdeee5b32c)), (entity(0x84ca8065545e1b35)), (entity(0x86f0f201b693b9d6))}\neval: {(entity(0x568d75fdeee5b32c), 1), (entity(0x84ca8065545e1b35), 3), (entity(0x86f0f201b693b9d6), 4)}\nmy_entity: {(entity(0x86f0f201b693b9d6))}\nresult: {(4)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 43,
+  "file": "core/tests/integrate/adt.rs",
+  "test": "foreign_predicate_dynamic_adt_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n    type Expr = Const(f32) | Add(Expr, Expr)\n    rel eval(x, y)       = case x is Const(y)\n    rel eval(x, y1 + y2) = case x is Add(x1, x2) and eval(x1, y1) and eval(x2, y2)\n    rel prompt = {(1, \"prompt_1\"), (2, \"prompt_2\")}\n    rel result(i, y) = prompt(i, x) and dummy_semantic_parser(x, e) and eval(e, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {}\n#temp#1: {}\nadt#Add: {}\nadt#Add#perm#(1,(0,2)): {}\nadt#Const: {}\ndummy_semantic_parser: {}\ndummy_semantic_parser#perm#((1,0),()): {}\neval: {}\nprompt: {(1, \"prompt_1\"), (2, \"prompt_2\")}\nresult: {}\n",
+   "err": "[Warning] relation `dummy_semantic_parser` is not computed but directly used; consider adding a type declaration: \n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpznv5ifeq.scl:\n  6 |     rel result(i, y) = prompt(i, x) and dummy_semantic_parser(x, e) and eval(e, y)\n    |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+  }
+ },
+ {
+  "id": 44,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_min_max_with_topkproofs",
+  "idx": 0,
+  "provenance": "topkproofs",
+  "provenance_rust": "top_k_proofs",
+  "k": 3,
+  "program": "\n      rel number = {0.1::1, 0.1::3, 0.8::5, 0.0::7}\n      rel min_num = min(n: number(n))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "min_num: {0.1::(1), 0.09000000000000001::(3), 0.6480000000000001::(5), 0::(7)}\nmin_num#31#agg#0#0#body: {0.1::1, 0.1::3, 0.8::5, 0::7}\nnumber: {0.1::(1), 0.1::(3), 0.8::(5), 0::(7)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 45,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_avg_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel scores = {(0, 55.0), (1, 45.0), (2, 50.0)}\n      rel avg_score(a) = a := avg[i](s: scores(i, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "avg_score: {(50)}\navg_score#16#agg#0#0#body: {(0, 55), (1, 45), (2, 50)}\nscores: {(0, 55), (1, 45), (2, 50)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 46,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_weighted_avg_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel scores = {(0, 55.0), (1, 45.0), (2, 50.0)}\n      rel avg_score(a) = a := weighted_avg[i](s: scores(i, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "avg_score: {(50)}\navg_score#16#agg#0#0#body: {(0, 55), (1, 45), (2, 50)}\nscores: {(0, 55), (1, 45), (2, 50)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 47,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_weighted_avg_2",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel scores = {0.5::(0, 55.0), 1.0::(1, 45.0), 0.5::(2, 50.0)}\n      rel avg_score(a) = a := weighted_avg![i](s: scores(i, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "avg_score: {1::(48.75)}\navg_score#19#agg#0#0#body: {0.5::(0, 55), 1::(1, 45), 0.5::(2, 50)}\nscores: {0.5::(0, 55), 1::(1, 45), 0.5::(2, 50)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 48,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_string_join_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_strings = {\"hello\", \"world\"}\n      rel result(j) = j := string_join(s: my_strings(s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_strings: {(\"hello\"), (\"world\")}\nresult: {(\"helloworld\")}\nresult#10#agg#0#0#body: {\"hello\", \"world\"}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 49,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_string_join_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_strings = {\"hello\", \"world\"}\n      rel result(j) = j := string_join<\" \">(s: my_strings(s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_strings: {(\"hello\"), (\"world\")}\nresult: {(\"hello world\")}\nresult#10#agg#0#0#body: {\"hello\", \"world\"}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 50,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_string_join_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_strings = {(2, \"hello\"), (1, \"world\")}\n      rel result(j) = j := string_join<\" \">[i](s: my_strings(i, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_strings: {(1, \"world\"), (2, \"hello\")}\nresult: {(\"world hello\")}\nresult#12#agg#0#0#body: {(1, \"world\"), (2, \"hello\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 51,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_string_join_all",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel symbols = {0.9::(0, \"2\"); 0.1::(0, \"3\")}\n      rel symbols = {1.0::(1, \"*\")}\n      rel symbols = {1.0::(2, \"5\")}\n      rel formula(s) = s := string_join<all>[i](s: symbols(i, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "formula: {0.9::(\"2*5\"), 0.1::(\"3*5\")}\nformula#30#agg#0#0#body: {0.9::(0, \"2\"), 0.1::(0, \"3\"), 1::(1, \"*\"), 1::(2, \"5\")}\nsymbols: {0.9::(0, \"2\"), 0.1::(0, \"3\"), 1::(1, \"*\"), 1::(2, \"5\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 52,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_softmax",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel symbols = {0.1::(0, \"2\"); 0.1::(0, \"3\")}\n      rel softmax_symbols(i, s) = s := softmax(s: symbols(i, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "softmax_symbols: {0.5::(0, \"2\"), 0.5::(0, \"3\")}\nsoftmax_symbols#14#agg#0#0#body: {0.1::(0, \"2\"), 0.1::(0, \"3\")}\nsymbols: {0.1::(0, \"2\"), 0.1::(0, \"3\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 53,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_normalize_with_group_by",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel symbols = {0.1::(0, \"2\"); 0.1::(0, \"3\")}\n      rel symbols = {0.1::(1, \"+\"); 0.3::(1, \"-\")}\n      rel normalized_symbols(i, s) = s := normalize(s: symbols(i, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "normalized_symbols: {0.5::(0, \"2\"), 0.5::(0, \"3\"), 0.25::(1, \"+\"), 0.7499999999999999::(1, \"-\")}\nnormalized_symbols#27#agg#0#0#body: {0.1::(0, \"2\"), 0.1::(0, \"3\"), 0.1::(1, \"+\"), 0.3::(1, \"-\")}\nsymbols: {0.1::(0, \"2\"), 0.1::(0, \"3\"), 0.1::(1, \"+\"), 0.3::(1, \"-\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 54,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_rank_1",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel digit = {0.1::0, 0.3::1, 0.5::2, 0.1::3}\n      rel digit_rank(i, d) = (i, d) := rank(d: digit(d))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "digit: {0.1::(0), 0.3::(1), 0.5::(2), 0.1::(3)}\ndigit_rank: {0.5::(0, 2), 0.3::(1, 1), 0.1::(2, 0), 0.1::(3, 3)}\ndigit_rank#20#agg#0#0#body: {0.1::0, 0.3::1, 0.5::2, 0.1::3}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 55,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_rank_descending_1",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel digit = {0.1::0, 0.3::1, 0.5::2, 0.1::3}\n      rel digit_rank(i, d) = (i, d) := rank<desc>(d: digit(d))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "digit: {0.1::(0), 0.3::(1), 0.5::(2), 0.1::(3)}\ndigit_rank: {0.5::(0, 2), 0.3::(1, 1), 0.1::(2, 0), 0.1::(3, 3)}\ndigit_rank#20#agg#0#0#body: {0.1::0, 0.3::1, 0.5::2, 0.1::3}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 56,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_rank_ascending_1",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel digit = {0.1::0, 0.3::1, 0.5::2, 0.1::3}\n      rel digit_rank(i, d) = (i, d) := rank<asc>(d: digit(d))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "digit: {0.1::(0), 0.3::(1), 0.5::(2), 0.1::(3)}\ndigit_rank: {0.1::(0, 0), 0.1::(1, 3), 0.3::(2, 1), 0.5::(3, 2)}\ndigit_rank#20#agg#0#0#body: {0.1::0, 0.3::1, 0.5::2, 0.1::3}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 57,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_rank_ascending_2",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel digit = {0.1::0, 0.3::1, 0.5::2, 0.1::3}\n      rel digit_rank(i, d) = (i, d) := rank<desc=false>(d: digit(d))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "digit: {0.1::(0), 0.3::(1), 0.5::(2), 0.1::(3)}\ndigit_rank: {0.1::(0, 0), 0.1::(1, 3), 0.3::(2, 1), 0.5::(3, 2)}\ndigit_rank#20#agg#0#0#body: {0.1::0, 0.3::1, 0.5::2, 0.1::3}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 58,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_enumerate_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel student = {\"tom\", \"jerry\"}\n      rel student_with_id(id, name) = (id, name) := enumerate(name: student(name))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "student: {(\"jerry\"), (\"tom\")}\nstudent_with_id: {(0, \"jerry\"), (1, \"tom\")}\nstudent_with_id#10#agg#0#0#body: {\"jerry\", \"tom\"}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 59,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_reduce_rule_sugar_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel student = {\"tom\", \"jerry\"}\n      rel top_student = top<1>(n: student(n))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "student: {(\"jerry\"), (\"tom\")}\ntop_student: {(\"jerry\")}\ntop_student#22#agg#0#0#body: {\"jerry\", \"tom\"}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 60,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_argmax_sugar_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel score = {(\"tom\", 90), (\"jerry\", 80)}\n      rel best_student = argmax[p](s: score(p, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "best_student: {(\"tom\")}\nbest_student#27#agg#0#0#body: {(\"jerry\", 80), (\"tom\", 90)}\nscore: {(\"jerry\", 80), (\"tom\", 90)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 61,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_sort_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\ntype student_score(stu_id: String, name: String, score: f32)\nrel student_score = {(\"1357\", \"jam\", 10.0), (\"2468\", \"tommy\", 6.0)}\nrel result(rank, score) = (rank, score) := sort<desc>(score: student_score(stu_id, _, score))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(0, 10), (1, 6)}\nresult#26#agg#0#0#body: {6, 10}\nstudent_score: {(\"1357\", \"jam\", 10), (\"2468\", \"tommy\", 6)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 62,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_sort_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\ntype student_score(stu_id: String, name: String, score: f32)\nrel student_score = {(\"1357\", \"jam\", 10.0), (\"2468\", \"tommy\", 6.0)}\nrel result(rank, stu_id) = (rank, stu_id, score) := sort<desc>[stu_id](score: student_score(stu_id, _, score))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(0, \"1357\"), (1, \"2468\")}\nresult#26#agg#0#0#body: {(\"1357\", 10), (\"2468\", 6)}\nstudent_score: {(\"1357\", \"jam\", 10), (\"2468\", \"tommy\", 6)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 63,
+  "file": "core/tests/integrate/aggregate.rs",
+  "test": "test_sort_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\ntype student_score(stu_id: String, name: String, score: f32)\nrel student_score = {(\"1357\", \"jam\", 10.0), (\"2468\", \"tommy\", 6.0)}\nrel result = argsort<desc>[stu_id](score: student_score(stu_id, _, score))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(0, \"1357\"), (1, \"2468\")}\nresult#45#agg#0#0#body: {(\"1357\", 10), (\"2468\", 6)}\nstudent_score: {(\"1357\", \"jam\", 10), (\"2468\", \"tommy\", 6)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 64,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "basic_edge_path_left_recursion",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 2), (1, 2), (2, 3)}\n      rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 2), (1, 2), (2, 3)}\npath: {(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)}\npath#perm#(1,0): {(2, 0), (2, 1), (3, 0), (3, 1), (3, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 65,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "basic_edge_path_right_recursion",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 2), (1, 2), (2, 3)}\n      rel path(a, b) = edge(a, b) \\/ edge(a, c) /\\ path(c, b)\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 2), (1, 2), (2, 3)}\nedge#perm#(1,0): {(2, 0), (2, 1), (3, 2)}\npath: {(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 66,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "basic_edge_path_binary_recursion",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 2), (1, 2), (2, 3)}\n      rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ path(c, b)\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 2), (1, 2), (2, 3)}\npath: {(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)}\npath#perm#(1,0): {(2, 0), (2, 1), (3, 0), (3, 1), (3, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 67,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "basic_odd_even",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel even(0)\n      rel odd(x) = even(x - 1), x < 10\n      rel even(x) = odd(x - 1), x < 10\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "even: {(0), (2), (4), (6), (8)}\nodd: {(1), (3), (5), (7), (9)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 68,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "basic_difference_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel a = {(0, 1), (1, 2)}\n      rel b = {(1, 1), (1, 2)}\n      rel s(x, y) = a(x, y), ~b(x, y)\n      query s\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "a: {(0, 1), (1, 2)}\nb: {(1, 1), (1, 2)}\ns: {(0, 1)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 69,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "bmi_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel student = {\n        (1, 185, 80, \"Mary\"),\n        (2, 175, 70, \"John\"),\n        (3, 165, 55, \"Maomao\"),\n      }\n\n      rel height(id, h) = student(id, h, _, _)\n      rel weight(id, w) = student(id, _, w, _)\n\n      rel bmi(id, w as f32 / ((h * h) as f32 / 10000.0)) = height(id, h), weight(id, w)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(1, 3.4225), (2, 3.0625), (3, 2.7225)}\nbmi: {(1, 23.374727), (2, 22.857143), (3, 20.202019)}\nheight: {(1, 185), (2, 175), (3, 165)}\nstudent: {(1, 185, 80, \"Mary\"), (2, 175, 70, \"John\"), (3, 165, 55, \"Maomao\")}\nweight: {(1, 80), (2, 70), (3, 55)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 70,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "bmi_test_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type student(usize, f32, f32, String)\n\n      rel student = {\n        (1, 185, 80, \"Mary\"),\n        (2, 175, 70, \"John\"),\n        (3, 165, 55, \"Maomao\"),\n      }\n\n      rel height(id, h) = student(id, h, _, _)\n      rel weight(id, w) = student(id, _, w, _)\n\n      rel bmi(id, w / (h * h / 10000.0)) = height(id, h), weight(id, w)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(1, 3.4225), (2, 3.0625), (3, 2.7225)}\nbmi: {(1, 23.374727), (2, 22.857143), (3, 20.202019)}\nheight: {(1, 185), (2, 175), (3, 165)}\nstudent: {(1, 185, 80, \"Mary\"), (2, 175, 70, \"John\"), (3, 165, 55, \"Maomao\")}\nweight: {(1, 80), (2, 70), (3, 55)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 71,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_fold_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel E(1)\n      rel R(s, a) = s == x + z, x == y + 1, y == z + 1, z == 1, E(a)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "E: {(1)}\nR: {(4, 1)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 72,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_fold_test_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel R(s) = s == x + z, x == y + 1, y == z + 1, z == 1\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "R: {(4)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 73,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "count_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type R(usize, String)\n      type S(usize)\n\n      rel R = {(0, \"a\"), (1, \"b\"), (1, \"a\"), (0, \"c\"), (0, \"d\")}\n      rel S(i) :- i = count(s: R(o, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "R: {(0, \"a\"), (0, \"c\"), (0, \"d\"), (1, \"a\"), (1, \"b\")}\nS: {(4)}\nS#36#agg#0#0#body: {\"a\", \"b\", \"c\", \"d\"}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 74,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "count_test_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type R(usize, String)\n      type S(usize)\n\n      rel R = {(0, \"a\"), (1, \"b\"), (1, \"a\"), (0, \"c\"), (0, \"d\")}\n      rel O(o, i) :- i = count(s: R(o, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "O: {(0, 3), (1, 2)}\nO#36#agg#0#0#body: {(0, \"a\"), (0, \"c\"), (0, \"d\"), (1, \"a\"), (1, \"b\")}\nR: {(0, \"a\"), (0, \"c\"), (0, \"d\"), (1, \"a\"), (1, \"b\")}\nS: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 75,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "topk_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel r1 = {(0, \"x\"), (0, \"y\"), (1, \"y\"), (1, \"z\")}\n      rel r2(id, sym) :- sym = top<1>(s: r1(id, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r1: {(0, \"x\"), (0, \"y\"), (1, \"y\"), (1, \"z\")}\nr2: {(0, \"x\"), (1, \"y\")}\nr2#20#agg#0#0#body: {(0, \"x\"), (0, \"y\"), (1, \"y\"), (1, \"z\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 76,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "digit_sum_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel digit = {\n        (0, 0), (0, 1), (0, 2), (0, 3), (0, 4),\n        (1, 0), (1, 1), (1, 2), (1, 3), (1, 4),\n      }\n      rel sum_2(0, 1, x + y) = digit(0, x), digit(1, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(0), (1), (2), (3), (4)}\n#temp#1: {(0), (1), (2), (3), (4)}\ndigit: {(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (1, 4)}\nsum_2: {(0, 1, 0), (0, 1, 1), (0, 1, 2), (0, 1, 3), (0, 1, 4), (0, 1, 5), (0, 1, 6), (0, 1, 7), (0, 1, 8)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 77,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "digit_sum_test_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel digit = {\n        (0, 0), (0, 1), (0, 2), (0, 3), (0, 4),\n        (1, 0), (1, 1), (1, 2), (1, 3), (1, 4),\n      }\n      rel sum_2(a, b, c) = digit(a, x), digit(b, y), c == x + y, a == 0, b == 1\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(0), (1), (2), (3), (4)}\n#temp#1: {(0), (1), (2), (3), (4)}\ndigit: {(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 1), (1, 2), (1, 3), (1, 4)}\nsum_2: {(0, 1, 0), (0, 1, 1), (0, 1, 2), (0, 1, 3), (0, 1, 4), (0, 1, 5), (0, 1, 6), (0, 1, 7), (0, 1, 8)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 78,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "expr_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel eval(e, c) = constant(e, c)\n      rel eval(e, a + b) = binary(e, \"+\", l, r), eval(l, a), eval(r, b)\n      rel eval(e, a - b) = binary(e, \"-\", l, r), eval(l, a), eval(r, b)\n      rel result(y) = eval(e, y), goal(e)\n\n      rel constant = { (0, 1), (1, 2), (2, 3) }\n      rel binary = { (3, \"+\", 0, 1), (4, \"-\", 3, 2) }\n      rel goal(4)\n      query result\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(0, (3, 1))}\n#temp#1: {(1, (1, 3))}\n#temp#2: {(3, (4, 2))}\n#temp#3: {(2, (3, 4))}\nbinary: {(3, \"+\", 0, 1), (4, \"-\", 3, 2)}\nbinary#perm#(1,(0,2,3)): {(\"+\", (3, 0, 1)), (\"-\", (4, 3, 2))}\nconstant: {(0, 1), (1, 2), (2, 3)}\neval: {(0, 1), (1, 2), (2, 3), (3, 3), (4, 0)}\ngoal: {(4)}\nresult: {(0)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 79,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "fib_test_0",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel fib :- {(0, 1), (1, 1)}\n      rel fib(x, a + b) :- fib(x - 1, a), fib(x - 2, b), x <= 5\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(-1, (1, 1)), (0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5)), (4, (8, 6))}\n#temp#1: {(-1, (1, 1)), (0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5))}\nfib: {(0, 1), (1, 1), (2, 2), (3, 3), (4, 5), (5, 8)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 80,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "fib_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel fib :- {(0, 1), (1, 1)}\n      rel fib(x, a + b) :- fib(x - 1, a), fib(x - 2, b), x <= 7\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(-1, (1, 1)), (0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5)), (4, (8, 6)), (5, (13, 7)), (6, (21, 8))}\n#temp#1: {(-1, (1, 1)), (0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5)), (4, (8, 6)), (5, (13, 7))}\nfib: {(0, 1), (1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13), (7, 21)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 81,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "fib_dt_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel d_fib :- {(7)}\n      rel d_fib(x - 1) :- d_fib(x), x > 1\n      rel d_fib(x - 2) :- d_fib(x), x > 1\n\n      rel fib :- {(0, 1), (1, 1)}\n      rel fib(x, a + b) :- d_fib(x), fib(x - 1, a), fib(x - 2, b), x > 1\n\n      rel result(y) :- fib(7, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(-1, (-2, 0)), (0, (-1, 1)), (1, (0, 2)), (2, (1, 3)), (3, (2, 4)), (4, (3, 5)), (5, (4, 6)), (6, (5, 7))}\n#temp#1: {(1, (0, 2)), (2, (1, 3)), (3, (2, 4)), (4, (3, 5)), (5, (4, 6)), (6, (5, 7))}\n#temp#2: {(0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5)), (4, (8, 6)), (5, (13, 7))}\nd_fib: {(0), (1), (2), (3), (4), (5), (6), (7)}\nfib: {(0, 1), (1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13), (7, 21)}\nresult: {(21)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 82,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "aggregate_argmax_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel exam_grades = {(\"tom\", 50.0), (\"mary\", 60.0)}\n      rel best_student(n) = n := argmax[n](s: exam_grades(n, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "best_student: {(\"mary\")}\nbest_student#12#agg#0#0#body: {(\"mary\", 60), (\"tom\", 50)}\nexam_grades: {(\"mary\", 60), (\"tom\", 50)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 83,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "obj_color_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel object_color(0, \"blue\")\n      rel object_color(1, \"green\")\n      rel object_color(2, \"blue\")\n      rel object_color(3, \"green\")\n      rel object_color(4, \"green\")\n      rel object_color(5, \"red\")\n\n      rel color_count(c, n) :- n := count(o: object_color(o, c))\n      rel max_color(c) :- c := argmax[c](n: color_count(c, n))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "color_count: {(\"blue\", 2), (\"green\", 3), (\"red\", 1)}\ncolor_count#31#agg#0#0#body: {(\"blue\", 0), (\"blue\", 2), (\"green\", 1), (\"green\", 3), (\"green\", 4), (\"red\", 5)}\nmax_color: {(\"green\")}\nmax_color#52#agg#0#0#body: {(\"blue\", 2), (\"green\", 3), (\"red\", 1)}\nobject_color: {(0, \"blue\"), (1, \"green\"), (2, \"blue\"), (3, \"green\"), (4, \"green\"), (5, \"red\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 84,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "obj_color_test_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel object_color = {\n        (0, \"blue\"),\n        (1, \"green\"),\n        (2, \"blue\"),\n        (3, \"green\"),\n        (4, \"green\"),\n        (5, \"blue\"),\n      }\n      rel max_color(c) = c := argmax[c](n: n := count(o: object_color(o, c)))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "max_color: {(\"blue\"), (\"green\")}\nmax_color#28#agg#0#0#body: {(\"blue\", 3), (\"green\", 3)}\nmax_color#28#agg#0#0#body#28#agg#0#0#body: {(\"blue\", 0), (\"blue\", 2), (\"blue\", 5), (\"green\", 1), (\"green\", 3), (\"green\", 4)}\nobject_color: {(0, \"blue\"), (1, \"green\"), (2, \"blue\"), (3, \"green\"), (4, \"green\"), (5, \"blue\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 85,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2)}\n      rel path(a, b) = edge(a, b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 86,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2), (2, 2)}\n      rel self_edge(a, a) :- edge(a, a)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2), (2, 2)}\nself_edge: {(2, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 87,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2)}\n      rel something(a, 2) :- edge(a, b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\nsomething: {(0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 88,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_4",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2)}\n      rel something(a, 2) :- edge(a, b), b > 1\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\nsomething: {(1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 89,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_5",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel S = {(1, 2), (2, 3), (3, 4)}\n      rel R = {(1, 2), (4, 3)}\n      rel O(a, b) = S(b, a), R(a, b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "O: {(4, 3)}\nR: {(1, 2), (4, 3)}\nS: {(1, 2), (2, 3), (3, 4)}\nS#perm#(1,0): {(2, 1), (3, 2), (4, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 90,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_6",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel S = {(1, 2), (2, 3), (3, 4), (4, 3)}\n      rel R = {(1, 2), (3, 4), (4, 3)}\n      rel O(a, b) = S(b, a), S(a, b), R(a, b), R(b, a)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "O: {(3, 4), (4, 3)}\nR: {(1, 2), (3, 4), (4, 3)}\nR#perm#(1,0): {(2, 1), (3, 4), (4, 3)}\nS: {(1, 2), (2, 3), (3, 4), (4, 3)}\nS#perm#(1,0): {(2, 1), (3, 2), (3, 4), (4, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 91,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_7",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel S = {(0, 1), (1, 2), (2, 3)}\n      rel R = {(1), (2)}\n      rel O(a, b) = S(a, b), ~R(b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "O: {(2, 3)}\nR: {(1), (2)}\nS: {(0, 1), (1, 2), (2, 3)}\nS#perm#(1,0): {(1, 0), (2, 1), (3, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 92,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_8",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel S = {(0, 1), (1, 2), (2, 3)}\n      rel R = {(1, 2), (2, 3)}\n      rel O(a, b) = S(a, b), ~R(b, c)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "O: {(2, 3)}\nR: {(1, 2), (2, 3)}\nS: {(0, 1), (1, 2), (2, 3)}\nS#perm#(1,0): {(1, 0), (2, 1), (3, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 93,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "simple_test_9",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel S = {(0, 1), (1, 2), (2, 3)}\n      rel R = {(1, 2), (2, 3), (2, 2)}\n      rel O(a, b) = S(a, b), ~R(a, a)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "O: {(0, 1), (1, 2)}\nR: {(1, 2), (2, 2), (2, 3)}\nS: {(0, 1), (1, 2), (2, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 94,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "srl_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel verb = {\n        (1, \"play\"),\n        (4, \"play\"),\n      }\n\n      rel noun = {\n        (2, \"Tom\", \"Person\"),\n        (3, \"Jerry\", \"Person\")\n      }\n\n      rel arg1 = {\n        (1, 2),\n        (1, 3),\n      }\n\n      rel synonym = {\n        (1, 4),\n      }\n\n      rel plays_soccer(n) =\n        verb(vid0, \"play\"),\n        arg1(vid, n),\n        noun(n, _, \"Person\"),\n        synonym(vid, vid0)\n\n      rel how_many_play_soccer(c) = c = count(n: plays_soccer(n))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(1), (4)}\n#temp#1: {((1, 1), 2), ((1, 1), 3), ((1, 4), 2), ((1, 4), 3)}\n#temp#2: {(2, ()), (3, ())}\n#temp#3: {(2, ()), (3, ())}\narg1: {(1, 2), (1, 3)}\nhow_many_play_soccer: {(2)}\nhow_many_play_soccer#73#agg#0#0#body: {2, 3}\nnoun: {(2, \"Tom\", \"Person\"), (3, \"Jerry\", \"Person\")}\nnoun#perm#(2,(0,1)): {(\"Person\", (2, \"Tom\")), (\"Person\", (3, \"Jerry\"))}\nplays_soccer: {(2), (3)}\nsynonym: {(1, 4)}\nverb: {(1, \"play\"), (4, \"play\")}\nverb#perm#(1,0): {(\"play\", 1), (\"play\", 4)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 95,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "class_student_grade_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel class_student_grade = {\n        (0, \"tom\", 50),\n        (0, \"jerry\", 70),\n        (0, \"alice\", 60),\n        (1, \"bob\", 80),\n        (1, \"sherry\", 90),\n        (1, \"frank\", 30),\n      }\n\n      rel class_top_student(c, s) = s := argmax[s](g: class_student_grade(c, s, g))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "class_student_grade: {(0, \"alice\", 60), (0, \"jerry\", 70), (0, \"tom\", 50), (1, \"bob\", 80), (1, \"frank\", 30), (1, \"sherry\", 90)}\nclass_top_student: {(0, \"jerry\"), (1, \"sherry\")}\nclass_top_student#34#agg#0#0#body: {(0, (\"alice\", 60)), (0, (\"jerry\", 70)), (0, (\"tom\", 50)), (1, (\"bob\", 80)), (1, (\"frank\", 30)), (1, (\"sherry\", 90))}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 96,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "class_student_grade_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel class_student_grade = {\n        (0, \"tom\", 50),\n        (0, \"jerry\", 70),\n        (0, \"alice\", 60),\n        (1, \"bob\", 80),\n        (1, \"sherry\", 90),\n        (1, \"frank\", 30),\n      }\n\n      rel avg_score((s as f32) / (n as f32)) =\n        s := sum[class, name](x: class_student_grade(class, name, x)),\n        n := count(class, name: class_student_grade(class, name, _))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(380)}\n#temp#1: {(6)}\navg_score: {(63.333332)}\navg_score#34#agg#0#0#body: {(0, \"alice\", 60), (0, \"jerry\", 70), (0, \"tom\", 50), (1, \"bob\", 80), (1, \"frank\", 30), (1, \"sherry\", 90)}\navg_score#34#agg#0#1#body: {(0, \"alice\"), (0, \"jerry\"), (0, \"tom\"), (1, \"bob\"), (1, \"frank\"), (1, \"sherry\")}\nclass_student_grade: {(0, \"alice\", 60), (0, \"jerry\", 70), (0, \"tom\", 50), (1, \"bob\", 80), (1, \"frank\", 30), (1, \"sherry\", 90)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 97,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "aggr_sum_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel sales = {(0, 100), (1, 100), (2, 200)}\n      rel total_sale(t) = t := sum[p](s: sales(p, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "sales: {(0, 100), (1, 100), (2, 200)}\ntotal_sale: {(400)}\ntotal_sale#16#agg#0#0#body: {(0, 100), (1, 100), (2, 200)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 98,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "aggr_sum_test_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel sales = {(\"market\", \"tom\", 100), (\"ads\", \"tom\", 100), (\"ads\", \"jenny\", 200)}\n      rel total_sale(t) = t := sum[d, p](s: sales(d, p, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "sales: {(\"ads\", \"jenny\", 200), (\"ads\", \"tom\", 100), (\"market\", \"tom\", 100)}\ntotal_sale: {(400)}\ntotal_sale#19#agg#0#0#body: {(\"ads\", \"jenny\", 200), (\"ads\", \"tom\", 100), (\"market\", \"tom\", 100)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 99,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "aggr_sum_test_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel sales = {(\"market\", \"tom\", 100), (\"ads\", \"tom\", 100), (\"ads\", \"jenny\", 100)}\n      rel dp_sale(d, t) = t := sum[p](s: sales(d, p, s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "dp_sale: {(\"ads\", 200), (\"market\", 100)}\ndp_sale#19#agg#0#0#body: {(\"ads\", (\"jenny\", 100)), (\"ads\", (\"tom\", 100)), (\"market\", (\"tom\", 100))}\nsales: {(\"ads\", \"jenny\", 100), (\"ads\", \"tom\", 100), (\"market\", \"tom\", 100)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 100,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "unused_relation_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel A = {(0, 1), (1, 2)}\n      rel B = {(\"haha\"), (\"wow\")}\n      rel S(b, 1) = B(b)\n      query S\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "A: {(0, 1), (1, 2)}\nB: {(\"haha\"), (\"wow\")}\nS: {(\"haha\", 1), (\"wow\", 1)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 101,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "atomic_query_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel S = {(0, 1), (1, 2), (0, 2)}\n      query S(0, _)\n      query S(_, 2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "S: {(0, 1), (0, 2), (1, 2)}\nS#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\nS(0, _): {(0, 1), (0, 2)}\nS(_, 2): {(0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 102,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "atomic_query_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel S = {(1, 2), (2, 4), (1, 1), (2, 2)}\n      query S(a, a * 2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "S: {(1, 1), (1, 2), (2, 2), (2, 4)}\nS(a, (a * 2)): {(1, 2), (2, 4)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 103,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "negate_query_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel A = {(0, 1)}\n      rel B = {(0, 1, \"O\")}\n      rel Q() = A(a, b), ~B(a, b, \"O\")\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#ntemp#0: {(0, 1)}\nA: {(0, 1)}\nB: {(0, 1, \"O\")}\nB#perm#(2,(0,1)): {(\"O\", (0, 1))}\nQ: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 104,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "negate_query_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel B(\"Alice\")\n      rel A() :- ~B(_)\n      query A\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "A: {}\nB: {(\"Alice\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 105,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "join_and_arith_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel eventually(start, start, goal) = event(start, goal)\n      rel eventually(start, end, goal) =\n        event(next, _) and\n        eventually(next, end, goal) and\n        next == start + 1\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {}\nevent: {}\neventually: {}\n",
+   "err": "[Warning] relation `event` is not computed but directly used; consider adding a type declaration: \n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmp3ie93o7k.scl:\n  4 |         event(next, _) and\n    |         ^^^^^^^^^^^^^^\n\n"
+  }
+ },
+ {
+  "id": 106,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "join_and_arith_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel event = {\n        (0, \"V1\"),\n        (1, \"V1\"),\n        (2, \"V2\"),\n        (3, \"O\"),\n      }\n      rel eventually(end, end, goal) = event(end, goal)\n      rel eventually(start, end, goal) =\n        event(start, g) and\n        ~event(start, goal) and\n        event(next, _) and\n        eventually(next, end, goal) and\n        next == start + 1\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(1, 0), (2, 1), (3, 2), (4, 3)}\n#temp#1: {(0, 0, 1), (0, 1, 2), (0, 2, 3), (0, 3, 4), (1, 0, 1), (1, 1, 2), (1, 2, 3), (1, 3, 4), (2, 0, 1), (2, 1, 2), (2, 2, 3), (2, 3, 4), (3, 0, 1), (3, 1, 2), (3, 2, 3), (3, 3, 4)}\n#temp#2: {(1, 0), (2, 1), (3, 2)}\n#temp#3: {((\"O\", 0), 3), ((\"O\", 1), 3), ((\"O\", 2), 3), ((\"V1\", 0), 1), ((\"V2\", 0), 2), ((\"V2\", 1), 2)}\nevent: {(0, \"V1\"), (1, \"V1\"), (2, \"V2\"), (3, \"O\")}\nevent#perm#(1,0): {(\"O\", 3), (\"V1\", 0), (\"V1\", 1), (\"V2\", 2)}\neventually: {(0, 0, \"V1\"), (0, 2, \"V2\"), (0, 3, \"O\"), (1, 1, \"V1\"), (1, 2, \"V2\"), (1, 3, \"O\"), (2, 2, \"V2\"), (2, 3, \"O\"), (3, 3, \"O\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 107,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "equal_v1_v2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel S = {(0, 1), (1, 2)}\n      rel Q(a, b) = S(a, b), a == a\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "Q: {(0, 1), (1, 2)}\nS: {(0, 1), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 108,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "test_count_with_where_clause",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      // There are three classes\n      rel classes = {0, 1, 2}\n\n      // There are 6 students, 2 in each class\n      rel student = {\n        (0, \"tom\"), (0, \"jenny\"), // Class 0\n        (1, \"alice\"), (1, \"bob\"), // Class 1\n        (2, \"liby\"), (2, \"john\"), // Class 2\n      }\n\n      // Each student is enrolled in a course (Math or CS)\n      rel enroll = {\n        (\"tom\", \"CS\"), (\"jenny\", \"Math\"), // Class 0\n        (\"alice\", \"CS\"), (\"bob\", \"CS\"), // Class 1\n        (\"liby\", \"Math\"), (\"john\", \"Math\"), // Class 2\n      }\n\n      // Count how many student enrolls in CS class in each class\n      rel count_enroll_cs_in_class(c, n) :- n = count(s: student(c, s), enroll(s, \"CS\") where c: classes(c))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(\"alice\", ()), (\"bob\", ()), (\"tom\", ())}\nclasses: {(0), (1), (2)}\ncount_enroll_cs_in_class: {(0, 1), (1, 2), (2, 0)}\ncount_enroll_cs_in_class#67#agg#0#0#body: {(0, \"tom\"), (1, \"alice\"), (1, \"bob\")}\ncount_enroll_cs_in_class#67#agg#0#0#groupby: {(0, ()), (1, ()), (2, ())}\nenroll: {(\"alice\", \"CS\"), (\"bob\", \"CS\"), (\"jenny\", \"Math\"), (\"john\", \"Math\"), (\"liby\", \"Math\"), (\"tom\", \"CS\")}\nenroll#perm#(1,0): {(\"CS\", \"alice\"), (\"CS\", \"bob\"), (\"CS\", \"tom\"), (\"Math\", \"jenny\"), (\"Math\", \"john\"), (\"Math\", \"liby\")}\nstudent: {(0, \"jenny\"), (0, \"tom\"), (1, \"alice\"), (1, \"bob\"), (2, \"john\"), (2, \"liby\")}\nstudent#perm#(1,0): {(\"alice\", 1), (\"bob\", 1), (\"jenny\", 0), (\"john\", 2), (\"liby\", 2), (\"tom\", 0)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 109,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "test_exists_path_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2)}\n      rel path(x, y) = edge(x, y) or (path(x, z) and edge(z, y))\n      rel result1(b) = b := exists(path(0, 2))\n      rel result2(b) = b := exists(path(0, 3))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\nresult1: {(true)}\nresult1#40#agg#0#0#body: {()}\nresult2: {(false)}\nresult2#55#agg#0#0#body: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 110,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "test_exists_with_where_clause",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      // A set of all the shapes\n      rel all_shapes = {\"cube\", \"cylinder\", \"sphere\"}\n\n      // Each object has two attributes: color and shape\n      rel color = {(0, \"red\"), (1, \"green\"), (2, \"blue\"), (3, \"blue\")}\n      rel shape = {(0, \"cube\"), (1, \"cylinder\"), (2, \"sphere\"), (3, \"cube\")}\n\n      // Is there a blue object?\n      rel exists_blue_obj(b) = b = exists(o: color(o, \"blue\"))\n\n      // For each shape, is there a blue object of that shape?\n      rel exists_blue_obj_of_shape(s, b) :-\n        b = exists(o: color(o, \"blue\"), shape(o, s) where s: all_shapes(s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(2, ()), (3, ())}\nall_shapes: {(\"cube\"), (\"cylinder\"), (\"sphere\")}\ncolor: {(0, \"red\"), (1, \"green\"), (2, \"blue\"), (3, \"blue\")}\ncolor#perm#(1,0): {(\"blue\", 2), (\"blue\", 3), (\"green\", 1), (\"red\", 0)}\nexists_blue_obj: {(true)}\nexists_blue_obj#51#agg#0#0#body: {2, 3}\nexists_blue_obj_of_shape: {(\"cube\", true), (\"cylinder\", false), (\"sphere\", true)}\nexists_blue_obj_of_shape#69#agg#0#0#body: {(\"cube\", 3), (\"sphere\", 2)}\nexists_blue_obj_of_shape#69#agg#0#0#groupby: {(\"cube\", ()), (\"cylinder\", ()), (\"sphere\", ())}\nshape: {(0, \"cube\"), (1, \"cylinder\"), (2, \"sphere\"), (3, \"cube\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 111,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "test_exists_with_where_clause_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      // A set of all the shapes\n      rel all_shapes = {\"cube\", \"cylinder\", \"sphere\"}\n\n      // Each object has two attributes: color and shape\n      rel color = {(0, \"red\"), (1, \"green\"), (2, \"blue\"), (3, \"blue\")}\n      rel shape = {(0, \"cube\"), (1, \"cylinder\"), (2, \"sphere\"), (3, \"cube\")}\n\n      // Is there a blue object?\n      rel exists_blue_obj() = exists(o: color(o, \"blue\"))\n\n      // For each shape, is there a blue object of that shape?\n      rel exists_blue_obj_of_shape(s) :- exists(o: color(o, \"blue\"), shape(o, s) where s: all_shapes(s))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(2, ()), (3, ())}\nall_shapes: {(\"cube\"), (\"cylinder\"), (\"sphere\")}\ncolor: {(0, \"red\"), (1, \"green\"), (2, \"blue\"), (3, \"blue\")}\ncolor#perm#(1,0): {(\"blue\", 2), (\"blue\", 3), (\"green\", 1), (\"red\", 0)}\nexists_blue_obj: {()}\nexists_blue_obj#51#agg#0#0#body: {2, 3}\nexists_blue_obj_of_shape: {(\"cube\"), (\"sphere\")}\nexists_blue_obj_of_shape#65#agg#0#0#body: {(\"cube\", 3), (\"sphere\", 2)}\nexists_blue_obj_of_shape#65#agg#0#0#groupby: {(\"cube\", ()), (\"cylinder\", ()), (\"sphere\", ())}\nshape: {(0, \"cube\"), (1, \"cylinder\"), (2, \"sphere\"), (3, \"cube\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 112,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "test_not_exists_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel color = {(0, \"red\"), (1, \"green\")}\n      rel result() :- not exists(o: color(o, \"blue\"))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "color: {(0, \"red\"), (1, \"green\")}\ncolor#perm#(1,0): {(\"green\", 1), (\"red\", 0)}\nresult: {()}\nresult#12#agg#0#0#body: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 113,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "type_cast_to_string_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel r = {1, 2, 3}\n    rel s(x as String) = r(x)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(1), (2), (3)}\ns: {(\"1\"), (\"2\"), (\"3\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 114,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "implies_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel obj = {1, 2}\n    rel color = {(1, \"blue\"), (2, \"red\")}\n    rel shape = {(1, \"cube\"), (2, \"cube\")}\n\n    // The object `o` such that `o` is cube implies that `o` is blue\n    rel answer(o) = obj(o) and (shape(o, \"cube\") => color(o, \"blue\"))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#ntemp#0: {(1), (2)}\n#temp#1: {(1)}\nanswer: {(1)}\ncolor: {(1, \"blue\"), (2, \"red\")}\ncolor#perm#(1,0): {(\"blue\", 1), (\"red\", 2)}\nobj: {(1), (2)}\nshape: {(1, \"cube\"), (2, \"cube\")}\nshape#perm#(1,0): {(\"cube\", 1), (\"cube\", 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 115,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "implies_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel obj = {1, 2}\n    rel color = {(1, \"blue\"), (2, \"red\")}\n    rel shape = {(1, \"cube\"), (2, \"sphere\")}\n\n    // The object `o` such that `o` is cube implies that `o` is blue\n    rel answer(o) = obj(o) and (shape(o, \"cube\") => color(o, \"blue\"))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#ntemp#0: {(1)}\n#temp#1: {(1)}\nanswer: {(1), (2)}\ncolor: {(1, \"blue\"), (2, \"red\")}\ncolor#perm#(1,0): {(\"blue\", 1), (\"red\", 2)}\nobj: {(1), (2)}\nshape: {(1, \"cube\"), (2, \"sphere\")}\nshape#perm#(1,0): {(\"cube\", 1), (\"sphere\", 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 116,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "has_three_objs_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel obj = {1, 2, 3}\n    rel answer(b) = b == (n == 3), n = count(o: obj(o))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "answer: {(true)}\nanswer#13#agg#0#0#body: {1, 2, 3}\nobj: {(1), (2), (3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 117,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "has_three_objs_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel obj = {1, 2, 3}\n    rel answer(n == 3) = n = count(o: obj(o))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "answer: {(true)}\nanswer#13#agg#0#0#body: {1, 2, 3}\nobj: {(1), (2), (3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 118,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "forall_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel color = {(1, \"blue\"), (2, \"red\")}\n    rel shape = {(1, \"cube\"), (2, \"cube\")}\n\n    // For all cube `o`, `o` is blue\n    rel answer(b) = b = forall(o: shape(o, \"cube\") => color(o, \"blue\"))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#ntemp#1: {(1)}\n#temp#0: {(1), (2)}\nanswer: {(false)}\nanswer#23#agg#0#0#body: {2}\ncolor: {(1, \"blue\"), (2, \"red\")}\ncolor#perm#(1,0): {(\"blue\", 1), (\"red\", 2)}\nshape: {(1, \"cube\"), (2, \"cube\")}\nshape#perm#(1,0): {(\"cube\", 1), (\"cube\", 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 119,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "forall_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel color = {(1, \"blue\"), (2, \"red\")}\n    rel shape = {(1, \"cube\"), (2, \"sphere\")}\n\n    // For all cube `o`, `o` is blue\n    rel answer(b) = b = forall(o: shape(o, \"cube\") => color(o, \"blue\"))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#ntemp#1: {(1)}\n#temp#0: {(1)}\nanswer: {(true)}\nanswer#23#agg#0#0#body: {}\ncolor: {(1, \"blue\"), (2, \"red\")}\ncolor#perm#(1,0): {(\"blue\", 1), (\"red\", 2)}\nshape: {(1, \"cube\"), (2, \"sphere\")}\nshape#perm#(1,0): {(\"cube\", 1), (\"sphere\", 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 120,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "forall_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel all_colors = {\"blue\", \"red\", \"green\"}\n\n    // Scene graph\n    rel color = {(1, \"blue\"), (2, \"red\"), (3, \"red\")}\n    rel shape = {(1, \"cube\"), (2, \"sphere\"), (3, \"cube\")}\n    rel material = {(1, \"metal\"), (2, \"metal\"), (3, \"rubber\")}\n\n    // For each color `c`, is all the cube of material rubber?\n    rel answer(c, b) = b = forall(o: color(o, c) and shape(o, \"cube\") => material(o, \"rubber\") where c: all_colors(c))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#ntemp#2: {3}\n#temp#0: {(1, ()), (3, ())}\n#temp#1: {(1, \"blue\"), (3, \"red\")}\nall_colors: {(\"blue\"), (\"green\"), (\"red\")}\nanswer: {(\"blue\", false), (\"green\", true), (\"red\", true)}\nanswer#58#agg#0#0#body: {(\"blue\", 1)}\nanswer#58#agg#0#0#groupby: {(\"blue\", ()), (\"green\", ()), (\"red\", ())}\ncolor: {(1, \"blue\"), (2, \"red\"), (3, \"red\")}\nmaterial: {(1, \"metal\"), (2, \"metal\"), (3, \"rubber\")}\nmaterial#perm#(1,0): {(\"metal\", 1), (\"metal\", 2), (\"rubber\", 3)}\nshape: {(1, \"cube\"), (2, \"sphere\"), (3, \"cube\")}\nshape#perm#(1,0): {(\"cube\", 1), (\"cube\", 3), (\"sphere\", 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 121,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "forall_4",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel all_colors = {\"blue\", \"red\", \"green\"}\n\n    // Scene graph\n    rel color = {(1, \"blue\"), (2, \"red\"), (3, \"red\")}\n    rel shape = {(1, \"cube\"), (2, \"sphere\"), (3, \"cube\")}\n    rel material = {(1, \"metal\"), (2, \"metal\"), (3, \"rubber\")}\n\n    // For each color `c`, is all the cube of material rubber?\n    rel answer(c) = forall(o: color(o, c) and shape(o, \"cube\") => material(o, \"rubber\") where c: all_colors(c))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#ntemp#2: {3}\n#temp#0: {(1, ()), (3, ())}\n#temp#1: {(1, \"blue\"), (3, \"red\")}\nall_colors: {(\"blue\"), (\"green\"), (\"red\")}\nanswer: {(\"green\"), (\"red\")}\nanswer#58#agg#0#0#body: {(\"blue\", 1)}\nanswer#58#agg#0#0#groupby: {(\"blue\", ()), (\"green\", ()), (\"red\", ())}\ncolor: {(1, \"blue\"), (2, \"red\"), (3, \"red\")}\nmaterial: {(1, \"metal\"), (2, \"metal\"), (3, \"rubber\")}\nmaterial#perm#(1,0): {(\"metal\", 1), (\"metal\", 2), (\"rubber\", 3)}\nshape: {(1, \"cube\"), (2, \"sphere\"), (3, \"cube\")}\nshape#perm#(1,0): {(\"cube\", 1), (\"cube\", 3), (\"sphere\", 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 122,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "string_to_usize",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel input_string = {\"13\", \"14\"}\n    rel result(x as usize) = input_string(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "input_string: {(\"13\"), (\"14\")}\nresult: {(13), (14)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 123,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "string_to_i32",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel input_string = {\"13\", \"14\"}\n    rel result(x as i32) = input_string(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "input_string: {(\"13\"), (\"14\")}\nresult: {(13), (14)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 124,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "character_test",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel chars = {'1', '0', '\\t', ' '}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "chars: {('\t'), (' '), ('0'), ('1')}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 125,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "string_char_at_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel result($string_char_at(\"hello world\", 3))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {('l')}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 126,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "string_char_at_test_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel input(\"1357\")\n    rel string_char_at(0, $string_char_at(s, 0)) :- input(s), 0 < $string_length(s)\n    rel string_char_at(i, $string_char_at(s, i)) :- input(s), i < $string_length(s), string_char_at(i - 1, _)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(4, \"1357\")}\ninput: {(\"1357\")}\nstring_char_at: {(0, '1'), (1, '3'), (2, '5'), (3, '7')}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 127,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "string_char_at_failure_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel output($string_char_at(\"\", 0))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "output: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 128,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "ff_max_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel output($max(0, 1, 2, 3))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "output: {(3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 129,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "ff_max_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel R = {1}\n    rel S = {3}\n    rel output($max(a, b)) = R(a), S(b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "R: {(1)}\nS: {(3)}\noutput: {(3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 130,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    const VAR1 = 135\n    const VAR2 = 246\n    rel r(VAR1, VAR2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(135, 246)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 131,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    const VAR1: u8 = 135\n    const VAR2: i32 = 246\n    rel r(VAR1, VAR2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(135, 246)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 132,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    const VAR1: u8 = 135\n    const VAR2: i32 = 246\n    rel r = {(VAR1, VAR2)}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(135, 246)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 133,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_4",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    const VAR1: u8 = 135\n    const VAR2: i32 = 246\n    rel r(VAR1 + 1, VAR2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(136, 246)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 134,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_5",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    const UP = 0, RIGHT = 1, DOWN = 2, LEFT = 3\n    rel r(UP, RIGHT, DOWN, LEFT)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(0, 1, 2, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 135,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_6",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    const UP: u8 = 0, RIGHT: u32 = 1, DOWN: i32 = 2, LEFT: usize = 3\n    rel r(UP, RIGHT, DOWN, LEFT)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(0, 1, 2, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 136,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_7",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    type Action = UP | RIGHT | DOWN | LEFT\n    rel r(UP, RIGHT, DOWN, LEFT)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(0, 1, 2, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 137,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_8",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    type Action = UP = 10 | RIGHT | DOWN | LEFT\n    rel r(UP, RIGHT, DOWN, LEFT)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(10, 11, 12, 13)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 138,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_9",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    type Action = UP | RIGHT | DOWN = 10 | LEFT\n    rel r(UP, RIGHT, DOWN, LEFT)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(0, 1, 10, 11)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 139,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "const_variable_10",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    type Action = UP = 3 | RIGHT | DOWN = 10 | LEFT\n    rel r(UP, RIGHT, DOWN, LEFT)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(3, 4, 10, 11)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 140,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "sat_1",
+  "idx": 0,
+  "provenance": "proofs",
+  "provenance_rust": "proofs",
+  "k": 3,
+  "program": "\n    type assign(String, bool)\n\n    // Assignments to variables A, B, and C\n    rel assign = {1.0::(\"A\", true); 1.0::(\"A\", false)}\n    rel assign = {1.0::(\"B\", true); 1.0::(\"B\", false)}\n    rel assign = {1.0::(\"C\", true); 1.0::(\"C\", false)}\n\n    // Boolean formula (A and !B) or (B and !C)\n    rel bf_var = {(1, \"A\"), (2, \"B\"), (3, \"B\"), (4, \"C\")}\n    rel bf_not = {(5, 2), (6, 4)}\n    rel bf_and = {(7, 1, 5), (8, 3, 6)}\n    rel bf_or = {(9, 7, 8)}\n    rel bf_root = {9}\n\n    // Evaluation\n    rel eval_bf(bf, r) :- bf_var(bf, v), assign(v, r)\n    rel eval_bf(bf, !r) :- bf_not(bf, c), eval_bf(c, r)\n    rel eval_bf(bf, lr && rr) :- bf_and(bf, lbf, rbf), eval_bf(lbf, lr), eval_bf(rbf, rr)\n    rel eval_bf(bf, lr || rr) :- bf_or(bf, lbf, rbf), eval_bf(lbf, lr), eval_bf(rbf, rr)\n    rel eval(r) :- bf_root(bf), eval_bf(bf, r)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {{{1, 6, 12}}::(5, (7, false)), {{1, 5, 12}}::(5, (7, true)), {{2, 8, 14}}::(6, (8, false)), {{2, 7, 14}}::(6, (8, true))}\n#temp#1: {{{1, 3, 5, 7, 11, 12, 13}, {1, 3, 6, 7, 11, 12, 13}, {1, 3, 6, 8, 11, 12, 13}}::(8, (9, false)), {{1, 3, 5, 8, 11, 12, 13}}::(8, (9, true))}\nassign: {{{6}}::(\"A\", false), {{5}}::(\"A\", true), {{8}}::(\"B\", false), {{7}}::(\"B\", true), {{10}}::(\"C\", false), {{9}}::(\"C\", true)}\nbf_and: {{{1}}::(7, 1, 5), {{2}}::(8, 3, 6)}\nbf_and#perm#(1,(0,2)): {{{1}}::(1, (7, 5)), {{2}}::(3, (8, 6))}\nbf_not: {{{3}}::(5, 2), {{4}}::(6, 4)}\nbf_not#perm#(1,0): {{{3}}::(2, 5), {{4}}::(4, 6)}\nbf_or: {{{11}}::(9, 7, 8)}\nbf_or#perm#(1,(0,2)): {{{11}}::(7, (9, 8))}\nbf_root: {{{0}}::(9)}\nbf_var: {{{12}}::(1, \"A\"), {{13}}::(2, \"B\"), {{14}}::(3, \"B\"), {{15}}::(4, \"C\")}\nbf_var#perm#(1,0): {{{12}}::(\"A\", 1), {{13}}::(\"B\", 2), {{14}}::(\"B\", 3), {{15}}::(\"C\", 4)}\neval: {{{0, 1, 2, 3, 4, 5, 7, 9, 11, 12, 13, 14, 15}, {0, 1, 2, 3, 4, 6, 7, 9, 11, 12, 13, 14, 15}, {0, 1, 2, 3, 4, 6, 8, 9, 11, 12, 13, 14, 15}, {0, 1, 2, 3, 4, 6, 8, 10, 11, 12, 13, 14, 15}}::(false), {{0, 1, 2, 3, 4, 5, 7, 10, 11, 12, 13, 14, 15}, {0, 1, 2, 3, 4, 5, 8, 9, 11, 12, 13, 14, 15}, {0, 1, 2, 3, 4, 5, 8, 10, 11, 12, 13, 14, 15}, {0, 1, 2, 3, 4, 6, 7, 10, 11, 12, 13, 14, 15}}::(true)}\neval_bf: {{{6, 12}}::(1, false), {{5, 12}}::(1, true), {{8, 13}}::(2, false), {{7, 13}}::(2, true), {{8, 14}}::(3, false), {{7, 14}}::(3, true), {{10, 15}}::(4, false), {{9, 15}}::(4, true), {{3, 7, 13}}::(5, false), {{3, 8, 13}}::(5, true), {{4, 9, 15}}::(6, false), {{4, 10, 15}}::(6, true), {{1, 3, 5, 7, 12, 13}, {1, 3, 6, 7, 12, 13}, {1, 3, 6, 8, 12, 13}}::(7, false), {{1, 3, 5, 8, 12, 13}}::(7, true), {{2, 4, 7, 9, 14, 15}, {2, 4, 8, 9, 14, 15}, {2, 4, 8, 10, 14, 15}}::(8, false), {{2, 4, 7, 10, 14, 15}}::(8, true), {{1, 2, 3, 4, 5, 7, 9, 11, 12, 13, 14, 15}, {1, 2, 3, 4, 6, 7, 9, 11, 12, 13, 14, 15}, {1, 2, 3, 4, 6, 8, 9, 11, 12, 13, 14, 15}, {1, 2, 3, 4, 6, 8, 10, 11, 12, 13, 14, 15}}::(9, false), {{1, 2, 3, 4, 5, 7, 10, 11, 12, 13, 14, 15}, {1, 2, 3, 4, 5, 8, 9, 11, 12, 13, 14, 15}, {1, 2, 3, 4, 5, 8, 10, 11, 12, 13, 14, 15}, {1, 2, 3, 4, 6, 7, 10, 11, 12, 13, 14, 15}}::(9, true)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 141,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "sat_2",
+  "idx": 0,
+  "provenance": "proofs",
+  "provenance_rust": "proofs",
+  "k": 3,
+  "program": "\n    type assign(String, bool)\n\n    // Assignments to variables A and B\n    rel assign = {1.0::(\"A\", true); 1.0::(\"A\", false)}\n    rel assign = {1.0::(\"B\", true); 1.0::(\"B\", false)}\n\n    // Boolean formula (A and !A) or (B and !B)\n    rel bf_var = {(1, \"A\"), (2, \"B\")}\n    rel bf_not = {(3, 1), (4, 2)}\n    rel bf_and = {(5, 1, 3), (6, 2, 4)}\n    rel bf_or = {(7, 5, 6)}\n    rel bf_root = {7}\n\n    // Evaluation\n    rel eval_bf(bf, r) :- bf_var(bf, v), assign(v, r)\n    rel eval_bf(bf, !r) :- bf_not(bf, c), eval_bf(c, r)\n    rel eval_bf(bf, lr && rr) :- bf_and(bf, lbf, rbf), eval_bf(lbf, lr), eval_bf(rbf, rr)\n    rel eval_bf(bf, lr || rr) :- bf_or(bf, lbf, rbf), eval_bf(lbf, lr), eval_bf(rbf, rr)\n    rel eval(r) :- bf_root(bf), eval_bf(bf, r)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {{{1, 4, 10}}::(3, (5, false)), {{1, 3, 10}}::(3, (5, true)), {{2, 6, 11}}::(4, (6, false)), {{2, 5, 11}}::(4, (6, true))}\n#temp#1: {{{1, 3, 7, 9, 10}, {1, 4, 7, 9, 10}}::(6, (7, false))}\nassign: {{{4}}::(\"A\", false), {{3}}::(\"A\", true), {{6}}::(\"B\", false), {{5}}::(\"B\", true)}\nbf_and: {{{1}}::(5, 1, 3), {{2}}::(6, 2, 4)}\nbf_and#perm#(1,(0,2)): {{{1}}::(1, (5, 3)), {{2}}::(2, (6, 4))}\nbf_not: {{{7}}::(3, 1), {{8}}::(4, 2)}\nbf_not#perm#(1,0): {{{7}}::(1, 3), {{8}}::(2, 4)}\nbf_or: {{{9}}::(7, 5, 6)}\nbf_or#perm#(1,(0,2)): {{{9}}::(5, (7, 6))}\nbf_root: {{{0}}::(7)}\nbf_var: {{{10}}::(1, \"A\"), {{11}}::(2, \"B\")}\nbf_var#perm#(1,0): {{{10}}::(\"A\", 1), {{11}}::(\"B\", 2)}\neval: {{{0, 1, 2, 3, 5, 7, 8, 9, 10, 11}, {0, 1, 2, 3, 6, 7, 8, 9, 10, 11}, {0, 1, 2, 4, 5, 7, 8, 9, 10, 11}, {0, 1, 2, 4, 6, 7, 8, 9, 10, 11}}::(false)}\neval_bf: {{{4, 10}}::(1, false), {{3, 10}}::(1, true), {{6, 11}}::(2, false), {{5, 11}}::(2, true), {{3, 7, 10}}::(3, false), {{4, 7, 10}}::(3, true), {{5, 8, 11}}::(4, false), {{6, 8, 11}}::(4, true), {{1, 3, 7, 10}, {1, 4, 7, 10}}::(5, false), {{2, 5, 8, 11}, {2, 6, 8, 11}}::(6, false), {{1, 2, 3, 5, 7, 8, 9, 10, 11}, {1, 2, 3, 6, 7, 8, 9, 10, 11}, {1, 2, 4, 5, 7, 8, 9, 10, 11}, {1, 2, 4, 6, 7, 8, 9, 10, 11}}::(7, false)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 142,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "no_nan_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel R = {0.0, 3.0, 5.0}\n    rel P = {0.0, 1.0}\n    rel Q(a / b) = R(a) and P(b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "P: {(0), (1)}\nQ: {(0), (3), (5), (inf)}\nR: {(0), (3), (5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 143,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "string_plus_string_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel first_last_name = {(\"Alice\", \"Lee\")}\n    rel full_name(first + \" \" + last) = first_last_name(first, last)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "first_last_name: {(\"Alice\", \"Lee\")}\nfull_name: {(\"Alice Lee\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 144,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "disjunctive_1",
+  "idx": 0,
+  "provenance": "proofs",
+  "provenance_rust": "proofs",
+  "k": 3,
+  "program": "\n    rel var = {1, 2}\n    rel { assign(x, true); assign(x, false) } = var(x)\n    rel result(a || b) = assign(1, a) and assign(2, b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {{{0, 3}}::(false), {{0, 2}}::(true)}\n#temp#1: {{{1, 5}}::(false), {{1, 4}}::(true)}\nassign: {{{0, 3}}::(1, false), {{0, 2}}::(1, true), {{1, 5}}::(2, false), {{1, 4}}::(2, true)}\nresult: {{{0, 1, 3, 5}}::(false), {{0, 1, 2, 4}, {0, 1, 2, 5}, {0, 1, 3, 4}}::(true)}\nvar: {{{0}}::(1), {{1}}::(2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 145,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_single_newline_char",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Hello\\nWorld\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Hello\\nWorld\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 146,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_multiple_newline_char",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Hello\\n\\n\\nWorld\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Hello\\n\\n\\nWorld\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 147,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_newline_char_end",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Scallop\\n\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Scallop\\n\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 148,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_newline_char_beginning",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\\nScallop\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"\\nScallop\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 149,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_tab_char",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Hello\\tWorld\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Hello\\tWorld\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 150,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_null_char",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Null\\0\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Null\\0\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 151,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_single_quote",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Here is a quote: \\'Hi\\'\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a quote: 'Hi'\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 152,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_double_quote",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Here is a quote: \\\"Hi\\\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a quote: \\\"Hi\\\"\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 153,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_backslash",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Back \\\\ Slash\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Back \\\\ Slash\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 154,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_carriage_return",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Carriage Return\\r\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Carriage Return\\r\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 155,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_emoji_unicode",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"Thumbs up: \ud83d\udc4d\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Thumbs up: \ud83d\udc4d\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 156,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"This\nis\na\nmultiline\nstring\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"This\\nis\\na\\nmultiline\\nstring\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 157,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "indented_multiline_string",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"This\n                    is\n                    a\n                    multiline\n                    string\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"This\\n                    is\\n                    a\\n                    multiline\\n                    string\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 158,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "escape_unindented_multiline_string_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"\nThis\nis\na\nmultiline\nstring\n      \"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"\\nThis\\nis\\na\\nmultiline\\nstring\\n      \")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 159,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "mix_multiline_string_before",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"This\nis\na\nmultiline\nstring\"\"\", \"A regular string\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"A regular string\"), (\"This\\nis\\na\\nmultiline\\nstring\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 160,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "mix_multiline_string_after",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"First string\", \"\"\"This\nis\na\nmultiline\nstring\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"First string\"), (\"This\\nis\\na\\nmultiline\\nstring\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 161,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiple_multiline_string",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"This\nis\na\nmultiline\nstring\"\"\",\n\"\"\"A\nsecond\nmultiline\nstring\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"A\\nsecond\\nmultiline\\nstring\"), (\"This\\nis\\na\\nmultiline\\nstring\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 162,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_with_regular_string",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Here is a multiline string with quote:\n\"This is a test\"\nBy John Doe\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a multiline string with quote:\\n\\\"This is a test\\\"\\nBy John Doe\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 163,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_with_regular_string_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Here is a multiline string with quote:\n\"This is a test\"\nBy John Doe\"\"\", \"\"\"something else\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a multiline string with quote:\\n\\\"This is a test\\\"\\nBy John Doe\"), (\"something else\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 164,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_with_multiple_regular_string",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Here is a multiline string with quote:\n\"This is a test\"\nBy\n\"Anonymous\"\n\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a multiline string with quote:\\n\\\"This is a test\\\"\\nBy\\n\\\"Anonymous\\\"\\n\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 165,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_with_escaped_double_quote_string",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Here is a multiline string with quote:\n\\\"\\\"This is a test\\\"\\\"\nBy Jane Doe\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a multiline string with quote:\\n\\\"\\\"This is a test\\\"\\\"\\nBy Jane Doe\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 166,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_with_double_quote_string",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Here is a multiline string with double quote:\n\"\"This is a test\"\"\nBy Jane Doe\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a multiline string with double quote:\\n\\\"\\\"This is a test\\\"\\\"\\nBy Jane Doe\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 167,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_with_triple_quote",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"This is not the end\n\\\"\\\"\\\"\nBut this is\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"This is not the end\\n\\\"\\\"\\\"\\nBut this is\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 168,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_as_single_line",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"This is only one line\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"This is only one line\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 169,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_single_newline_char",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Hello\n\\n\nWorld\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Hello\\n\\n\\nWorld\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 170,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_multiple_newline_char",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Hello\n\\n\\n\\n\nWorld\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Hello\\n\\n\\n\\n\\nWorld\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 171,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_newline_char_end",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Scallop\n\\n\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Scallop\\n\\n\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 172,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_newline_char_beginning",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"\\n\nScallop\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"\\n\\nScallop\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 173,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_tab_char",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Hello\n\\tWorld\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Hello\\n\\tWorld\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 174,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_null_char",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Null\n\\0\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Null\\n\\0\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 175,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_single_quote",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Here is a quote:\n\\'Hi\\'\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a quote:\\n'Hi'\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 176,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_double_quote",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Here is a quote:\n\\\"Hi\\\"\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Here is a quote:\\n\\\"Hi\\\"\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 177,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_backslash",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Back\n\\\\ Slash\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Back\\n\\\\ Slash\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 178,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_carriage_return",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Carriage\nReturn\\r\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Carriage\\nReturn\\r\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 179,
+  "file": "core/tests/integrate/basic.rs",
+  "test": "multiline_string_emoji_unicode",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel str = {\"\"\"Thumbs up:\n\ud83d\udc4d\"\"\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "str: {(\"Thumbs up:\\n\ud83d\udc4d\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 180,
+  "file": "core/tests/integrate/bug.rs",
+  "test": "test_io_issue_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel c__ = {(\"lk\", \"tf\")}\n      rel d__(b, a) = c__(b, a), c__(h, h), c__(h, a)\n      query d__\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {}\nc__: {(\"lk\", \"tf\")}\nc__#perm#((1,0),()): {((\"tf\", \"lk\"), ())}\nd__: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 181,
+  "file": "core/tests/integrate/bug.rs",
+  "test": "test_io_issue_4",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel a__ = {\n        (\"ir\", 38, 59),\n        (\"iz\", 68, 32),\n        (\"as\", 59, 69),\n        (\"ir\", 49, 77),\n      }\n      rel b__(b, a) = a__(a, b, b), a__(a, b, b)\n      query b__\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "a__: {(\"as\", 59, 69), (\"ir\", 38, 59), (\"ir\", 49, 77), (\"iz\", 68, 32)}\nb__: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 182,
+  "file": "core/tests/integrate/bug.rs",
+  "test": "test_io_issue_18",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel e__ = {\n        (49, 49, \"ms\"),\n        (74, 74, \"bx\"),\n      }\n\n      rel h__(d, e, e) = e__(d, b, e), not e__(d, d, e)\n\n      query h__\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#ntemp#0: {(49, \"ms\"), (74, \"bx\")}\ne__: {(49, 49, \"ms\"), (74, 74, \"bx\")}\ne__#perm#((0,2),()): {((49, \"ms\"), ()), ((74, \"bx\"), ())}\ne__#perm#(0,2): {(49, \"ms\"), (74, \"bx\")}\nh__: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 183,
+  "file": "core/tests/integrate/dt.rs",
+  "test": "dt_fib_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel fib = {(0, 1), (1, 1)}\n      @demand(\"bf\")\n      rel fib(x, a + b) = fib(x - 1, a), fib(x - 2, b), x > 1\n      query fib(10, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(-1, (-2, 0)), (0, (-1, 1)), (1, (0, 2)), (2, (1, 3)), (3, (2, 4)), (4, (3, 5)), (5, (4, 6)), (6, (5, 7)), (7, (6, 8)), (8, (7, 9)), (9, (8, 10))}\n#temp#1: {(1, (0, 2)), (2, (1, 3)), (3, (2, 4)), (4, (3, 5)), (5, (4, 6)), (6, (5, 7)), (7, (6, 8)), (8, (7, 9)), (9, (8, 10))}\n#temp#2: {(0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5)), (4, (8, 6)), (5, (13, 7)), (6, (21, 8)), (7, (34, 9)), (8, (55, 10))}\nd#fib#bf: {(0), (1), (2), (3), (4), (5), (6), (7), (8), (9), (10)}\nfib: {(0, 1), (1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13), (7, 21), (8, 34), (9, 55), (10, 89)}\nfib(10, y): {(10, 89)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 184,
+  "file": "core/tests/integrate/dt.rs",
+  "test": "dt_fib_1_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type fib(bound i32, i32)\n      rel fib = {(0, 1), (1, 1)}\n      rel fib(x, a + b) = fib(x - 1, a), fib(x - 2, b), x > 1\n      query fib(10, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(-1, (-2, 0)), (0, (-1, 1)), (1, (0, 2)), (2, (1, 3)), (3, (2, 4)), (4, (3, 5)), (5, (4, 6)), (6, (5, 7)), (7, (6, 8)), (8, (7, 9)), (9, (8, 10))}\n#temp#1: {(1, (0, 2)), (2, (1, 3)), (3, (2, 4)), (4, (3, 5)), (5, (4, 6)), (6, (5, 7)), (7, (6, 8)), (8, (7, 9)), (9, (8, 10))}\n#temp#2: {(0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5)), (4, (8, 6)), (5, (13, 7)), (6, (21, 8)), (7, (34, 9)), (8, (55, 10))}\nd#fib#bf: {(0), (1), (2), (3), (4), (5), (6), (7), (8), (9), (10)}\nfib: {(0, 1), (1, 1), (2, 2), (3, 3), (4, 5), (5, 8), (6, 13), (7, 21), (8, 34), (9, 55), (10, 89)}\nfib(10, y): {(10, 89)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 185,
+  "file": "core/tests/integrate/dt.rs",
+  "test": "dt_range_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      @demand(\"bbf\")\n      rel range(a, b, i) = a == i\n      rel range(a, b, i) = range(a, b, i - 1), i < b\n      query range(1, 4, x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "d#range#bbf: {(1, 4)}\nrange: {(1, 4, 1), (1, 4, 2), (1, 4, 3)}\nrange(1, 4, x): {(1, 4, 1), (1, 4, 2), (1, 4, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 186,
+  "file": "core/tests/integrate/dt.rs",
+  "test": "dt_range_1_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type range(bound a: i32, bound b: i32, free i: i32)\n      rel range(a, b, i) = a == i\n      rel range(a, b, i) = range(a, b, i - 1), i < b\n      query range(1, 4, x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "d#range#bbf: {(1, 4)}\nrange: {(1, 4, 1), (1, 4, 2), (1, 4, 3)}\nrange(1, 4, x): {(1, 4, 1), (1, 4, 2), (1, 4, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 187,
+  "file": "core/tests/integrate/dt.rs",
+  "test": "dt_edge_path_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2), (2, 3)}\n      @demand(\"fb\")\n      rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n      query path(_, 3)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(0, 1), (1, 2), (2, 3)}\nd#path#fb: {(0), (1), (2), (3)}\nedge: {(0, 1), (1, 2), (2, 3)}\nedge#perm#(1,0): {(1, 0), (2, 1), (3, 2)}\npath: {(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2)}\npath(_, 3): {(0, 3), (1, 3), (2, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 188,
+  "file": "core/tests/integrate/dt.rs",
+  "test": "dt_edge_path_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2), (2, 3)}\n      @demand(\"bf\")\n      rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n      query path(0, _)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(1, 0), (2, 0), (3, 0)}\nd#path#bf: {(0)}\nedge: {(0, 1), (1, 2), (2, 3)}\npath: {(0, 1), (0, 2), (0, 3)}\npath(0, _): {(0, 1), (0, 2), (0, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 189,
+  "file": "core/tests/integrate/edb.rs",
+  "test": "edb_edge_path_left_recursion",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type edge(usize, usize)\n      rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {}\npath: {}\npath#perm#(1,0): {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 190,
+  "file": "core/tests/integrate/edb.rs",
+  "test": "edb_edge_path_right_recursion",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type edge(usize, usize)\n      rel path(a, b) = edge(a, b) or (edge(a, c) and path(c, b))\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {}\nedge#perm#(1,0): {}\npath: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 191,
+  "file": "core/tests/integrate/edb.rs",
+  "test": "edb_edge_path_both_program_and_external",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type edge(usize, usize)\n      rel edge = {(2, 3)}\n      rel path(a, b) = edge(a, b) or (edge(a, c) and path(c, b))\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(2, 3)}\nedge#perm#(1,0): {(3, 2)}\npath: {(2, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 192,
+  "file": "core/tests/integrate/edb.rs",
+  "test": "edb_cannot_incremental_update_program_facts",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2)}\n      rel path(a, c) = edge(a, c) or (path(a, b) and edge(b, c))\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 193,
+  "file": "core/tests/integrate/edb.rs",
+  "test": "edb_cannot_incremental_update_program_facts",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n      rel edge = {(2, 3)}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(2, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 194,
+  "file": "core/tests/integrate/edb.rs",
+  "test": "edb_edge_path_incremental_update",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n      type edge(usize, usize)\n      rel path(a, c) = edge(a, c) or (path(a, b) and edge(b, c))\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {}\npath: {}\npath#perm#(1,0): {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 195,
+  "file": "core/tests/integrate/edb.rs",
+  "test": "edb_fib_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type fib(i32, usize)\n      rel fib(x, a + b) = fib(x - 1, a), fib(x - 2, b), x <= 5\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {}\n#temp#1: {}\nfib: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 196,
+  "file": "core/tests/integrate/edb.rs",
+  "test": "edb_edge_path_persistent_relation",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n      type edge_1(usize, usize), edge_2(usize, usize)\n      rel path_1(a, c) = edge_1(a, c) or (path_1(a, b) and edge_1(b, c))\n      rel path_2(a, c) = edge_2(a, c) or (path_2(a, b) and edge_2(b, c))\n      query path_1\n      query path_2\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge_1: {}\nedge_2: {}\npath_1: {}\npath_1#perm#(1,0): {}\npath_2: {}\npath_2#perm#(1,0): {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 197,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "test_fib_ff",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "S(x, $fib(x)) = R(x)",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "[Error] Syntax error in /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpaleqdpfo.scl: Unrecognized token `S` found at 0:1\nExpected one of \"@\", \"const\", \"extern\", \"import\", \"query\", \"rel\", \"relation\" or \"type\"\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpaleqdpfo.scl:\n  1 | S(x, $fib(x)) = R(x)\n    | ^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 198,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_string_length_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel strings = {\"hello\", \"world!\"}\n      rel lengths(x, $string_length(x)) = strings(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "lengths: {(\"hello\", 5), (\"world!\", 6)}\nstrings: {(\"hello\"), (\"world!\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 199,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_string_length_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel strings = {\"hello\", \"world!\"}\n      rel lengths(x, y) = strings(x), y == $string_length(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "lengths: {(\"hello\", 5), (\"world!\", 6)}\nstrings: {(\"hello\"), (\"world!\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 200,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_string_concat_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel strings = {\"hello\", \"world!\"}\n      rel cat(x) = strings(a), strings(b), a != b, x == $string_concat(a, \" \", b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "cat: {(\"hello world!\"), (\"world! hello\")}\nstrings: {(\"hello\"), (\"world!\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 201,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_abs_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1, 3, 5, -6}\n      rel abs_result($abs(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "abs_result: {(1), (3), (5), (6)}\nmy_rel: {(-6), (-1), (3), (5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 202,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_abs_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1.5, 3.3, 5.0, -6.5}\n      rel abs_result($abs(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "abs_result: {(1.5), (3.3), (5), (6.5)}\nmy_rel: {(-6.5), (-1.5), (3.3), (5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 203,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_substring_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {\"hello world!\"}\n      rel result($substring(x, 0, 5)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(\"hello world!\")}\nresult: {(\"hello\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 204,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_substring_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {\"hello world!\"}\n      rel result($substring(x, 6)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(\"hello world!\")}\nresult: {(\"world!\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 205,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_floor_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1.5, 3.8, 5.0, -6.0}\n      rel result($floor(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-6), (-1.5), (3.8), (5)}\nresult: {(-6), (-2), (3), (5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 206,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_floor_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1, 50, 12345, 0}\n      rel result($floor(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-1), (0), (50), (12345)}\nresult: {(-1), (0), (50), (12345)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 207,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_ceil_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1.5, 3.8, 5.0, -6.0}\n      rel result($ceil(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-6), (-1.5), (3.8), (5)}\nresult: {(-6), (-1), (4), (5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 208,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_ceil_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1, 50, 12345, 0}\n      rel result($ceil(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-1), (0), (50), (12345)}\nresult: {(-1), (0), (50), (12345)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 209,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_exp_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1.5, 3.8, 0.0}\n      rel result($exp(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-1.5), (0), (3.8)}\nresult: {(0.22313017), (1), (44.701183)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 210,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_exp2_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1.5, 3.8, 0.0}\n      rel result($exp2(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-1.5), (0), (3.8)}\nresult: {(0.35355338), (1), (13.928808)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 211,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_log_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {12.5, 345.89, 1.0, -2.7}\n      rel result($log(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-2.7), (1), (12.5), (345.89)}\nresult: {(0), (2.5257287), (5.846121)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 212,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_log2_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {12.5, 345.89, 1.0, -2.7}\n      rel result($log2(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-2.7), (1), (12.5), (345.89)}\nresult: {(0), (3.6438563), (8.43417)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 213,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_pow_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel base = {2, 7}\n    rel exp = {3, 10, 0}\n    rel result(n) = base(x), exp(y), n == $pow(x, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "base: {(2), (7)}\nexp: {(0), (3), (10)}\nresult: {(1), (8), (343), (1024), (282475249)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 214,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_powf_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel base = {1.5, 3.8}\n      rel exp = {-2.5, 4.8, 0.0}\n      rel result(n) = base(x), exp(y), n == $powf(x, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "base: {(1.5), (3.8)}\nexp: {(-2.5), (0), (4.8)}\nresult: {(0.035525568), (0.36288738), (1), (7.0022573), (606.6823)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 215,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_acos_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1.0, 1.0, 0.0, 1.5, -1.5}\n      rel result($acos(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-1.5), (-1), (0), (1), (1.5)}\nresult: {(0), (1.5707964), (3.1415925)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 216,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_asin_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1.0, 1.0, 0.0, 1.5, -1.5}\n      rel result($asin(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-1.5), (-1), (0), (1), (1.5)}\nresult: {(-1.5707963), (0), (1.5707963)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 217,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_atan_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-1.0, 1.0, 0.0}\n      rel result($atan(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-1), (0), (1)}\nresult: {(-0.7853982), (0), (0.7853982)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 218,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_atan2_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel first = {1.5, -3.8, 0.0}\n      rel second = {-2.5, 4.8, 0.0}\n      rel result(n) = first(y), second(x), n == $atan2(y, x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "first: {(-3.8), (0), (1.5)}\nresult: {(-2.1527014), (-1.5707964), (-0.66963893), (0), (0.30288485), (1.5707964), (2.6011732), (3.1415925)}\nsecond: {(-2.5), (0), (4.8)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 219,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_sign_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-12.5, 34.6, 0.0}\n      rel result($sign(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-12.5), (0), (34.6)}\nresult: {(-1), (0), (1)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 220,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_sign_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_rel = {-12, 34, 0}\n      rel result($sign(x)) = my_rel(x)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "my_rel: {(-12), (0), (34)}\nresult: {(-1), (0), (1)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 221,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_format_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel strings = {\"hello\", \"world!\"}\n      rel result(x) = strings(a), strings(b), a != b, x == $format(\"{} {}\", a, b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(\"hello world!\"), (\"world! hello\")}\nstrings: {(\"hello\"), (\"world!\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 222,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_format_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel numbers = {1.2, -3.4}\n      rel result(x) = numbers(a), numbers(b), a != b, x == $format(\"{} {}\", a, b)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "numbers: {(-3.4), (1.2)}\nresult: {(\"-3.4 1.2\"), (\"1.2 -3.4\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 223,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_string_lower_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel string = {\"Hello World!\", \"aBcDeF1234.\"}\n      rel result($string_lower(s)) = string(s)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(\"abcdef1234.\"), (\"hello world!\")}\nstring: {(\"Hello World!\"), (\"aBcDeF1234.\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 224,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_string_upper_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel string = {\"Hello World!\", \"aBcDeF1234.\"}\n      rel result($string_upper(s)) = string(s)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(\"ABCDEF1234.\"), (\"HELLO WORLD!\")}\nstring: {(\"Hello World!\"), (\"aBcDeF1234.\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 225,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_string_index_of_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel string = {\"Scallop is cool!\"}\n      rel substring = {\"o\", \"is\", \"Scallop\"}\n      rel result(i) = string(s), substring(t), i == $string_index_of(s, t)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(0), (5), (8)}\nstring: {(\"Scallop is cool!\")}\nsubstring: {(\"Scallop\"), (\"is\"), (\"o\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 226,
+  "file": "core/tests/integrate/ff.rs",
+  "test": "ff_string_trim_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel string = {\"Hello World!\", \" \\t ABC def 123 \\n\"}\n      rel result($string_trim(s)) = string(s)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(\"ABC def 123\"), (\"Hello World!\")}\nstring: {(\" \\t ABC def 123 \\n\"), (\"Hello World!\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 227,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_free_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel result(y) = range<usize>(0, 5, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(0), (1), (2), (3), (4)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 228,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_constraint_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel base = {(\"A\", \"B\", 3.0)}\n      rel result(a, b) = base(a, b, x) and soft_eq<f32>(x, 3.0)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "base: {(\"A\", \"B\", 3)}\nresult: {(\"A\", \"B\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 229,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_join_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel base = {3}\n      rel result(y) = base(x) and range<usize>(0, x, y)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "base: {(3)}\nresult: {(0), (1), (2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 230,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_join_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel base = {3}\n      rel result() = base(x) and range<usize>(0, x, 2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "base: {(3)}\nresult: {()}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 231,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_join_3",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel base = {3}\n      rel result() = base(x) and range<usize>(0, x, 100)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "base: {(3)}\nresult: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 232,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_join_4",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel base = {3, 10}\n      rel result(x) = base(x) and range<usize>(0, x, 5)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "base: {(3), (10)}\nresult: {(10)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 233,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_dt_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type f(bound i: usize, bound j: usize)\n      rel f(i, j) = range<usize>(i + 1, j, k) and c(i, k) and f(k + 1, j)\n      type c(bound i: usize, bound j: usize)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {}\n#temp#1: {}\nc: {}\nd#c#bb: {}\nd#f#bb: {}\nf: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 234,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "string_chars_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel string = {\"hello\"}\n      rel result(i, c) = string(s), string_chars(s, i, c)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result: {(0, 'h'), (1, 'e'), (2, 'l'), (3, 'l'), (4, 'o')}\nstring: {(\"hello\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 235,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "floating_point_eq_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel result_1() = float_eq<f32>(3.000001, 1.000001 + 2.000001)\n      rel result_2() = 3.000001 == 1.000001 + 2.000001\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result_1: {()}\nresult_2: {}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 236,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "string_split_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel string = {\"abcde ab cde abcde\"}\n      rel pattern1 = {\" \"}\n      rel pattern2 = {\"ab\"}\n      rel pattern3 = {\"abcde\"}\n      rel result1(o) = string(s), pattern1(p), string_split(s, p, o)\n      rel result2(o) = string(s), pattern2(p), string_split(s, p, o)\n      rel result3(o) = string(s), pattern3(p), string_split(s, p, o)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "pattern1: {(\" \")}\npattern2: {(\"ab\")}\npattern3: {(\"abcde\")}\nresult1: {(\"ab\"), (\"abcde\"), (\"cde\")}\nresult2: {(\"\"), (\" cde \"), (\"cde\"), (\"cde \")}\nresult3: {(\"\"), (\" ab cde \")}\nstring: {(\"abcde ab cde abcde\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 237,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "string_find_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel string = {\"abcde ab cde abcde\"}\n      rel pattern1 = {\" \"}\n      rel pattern2 = {\"ab\"}\n      rel pattern3 = {\"cde\"}\n      rel result1(i, j) = string(s), pattern1(p), string_find(s, p, i, j)\n      rel result2(i, j) = string(s), pattern2(p), string_find(s, p, i, j)\n      rel result3(i, j) = string(s), pattern3(p), string_find(s, p, i, j)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "pattern1: {(\" \")}\npattern2: {(\"ab\")}\npattern3: {(\"cde\")}\nresult1: {(5, 6), (8, 9), (12, 13)}\nresult2: {(0, 2), (6, 8), (13, 15)}\nresult3: {(2, 5), (9, 12), (15, 18)}\nstring: {(\"abcde ab cde abcde\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 238,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_syntax_sugar_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel result_1(x) = x in 0..5\n      rel result_2(x) = x in 3..=6\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "result_1: {(0), (1), (2), (3), (4)}\nresult_2: {(3), (4), (5), (6)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 239,
+  "file": "core/tests/integrate/fp.rs",
+  "test": "range_syntax_sugar_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel grid(x, y) = x in 2..5 and y in 5..=7\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(2), (3), (4)}\n#temp#1: {(5), (6), (7)}\ngrid: {(2, 5), (2, 6), (2, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 240,
+  "file": "core/tests/integrate/goal.rs",
+  "test": "simple_edge_path_with_goal",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6)}\n      @demand(\"bf\")\n      rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n      @goal\n      rel goal() = path(0, 2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0)}\nd#path#bf: {(0)}\nedge: {(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6)}\ngoal: {()}\npath: {(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 241,
+  "file": "core/tests/integrate/goal.rs",
+  "test": "simple_edge_path_with_disjunctive_goal",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6)}\n      @demand(\"bf\")\n      rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n      @goal\n      rel goal() = path(0, 2) or path(0, 5)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0)}\nd#path#bf: {(0)}\nedge: {(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6)}\ngoal: {()}\npath: {(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 242,
+  "file": "core/tests/integrate/incr.rs",
+  "test": "incr_edge_path_left_recursion",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "[Error] Syntax error in /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpqqnve5e6.scl: Unrecognized token `path` found at 0:4\nExpected one of \"@\", \"const\", \"extern\", \"import\", \"query\", \"rel\", \"relation\" or \"type\"\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpqqnve5e6.scl:\n  1 | path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    | ^^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 243,
+  "file": "core/tests/integrate/incr.rs",
+  "test": "incr_edge_path_left_branching_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "[Error] Syntax error in /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpl74pr3yz.scl: Unrecognized token `path` found at 0:4\nExpected one of \"@\", \"const\", \"extern\", \"import\", \"query\", \"rel\", \"relation\" or \"type\"\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpl74pr3yz.scl:\n  1 | path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    | ^^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 244,
+  "file": "core/tests/integrate/incr.rs",
+  "test": "incr_edge_path_left_branching_1",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "path(a, c) = edge(a, c) \\/ edge(a, b) /\\ path(b, c)",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "[Error] Syntax error in /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmp0rt_axba.scl: Unrecognized token `path` found at 0:4\nExpected one of \"@\", \"const\", \"extern\", \"import\", \"query\", \"rel\", \"relation\" or \"type\"\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmp0rt_axba.scl:\n  1 | path(a, c) = edge(a, c) \\/ edge(a, b) /\\ path(b, c)\n    | ^^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 245,
+  "file": "core/tests/integrate/incr.rs",
+  "test": "incr_edge_path_left_branching_1",
+  "idx": 2,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "result(x, y) = path(x, y) and x == 1",
+  "baseline": {
+   "rc": 1,
+   "out": "",
+   "err": "[Error] Syntax error in /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpm3rky4y1.scl: Unrecognized token `result` found at 0:6\nExpected one of \"@\", \"const\", \"extern\", \"import\", \"query\", \"rel\", \"relation\" or \"type\"\n --> /var/folders/ym/q5m4l2l139lb0l3_v1tnr_k00000gn/T/tmpm3rky4y1.scl:\n  1 | result(x, y) = path(x, y) and x == 1\n    | ^^^^^^\n\nError: \"Compile error occurred; aborted\"\n"
+  }
+ },
+ {
+  "id": 246,
+  "file": "core/tests/integrate/incr.rs",
+  "test": "incr_fib_test_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n      rel fib = {(0, 1), (1, 1)}\n      rel fib(x, a + b) = fib(x - 1, a) and fib(x - 2, b) and x <= 5\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {(-1, (1, 1)), (0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5)), (4, (8, 6))}\n#temp#1: {(-1, (1, 1)), (0, (1, 2)), (1, (2, 3)), (2, (3, 4)), (3, (5, 5))}\nfib: {(0, 1), (1, 1), (2, 2), (3, 3), (4, 5), (5, 8)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 247,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_edge",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/edge.csv\")\n        type edge(a: i32, b: i32)\n        rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n        query path\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606527) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/edge.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 248,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_edge_with_header",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/edge_with_header.csv\", header=true)\n        type edge(a: i32, b: i32)\n        rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n        query path\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606529) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/edge_with_header.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 249,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_edge_with_deliminator",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/edge_with_deliminator.csv\", deliminator=\"\\t\")\n        type edge(a: i32, b: i32)\n        rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n        query path\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606531) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/edge_with_deliminator.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 250,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_edge_with_deliminator_and_header",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/edge_with_deliminator_and_header.csv\", deliminator=\"\\t\", header=true)\n        type edge(a: i32, b: i32)\n        rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n        query path\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606534) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/edge_with_deliminator_and_header.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 251,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_edge_with_prob",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/edge_with_prob.csv\", has_probability=true)\n        type edge(a: i32, b: i32)\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606536) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/edge_with_prob.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 252,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_student",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/student.csv\", keys=\"id\")\n        type student(id: String, field: Symbol, value: String)\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606538) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/student.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 253,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_student_with_fields",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/student.csv\", fields=[\"id\", \"name\", \"year\"])\n        type student(id: String, name: String, year: i32)\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606540) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/student.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 254,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_enrollment",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/enrollment.csv\", keys=[\"student_id\", \"course_id\"])\n        type enrollment(student_id: String, course_id: String, field: Symbol, value: String)\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606542) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/enrollment.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 255,
+  "file": "core/tests/integrate/io.rs",
+  "test": "io_enrollment_with_keys_and_fields",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n        @file(\"{}/res/testing/csv/enrollment.csv\", keys=[\"student_id\", \"course_id\"], fields=[\"grade\"])\n        type enrollment(student_id: String, course_id: String, field: Symbol, value: String)\n      ",
+  "baseline": {
+   "rc": 101,
+   "out": "",
+   "err": "\nthread 'main' (120606544) panicked at etc/scli/src/main.rs:227:25:\nRuntime Error: Runtime(Database(IO(CannotOpenFile { file_path: \"{}/res/testing/csv/enrollment.csv\", error: \"No such file or directory (os error 2)\" })))\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+  }
+ },
+ {
+  "id": 256,
+  "file": "core/tests/integrate/iter.rs",
+  "test": "edge_path_iter_limit",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2), (2, 3), (3, 4)}\n    rel path(a, c) = edge(a, c) or path(a, b) and edge(b, c)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2), (2, 3), (3, 4)}\npath: {(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 257,
+  "file": "core/tests/integrate/prob.rs",
+  "test": "test_how_many_3_add_mult",
+  "idx": 0,
+  "provenance": "addmultprob",
+  "provenance_rust": "add_mult_prob",
+  "k": 3,
+  "program": "\n      rel digit = {0.91::(0, 0), 0.01::(0, 1), 0.01::(0, 2), 0.01::(0, 3)}\n      rel result(n) :- n = count(o: digit(o, 3))\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "digit: {0.91::(0, 0), 0.01::(0, 1), 0.01::(0, 2), 0.01::(0, 3)}\ndigit#perm#(1,0): {0.91::(0, 0), 0.01::(1, 0), 0.01::(2, 0), 0.01::(3, 0)}\nresult: {0.99::(0), 0.01::(1)}\nresult#24#agg#0#0#body: {0.01::0}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 258,
+  "file": "core/tests/integrate/prob.rs",
+  "test": "test_min_max_with_recursion",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel enemy = {\n        0.1::(1, 3), 0.1::(2, 3), 0.1::(3, 3),\n        0.1::(1, 2), 0.8::(2, 2), 0.9::(3, 2),\n        0.1::(1, 1), 0.1::(2, 1), 0.1::(3, 1),\n      }\n      rel edge = {\n        (1, 1, 1, 2), (1, 1, 2, 1),\n        (1, 2, 1, 3), (1, 2, 2, 2), (1, 2, 1, 1),\n        (1, 3, 1, 2), (1, 3, 2, 3),\n        (2, 1, 1, 1), (2, 1, 2, 2), (2, 1, 3, 1),\n        (2, 2, 1, 2), (2, 2, 2, 3), (2, 2, 2, 1), (2, 2, 3, 2),\n        (2, 3, 1, 3), (2, 3, 2, 2), (2, 3, 3, 3),\n        (3, 1, 2, 1), (3, 1, 3, 2),\n        (3, 2, 2, 2), (3, 2, 3, 1), (3, 2, 3, 3),\n        (3, 3, 2, 3), (3, 3, 3, 2),\n      }\n      rel path(xa, ya, xb, yb) = edge(xa, ya, xb, yb), not enemy(xb, yb)\n      rel path(xa, ya, xc, yc) = path(xa, ya, xb, yb), edge(xb, yb, xc, yc), not enemy(xc, yc)\n      query path(3, 1, 3, 3)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {0.9::((1, 1), (1, 1)), 0.9::((1, 1), (1, 2)), 0.9::((1, 1), (1, 3)), 0.9::((1, 1), (2, 1)), 0.9::((1, 1), (2, 2)), 0.9::((1, 1), (2, 3)), 0.9::((1, 1), (3, 1)), 0.9::((1, 1), (3, 2)), 0.9::((1, 1), (3, 3)), 0.9::((1, 2), (1, 1)), 0.9::((1, 2), (1, 2)), 0.9::((1, 2), (1, 3)), 0.9::((1, 2), (2, 1)), 0.9::((1, 2), (2, 2)), 0.9::((1, 2), (2, 3)), 0.9::((1, 2), (3, 1)), 0.9::((1, 2), (3, 2)), 0.9::((1, 2), (3, 3)), 0.9::((1, 3), (1, 1)), 0.9::((1, 3), (1, 2)), 0.9::((1, 3), (1, 3)), 0.9::((1, 3), (2, 1)), 0.9::((1, 3), (2, 2)), 0.9::((1, 3), (2, 3)), 0.9::((1, 3), (3, 1)), 0.9::((1, 3), (3, 2)), 0.9::((1, 3), (3, 3)), 0.9::((2, 1), (1, 1)), 0.9::((2, 1), (1, 2)), 0.9::((2, 1), (1, 3)), 0.9::((2, 1), (2, 1)), 0.9::((2, 1), (2, 2)), 0.9::((2, 1), (2, 3)), 0.9::((2, 1), (3, 1)), 0.9::((2, 1), (3, 2)), 0.9::((2, 1), (3, 3)), 0.9::((2, 2), (1, 1)), 0.9::((2, 2), (1, 2)), 0.9::((2, 2), (1, 3)), 0.9::((2, 2), (2, 1)), 0.9::((2, 2), (2, 2)), 0.9::((2, 2), (2, 3)), 0.9::((2, 2), (3, 1)), 0.9::((2, 2), (3, 2)), 0.9::((2, 2), (3, 3)), 0.9::((2, 3), (1, 1)), 0.9::((2, 3), (1, 2)), 0.9::((2, 3), (1, 3)), 0.9::((2, 3), (2, 1)), 0.9::((2, 3), (2, 2)), 0.9::((2, 3), (2, 3)), 0.9::((2, 3), (3, 1)), 0.9::((2, 3), (3, 2)), 0.9::((2, 3), (3, 3)), 0.9::((3, 1), (1, 1)), 0.9::((3, 1), (1, 2)), 0.9::((3, 1), (1, 3)), 0.9::((3, 1), (2, 1)), 0.9::((3, 1), (2, 2)), 0.9::((3, 1), (2, 3)), 0.9::((3, 1), (3, 1)), 0.9::((3, 1), (3, 2)), 0.9::((3, 1), (3, 3)), 0.9::((3, 2), (1, 1)), 0.9::((3, 2), (1, 2)), 0.9::((3, 2), (1, 3)), 0.9::((3, 2), (2, 1)), 0.9::((3, 2), (2, 2)), 0.9::((3, 2), (2, 3)), 0.9::((3, 2), (3, 1)), 0.9::((3, 2), (3, 2)), 0.9::((3, 2), (3, 3)), 0.9::((3, 3), (1, 1)), 0.9::((3, 3), (1, 2)), 0.9::((3, 3), (1, 3)), 0.9::((3, 3), (2, 1)), 0.9::((3, 3), (2, 2)), 0.9::((3, 3), (2, 3)), 0.9::((3, 3), (3, 1)), 0.9::((3, 3), (3, 2)), 0.9::((3, 3), (3, 3))}\nedge: {1::(1, 1, 1, 2), 1::(1, 1, 2, 1), 1::(1, 2, 1, 1), 1::(1, 2, 1, 3), 1::(1, 2, 2, 2), 1::(1, 3, 1, 2), 1::(1, 3, 2, 3), 1::(2, 1, 1, 1), 1::(2, 1, 2, 2), 1::(2, 1, 3, 1), 1::(2, 2, 1, 2), 1::(2, 2, 2, 1), 1::(2, 2, 2, 3), 1::(2, 2, 3, 2), 1::(2, 3, 1, 3), 1::(2, 3, 2, 2), 1::(2, 3, 3, 3), 1::(3, 1, 2, 1), 1::(3, 1, 3, 2), 1::(3, 2, 2, 2), 1::(3, 2, 3, 1), 1::(3, 2, 3, 3), 1::(3, 3, 2, 3), 1::(3, 3, 3, 2)}\nedge#perm#((2,3),(0,1)): {1::((1, 1), (1, 2)), 1::((1, 1), (2, 1)), 1::((1, 2), (1, 1)), 1::((1, 2), (1, 3)), 1::((1, 2), (2, 2)), 1::((1, 3), (1, 2)), 1::((1, 3), (2, 3)), 1::((2, 1), (1, 1)), 1::((2, 1), (2, 2)), 1::((2, 1), (3, 1)), 1::((2, 2), (1, 2)), 1::((2, 2), (2, 1)), 1::((2, 2), (2, 3)), 1::((2, 2), (3, 2)), 1::((2, 3), (1, 3)), 1::((2, 3), (2, 2)), 1::((2, 3), (3, 3)), 1::((3, 1), (2, 1)), 1::((3, 1), (3, 2)), 1::((3, 2), (2, 2)), 1::((3, 2), (3, 1)), 1::((3, 2), (3, 3)), 1::((3, 3), (2, 3)), 1::((3, 3), (3, 2))}\nenemy: {0.1::(1, 1), 0.1::(1, 2), 0.1::(1, 3), 0.1::(2, 1), 0.8::(2, 2), 0.1::(2, 3), 0.1::(3, 1), 0.9::(3, 2), 0.1::(3, 3)}\npath: {0.9::(1, 1, 1, 1), 0.9::(1, 1, 1, 2), 0.9::(1, 1, 1, 3), 0.9::(1, 1, 2, 1), 0.19999999999999996::(1, 1, 2, 2), 0.9::(1, 1, 2, 3), 0.9::(1, 1, 3, 1), 0.09999999999999998::(1, 1, 3, 2), 0.9::(1, 1, 3, 3), 0.9::(1, 2, 1, 1), 0.9::(1, 2, 1, 2), 0.9::(1, 2, 1, 3), 0.9::(1, 2, 2, 1), 0.19999999999999996::(1, 2, 2, 2), 0.9::(1, 2, 2, 3), 0.9::(1, 2, 3, 1), 0.09999999999999998::(1, 2, 3, 2), 0.9::(1, 2, 3, 3), 0.9::(1, 3, 1, 1), 0.9::(1, 3, 1, 2), 0.9::(1, 3, 1, 3), 0.9::(1, 3, 2, 1), 0.19999999999999996::(1, 3, 2, 2), 0.9::(1, 3, 2, 3), 0.9::(1, 3, 3, 1), 0.09999999999999998::(1, 3, 3, 2), 0.9::(1, 3, 3, 3), 0.9::(2, 1, 1, 1), 0.9::(2, 1, 1, 2), 0.9::(2, 1, 1, 3), 0.9::(2, 1, 2, 1), 0.19999999999999996::(2, 1, 2, 2), 0.9::(2, 1, 2, 3), 0.9::(2, 1, 3, 1), 0.09999999999999998::(2, 1, 3, 2), 0.9::(2, 1, 3, 3), 0.9::(2, 2, 1, 1), 0.9::(2, 2, 1, 2), 0.9::(2, 2, 1, 3), 0.9::(2, 2, 2, 1), 0.19999999999999996::(2, 2, 2, 2), 0.9::(2, 2, 2, 3), 0.9::(2, 2, 3, 1), 0.09999999999999998::(2, 2, 3, 2), 0.9::(2, 2, 3, 3), 0.9::(2, 3, 1, 1), 0.9::(2, 3, 1, 2), 0.9::(2, 3, 1, 3), 0.9::(2, 3, 2, 1), 0.19999999999999996::(2, 3, 2, 2), 0.9::(2, 3, 2, 3), 0.9::(2, 3, 3, 1), 0.09999999999999998::(2, 3, 3, 2), 0.9::(2, 3, 3, 3), 0.9::(3, 1, 1, 1), 0.9::(3, 1, 1, 2), 0.9::(3, 1, 1, 3), 0.9::(3, 1, 2, 1), 0.19999999999999996::(3, 1, 2, 2), 0.9::(3, 1, 2, 3), 0.9::(3, 1, 3, 1), 0.09999999999999998::(3, 1, 3, 2), 0.9::(3, 1, 3, 3), 0.9::(3, 2, 1, 1), 0.9::(3, 2, 1, 2), 0.9::(3, 2, 1, 3), 0.9::(3, 2, 2, 1), 0.19999999999999996::(3, 2, 2, 2), 0.9::(3, 2, 2, 3), 0.9::(3, 2, 3, 1), 0.09999999999999998::(3, 2, 3, 2), 0.9::(3, 2, 3, 3), 0.9::(3, 3, 1, 1), 0.9::(3, 3, 1, 2), 0.9::(3, 3, 1, 3), 0.9::(3, 3, 2, 1), 0.19999999999999996::(3, 3, 2, 2), 0.9::(3, 3, 2, 3), 0.9::(3, 3, 3, 1), 0.09999999999999998::(3, 3, 3, 2), 0.9::(3, 3, 3, 3)}\npath#perm#((2,3),(0,1)): {0.9::((1, 1), (1, 1)), 0.9::((1, 1), (1, 2)), 0.9::((1, 1), (1, 3)), 0.9::((1, 1), (2, 1)), 0.9::((1, 1), (2, 2)), 0.9::((1, 1), (2, 3)), 0.9::((1, 1), (3, 1)), 0.9::((1, 1), (3, 2)), 0.9::((1, 1), (3, 3)), 0.9::((1, 2), (1, 1)), 0.9::((1, 2), (1, 2)), 0.9::((1, 2), (1, 3)), 0.9::((1, 2), (2, 1)), 0.9::((1, 2), (2, 2)), 0.9::((1, 2), (2, 3)), 0.9::((1, 2), (3, 1)), 0.9::((1, 2), (3, 2)), 0.9::((1, 2), (3, 3)), 0.9::((1, 3), (1, 1)), 0.9::((1, 3), (1, 2)), 0.9::((1, 3), (1, 3)), 0.9::((1, 3), (2, 1)), 0.9::((1, 3), (2, 2)), 0.9::((1, 3), (2, 3)), 0.9::((1, 3), (3, 1)), 0.9::((1, 3), (3, 2)), 0.9::((1, 3), (3, 3)), 0.9::((2, 1), (1, 1)), 0.9::((2, 1), (1, 2)), 0.9::((2, 1), (1, 3)), 0.9::((2, 1), (2, 1)), 0.9::((2, 1), (2, 2)), 0.9::((2, 1), (2, 3)), 0.9::((2, 1), (3, 1)), 0.9::((2, 1), (3, 2)), 0.9::((2, 1), (3, 3)), 0.19999999999999996::((2, 2), (1, 1)), 0.19999999999999996::((2, 2), (1, 2)), 0.19999999999999996::((2, 2), (1, 3)), 0.19999999999999996::((2, 2), (2, 1)), 0.19999999999999996::((2, 2), (2, 2)), 0.19999999999999996::((2, 2), (2, 3)), 0.19999999999999996::((2, 2), (3, 1)), 0.19999999999999996::((2, 2), (3, 2)), 0.19999999999999996::((2, 2), (3, 3)), 0.9::((2, 3), (1, 1)), 0.9::((2, 3), (1, 2)), 0.9::((2, 3), (1, 3)), 0.9::((2, 3), (2, 1)), 0.9::((2, 3), (2, 2)), 0.9::((2, 3), (2, 3)), 0.9::((2, 3), (3, 1)), 0.9::((2, 3), (3, 2)), 0.9::((2, 3), (3, 3)), 0.9::((3, 1), (1, 1)), 0.9::((3, 1), (1, 2)), 0.9::((3, 1), (1, 3)), 0.9::((3, 1), (2, 1)), 0.9::((3, 1), (2, 2)), 0.9::((3, 1), (2, 3)), 0.9::((3, 1), (3, 1)), 0.9::((3, 1), (3, 2)), 0.9::((3, 1), (3, 3)), 0.09999999999999998::((3, 2), (1, 1)), 0.09999999999999998::((3, 2), (1, 2)), 0.09999999999999998::((3, 2), (1, 3)), 0.09999999999999998::((3, 2), (2, 1)), 0.09999999999999998::((3, 2), (2, 2)), 0.09999999999999998::((3, 2), (2, 3)), 0.09999999999999998::((3, 2), (3, 1)), 0.09999999999999998::((3, 2), (3, 2)), 0.09999999999999998::((3, 2), (3, 3)), 0.9::((3, 3), (1, 1)), 0.9::((3, 3), (1, 2)), 0.9::((3, 3), (1, 3)), 0.9::((3, 3), (2, 1)), 0.9::((3, 3), (2, 2)), 0.9::((3, 3), (2, 3)), 0.9::((3, 3), (3, 1)), 0.9::((3, 3), (3, 2)), 0.9::((3, 3), (3, 3))}\npath(3, 1, 3, 3): {0.9::(3, 1, 3, 3)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 259,
+  "file": "core/tests/integrate/prob.rs",
+  "test": "test_discrete_count",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel obj = {0.9::0, 0.5::1, 0.1::2}\n      rel hard_count(n) = n := count!(id: obj(id))\n      query hard_count\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "hard_count: {1::(3)}\nhard_count#16#agg#0#0#body: {0.9::0, 0.5::1, 0.1::2}\nobj: {0.9::(0), 0.5::(1), 0.1::(2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 260,
+  "file": "core/tests/integrate/scheduling.rs",
+  "test": "prob_edge_path_with_goal_and_a_star_search",
+  "idx": 0,
+  "provenance": "minmaxprob",
+  "provenance_rust": "min_max_prob",
+  "k": 3,
+  "program": "\n      rel edge = {\n        0.2::(0, 100),\n        0.2::(100, 101),\n        0.2::(101, 1000),\n\n        0.99::(0, 200),\n        0.99::(200, 201),\n        0.99::(201, 202),\n        0.99::(202, 203),\n        0.99::(203, 1000),\n\n        0.98::(1000, 2000),\n        0.97::(2000, 3000),\n        0.96::(3000, 4000),\n      }\n\n      @demand(\"bf\")\n      rel path(a, b) = edge(a, b) \\/ path(a, c) /\\ edge(c, b)\n\n      @goal\n      rel goal() = path(0, 1000)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "#temp#0: {0.2::(100, 0), 0.2::(101, 0), 0.99::(200, 0), 0.99::(201, 0), 0.99::(202, 0), 0.99::(203, 0), 0.99::(1000, 0), 0.98::(2000, 0), 0.97::(3000, 0), 0.96::(4000, 0)}\nd#path#bf: {1::(0)}\nedge: {0.2::(0, 100), 0.99::(0, 200), 0.2::(100, 101), 0.2::(101, 1000), 0.99::(200, 201), 0.99::(201, 202), 0.99::(202, 203), 0.99::(203, 1000), 0.98::(1000, 2000), 0.97::(2000, 3000), 0.96::(3000, 4000)}\ngoal: {0.99::()}\npath: {0.2::(0, 100), 0.2::(0, 101), 0.99::(0, 200), 0.99::(0, 201), 0.99::(0, 202), 0.99::(0, 203), 0.99::(0, 1000), 0.98::(0, 2000), 0.97::(0, 3000), 0.96::(0, 4000)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 261,
+  "file": "core/tests/integrate/tag.rs",
+  "test": "test_rule_constant_tag_simple_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_num(5)\n      rel 0.5::fall_off(n) = my_num(n)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "fall_off: {(5)}\nmy_num: {(5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 262,
+  "file": "core/tests/integrate/tag.rs",
+  "test": "test_rule_constant_integer_tag_simple_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_num(5)\n      rel 1::fall_off(n) = my_num(n)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "fall_off: {(5)}\nmy_num: {(5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 263,
+  "file": "core/tests/integrate/tag.rs",
+  "test": "test_multiple_rule_constant_tag_simple_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_num(5)\n      rel 0.5::fall_off(n / 2) = my_num(n)\n      rel 0.2::fall_off(n + 1) = my_num(n)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "fall_off: {(2), (6)}\nmy_num: {(5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 264,
+  "file": "core/tests/integrate/tag.rs",
+  "test": "test_expr_tag_direct_propagate_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_prob(0.5)\n      rel p::fall_off() = my_prob(p)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "fall_off: {()}\nmy_prob: {(0.5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 265,
+  "file": "core/tests/integrate/tag.rs",
+  "test": "test_expr_tag_simple_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel my_num(5.0)\n      rel 1.0/n::fall_off() = my_num(n)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "fall_off: {()}\nmy_num: {(5)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 266,
+  "file": "core/tests/integrate/tag.rs",
+  "test": "test_expr_tag_simple_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel edge = {(0, 1), (1, 2)}\n      rel path(x, y, 1.0) = edge(x, y)\n      rel path(x, z, l + 1.0) = path(x, y, l) and edge(y, z)\n      rel (1.0 / l)::path_prob(x, y) = path(x, y, l)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1, 1), (0, 2, 2), (1, 2, 1)}\npath#perm#(1,(2,0)): {(1, (1, 0)), (2, (1, 1)), (2, (2, 0))}\npath_prob: {(0, 1), (0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 267,
+  "file": "core/tests/integrate/tag.rs",
+  "test": "test_tropical_min_path_length",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type Node = A | B | C | D\n      rel edge = {\n        1::(A, B), 1::(B, C), 1::(C, D),\n        1::(A, D),\n      }\n      rel path(x, y) = edge(x, y) or path(x, z) and edge(z, y)\n      query path\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (0, 3), (1, 2), (2, 3)}\npath: {(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 268,
+  "file": "core/tests/integrate/time.rs",
+  "test": "date_type_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type r(DateTime)\n      rel r = {t\"2019-01-01T00:00:00Z\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(t\"2019-01-01 00:00:00 UTC\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 269,
+  "file": "core/tests/integrate/time.rs",
+  "test": "duration_type_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      type r(Duration)\n      rel r = {d\"1y5d\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(d\"R12MO PT432000S\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 270,
+  "file": "core/tests/integrate/time.rs",
+  "test": "date_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel r = {t\"2019-01-01T00:00:00Z\"}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(t\"2019-01-01 00:00:00 UTC\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 271,
+  "file": "core/tests/integrate/time.rs",
+  "test": "date_2",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel r = {(0, t\"2019-01-01T00:00:00Z\")}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "r: {(0, t\"2019-01-01 00:00:00 UTC\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 272,
+  "file": "core/tests/integrate/time.rs",
+  "test": "duration_plus_duration_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel p = {(d\"3d\", d\"2d\")}\n      rel r(d1 + d2) = p(d1, d2)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "p: {(d\"PT259200S\", d\"PT172800S\")}\nr: {(d\"PT432000S\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 273,
+  "file": "core/tests/integrate/time.rs",
+  "test": "relative_month_compute_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel p = {(d\"3mo\", t\"2019-02-01\")}\n      rel r(d + t) = p(d, t)\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "p: {(d\"R3MO P0D\", t\"2019-02-01 00:00:00 UTC\")}\nr: {(t\"2019-05-01 00:00:00 UTC\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 274,
+  "file": "core/tests/integrate/time.rs",
+  "test": "neg_duration_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit(default)",
+  "k": 3,
+  "program": "\n      rel p = {(d\"-3d\", d\"-5mo\")}\n    ",
+  "baseline": {
+   "rc": 0,
+   "out": "p: {(d\"-PT259200S\", d\"R-5MO P0D\")}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 275,
+  "file": "core/tests/runtime/incremental/basic.rs",
+  "test": "incr_exec_1",
+  "idx": 0,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path(y, 2)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\npath(y, 2): {(0, 2), (1, 2)}\n",
+   "err": ""
+  }
+ },
+ {
+  "id": 276,
+  "file": "core/tests/runtime/incremental/basic.rs",
+  "test": "incr_exec_1",
+  "idx": 1,
+  "provenance": "unit",
+  "provenance_rust": "unit",
+  "k": 3,
+  "program": "\n    rel edge = {(0, 1), (1, 2)}\n    rel path(a, c) = edge(a, c) \\/ path(a, b) /\\ edge(b, c)\n    query path(0, x)\n  ",
+  "baseline": {
+   "rc": 0,
+   "out": "edge: {(0, 1), (1, 2)}\npath: {(0, 1), (0, 2), (1, 2)}\npath#perm#(1,0): {(1, 0), (2, 0), (2, 1)}\npath(0, x): {(0, 1), (0, 2)}\n",
+   "err": ""
+  }
+ }
+]

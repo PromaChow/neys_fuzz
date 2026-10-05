@@ -1,0 +1,65 @@
+{"program": "00_builtins.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "00_nested_conjunction.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "00_trivial_and.pl", "ok": true, "diffs": {}}
+{"program": "00_trivial_duplicate.pl", "ok": true, "diffs": {}}
+{"program": "00_trivial_fact.pl", "ok": true, "diffs": {}}
+{"program": "00_trivial_fail.pl", "ok": true, "diffs": {"approx_ucs": ["a: missing (batch 0.0)"]}}
+{"program": "00_trivial_not.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "00_trivial_not_and.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "00_trivial_or.pl", "ok": true, "diffs": {}}
+{"program": "00_trivial_true.pl", "ok": true, "diffs": {}}
+{"program": "01_logic_implicit_equal.pl", "ok": true, "diffs": {}}
+{"program": "01_unbounded.pl", "ok": true, "diffs": {}}
+{"program": "10_cards.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "11_ads_numerical.pl", "ok": true, "diffs": {}}
+{"program": "12_holidays.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "3_tossing_coin.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "6_hmm_weather.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "7_probabilistic_graph.pl", "ok": true, "diffs": {}}
+{"program": "9_packing_problem.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "ad_clause.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "ad_fact.pl", "ok": true, "diffs": {}}
+{"program": "add.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "advars.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "basic_scope_use.pl", "ok": true, "diffs": {"approx_ucs": [":(scope1,a(1)): extra (1.0)", ":(scope1,b): extra (0.5)", "scope1:a(1): missing (batch 1.0)"]}}
+{"program": "bigstack.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "bug_nonground.pl", "ok": true, "diffs": {}}
+{"program": "bug_nonground_more.pl", "ok": true, "diffs": {}}
+{"program": "bug_unify.pl", "ok": true, "diffs": {"approx_ucs": ["property_compress(content(last,[_11038])): extra (1.0)", "property_compress(content(last,[X5])): missing (batch 1.0)"]}}
+{"program": "call.pl", "ok": true, "diffs": {}}
+{"program": "call_return_fail.pl", "ok": true, "diffs": {}}
+{"program": "clause_pred.pl", "ok": true, "diffs": {"approx_ucs": ["clause(c(d(V_0)),b(V_0)): missing (batch 1.0)", "clause(a,b(V_0)): missing (batch 1.0)"]}}
+{"program": "coin.pl", "ok": true, "diffs": {}}
+{"program": "cycle_over_call.pl", "ok": true, "diffs": {"approx_ucs": ["error MemoryError"]}}
+{"program": "evidence_bug.pl", "ok": true, "diffs": {}}
+{"program": "evidence_bug_alt.pl", "ok": true, "diffs": {}}
+{"program": "findall.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "findall6.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "findall_check.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "findall_nested.pl", "ok": true, "diffs": {}}
+{"program": "findall_with_anonymous.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "generated.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "generic_scope.pl", "ok": true, "diffs": {"approx_ucs": ["scope1:b: missing (batch 0.5)", ":(scope1,b): extra (0.5)", ":(scope1,a): extra (0.3)"]}}
+{"program": "ground_nonground_bug_v1.pl", "ok": true, "diffs": {"approx_ucs": ["fill(unknown,unknown): batch 0.08000000000000002 vs 1.0"]}}
+{"program": "ground_nonground_bug_v2.pl", "ok": true, "diffs": {"approx_ucs": ["fill([unknown, unknown]): batch 0.08000000000000002 vs 0.8200000000000001"]}}
+{"program": "ground_nonground_bug_v3.pl", "ok": true, "diffs": {"approx_ucs": ["q: batch 0.08000000000000002 vs 1.0"]}}
+{"program": "ground_nonground_bug_v4.pl", "ok": true, "diffs": {"approx_ucs": ["q: batch 0.1 vs 1.0"]}}
+{"program": "ground_term_variable_prob.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "hex_numbers.pl", "ok": true, "diffs": {}}
+{"program": "list_sample.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "list_sample_multi.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "negation.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "negative_head_lits.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "negative_query.pl", "ok": true, "diffs": {"approx_ucs": ["error ValueError"]}}
+{"program": "non_ground_query.pl", "ok": true, "diffs": {}}
+{"program": "query_same.pl", "ok": true, "diffs": {}}
+{"program": "same_var.pl", "ok": true, "diffs": {"approx_ucs": ["score: missing (batch 0.0)"]}}
+{"program": "scope_advanced_manipulations.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "scope_variable_manipulations.pl", "ok": true, "diffs": {"approx_ucs": ["error SWIProgramException"]}}
+{"program": "some_cycles.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "subquery.pl", "ok": true, "diffs": {"approx_ucs": ["c(0.5): missing (batch 1.0)", "b(0.5): missing (batch 1.0)"]}}
+{"program": "swap.pl", "ok": true, "diffs": {}}
+{"program": "tc_1.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "tc_3.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "varunify_all.pl", "ok": true, "diffs": {"approx_ucs": ["error PrologError"]}}
+{"program": "varunify_internal.pl", "ok": true, "diffs": {}}

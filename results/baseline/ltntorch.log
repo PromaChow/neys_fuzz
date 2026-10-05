@@ -1,0 +1,73 @@
+...........                                                              [100%]
+=============================== warnings summary ===============================
+ltn/core.py:363
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/core.py:363: DeprecationWarning: invalid escape sequence '\d'
+    """
+
+ltn/fuzzy_ops.py:189
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:189: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:233
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:233: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:279
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:279: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:336
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:336: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:424
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:424: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:484
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:484: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:541
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:541: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:629
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:629: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:687
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:687: DeprecationWarning: invalid escape sequence '\o'
+    """
+
+ltn/fuzzy_ops.py:744
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:744: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:889
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:889: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:977
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:977: DeprecationWarning: invalid escape sequence '\o'
+    """
+
+ltn/fuzzy_ops.py:1037
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:1037: DeprecationWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:1293
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:1293: DeprecationWarning: invalid escape sequence '\e'
+    """
+
+ltn/fuzzy_ops.py:1406
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:1406: DeprecationWarning: invalid escape sequence '\g'
+    """
+
+ltn/fuzzy_ops.py:1518
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:1518: DeprecationWarning: invalid escape sequence '\o'
+    """
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+11 passed, 17 warnings in 1.51s
+done-ltn

@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="15" skipped="33" tests="117" time="2.209" timestamp="2026-10-03T18:44:06.345350+06:00" hostname="Promas-MacBook-Pro.local"><testcase classname="tests.basics.BasicTests" name="test_digit_sum" time="0.031" /><testcase classname="tests.basics.BasicTests" name="test_edge_path" time="0.007" /><testcase classname="tests.basics.BasicTests" name="test_fibonacci" time="0.007" /><testcase classname="tests.basics.BasicTests" name="test_fibonacci_demand" time="0.010" /><testcase classname="tests.basics.BasicTests" name="test_proofs_disjunction" time="0.036" /><testcase classname="tests.basics.BasicTests" name="test_rule_weight" time="0.012" /><testcase classname="tests.basics.BasicTests" name="test_softmax" time="0.007" /><testcase classname="tests.basics.BasicTests" name="test_top_k_proofs_disjunction" time="0.035" /><testcase classname="tests.basics.BasicTests" name="test_tropical_edge_path" time="0.007" /><testcase classname="tests.configurations.ConfigurationTests" name="test_hidden_relation_1" time="0.004" /><testcase classname="tests.configurations.ConfigurationTests" name="test_iter_limit_1" time="0.006" /><testcase classname="tests.configurations.ConfigurationTests" name="test_iter_limit_2" time="0.007" /><testcase classname="tests.convert.TestConversion" name="test_convert_1" time="0.004" /><testcase classname="tests.convert.TestConversion" name="test_convert_2" time="0.004" /><testcase classname="tests.dbio.TestIO" name="test_load_csv" time="0.004"><failure message="Exception: IO: Cannot open file `core/res/testing/csv/edge.csv`: No such file or directory (os error 2)">self = &lt;dbio.TestIO testMethod=test_load_csv&gt;
+
+    def test_load_csv(self):
+      ctx = scallopy.Context()
+      ctx.add_relation("edge", (int, int), load_csv=scallopy.io.CSVFileOptions("core/res/testing/csv/edge.csv"))
+&gt;     ctx.run()
+
+tests/dbio.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;scallopy.context.ScallopContext object at 0x1062907d0&gt;
+
+    def run(self):
+      """
+      Execute the code under the current context. This operation is incremental
+      and might use as many as previous information as possible.
+    
+      ``` python
+      ctx.run()
+      ```
+      """
+&gt;     self._internal.run()
+E     Exception: IO: Cannot open file `core/res/testing/csv/edge.csv`: No such file or directory (os error 2)
+
+scallopy/context.py:256: Exception</failure></testcase><testcase classname="tests.dbio.TestIO" name="test_load_csv_with_field" time="0.004"><failure message="Exception: IO: Cannot open file `core/res/testing/csv/student.csv`: No such file or directory (os error 2)">self = &lt;dbio.TestIO testMethod=test_load_csv_with_field&gt;
+
+    def test_load_csv_with_field(self):
+      ctx = scallopy.Context()
+      csv_file = scallopy.io.CSVFileOptions("core/res/testing/csv/student.csv", fields=["id", "name", "year"])
+      ctx.add_relation("student", (int, str, int), load_csv=csv_file)
+&gt;     ctx.run()
+
+tests/dbio.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;scallopy.context.ScallopContext object at 0x13cc41350&gt;
+
+    def run(self):
+      """
+      Execute the code under the current context. This operation is incremental
+      and might use as many as previous information as possible.
+    
+      ``` python
+      ctx.run()
+      ```
+      """
+&gt;     self._internal.run()
+E     Exception: IO: Cannot open file `core/res/testing/csv/student.csv`: No such file or directory (os error 2)
+
+scallopy/context.py:256: Exception</failure></testcase><testcase classname="tests.dbio.TestIO" name="test_load_csv_with_key_and_field" time="0.003"><failure message="Exception: IO: Cannot open file `core/res/testing/csv/student.csv`: No such file or directory (os error 2)">self = &lt;dbio.TestIO testMethod=test_load_csv_with_key_and_field&gt;
+
+    def test_load_csv_with_key_and_field(self):
+      ctx = scallopy.Context()
+      csv_file = scallopy.io.CSVFileOptions("core/res/testing/csv/student.csv", keys="id", fields=["name", "year"])
+      ctx.add_relation("student", (int, scallopy.Symbol, str), load_csv=csv_file)
+&gt;     ctx.run()
+
+tests/dbio.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;scallopy.context.ScallopContext object at 0x13ca6c490&gt;
+
+    def run(self):
+      """
+      Execute the code under the current context. This operation is incremental
+      and might use as many as previous information as possible.
+    
+      ``` python
+      ctx.run()
+      ```
+      """
+&gt;     self._internal.run()
+E     Exception: IO: Cannot open file `core/res/testing/csv/student.csv`: No such file or directory (os error 2)
+
+scallopy/context.py:256: Exception</failure></testcase><testcase classname="tests.debug.TestDebugProvenance" name="test_debug_1" time="0.010" /><testcase classname="tests.debug.TestDebugProvenance" name="test_debug_forward_1" time="0.010" /><testcase classname="tests.debug.TestDebugProvenance" name="test_debug_forward_2" time="0.004" /><testcase classname="tests.debug.TestDebugProvenance" name="test_debug_forward_error_1" time="0.004"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.entity.TestEntity" name="test_entity_1" time="0.019" /><testcase classname="tests.entity.TestEntity" name="test_entity_2" time="0.007" /><testcase classname="tests.entity.TestEntity" name="test_entity_compile_failure_1" time="0.006" /><testcase classname="tests.entity.TestEntity" name="test_entity_compile_failure_2" time="0.009" /><testcase classname="tests.entity.TestEntity" name="test_entity_forward" time="0.011"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;entity.TestEntity testMethod=test_entity_forward&gt;
+
+    def test_entity_forward(self):
+      forward = scallopy.Module(
+        program="""
+          type Expr = Const(i32) | Add(Expr, Expr)
+          type root(expr: Expr)
+          rel eval(e, y) = case e is Const(y)
+          rel eval(e, y1 + y2) = case e is Add(e1, e2) and eval(e1, y1) and eval(e2, y2)
+          rel result(y) = root(e) and eval(e, y)
+        """,
+        provenance="diffminmaxprob",
+        non_probabilistic=["root"],
+        output_relation="result")
+    
+&gt;     results, _ = forward(
+        root=[
+          [("Add(Const(5), Const(3))",)],
+          [("Const(10)",)],
+          [("Add(Add(Const(10), Const(2)), Const(2))",)],
+        ]
+      )
+
+tests/entity.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:117: in __call__
+    return self.forward_fn(*pos_args, **kw_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 3
+all_inputs = {'root': [[(None, ('Add(Const(5), Const(3))',))], [(None, ('Const(10)',))], [(None, ('Add(Add(Const(10), Const(2)), Const(2))',))]]}
+output_relations = [['result'], ['result'], ['result']]
+output_mappings = {'result': None}, parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.entity.TestEntity" name="test_entity_forward_2" time="0.005"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;entity.TestEntity testMethod=test_entity_forward_2&gt;
+
+    def test_entity_forward_2(self):
+      forward = scallopy.Module(
+        program="""
+          type Expr = Const(i32) | Add(Expr, Expr)
+          type root(id: i32, expr: Expr)
+          rel eval(e, y) = case e is Const(y)
+          rel eval(e, y1 + y2) = case e is Add(e1, e2) and eval(e1, y1) and eval(e2, y2)
+          rel result(id, y) = root(id, e) and eval(e, y)
+        """,
+        provenance="diffminmaxprob",
+        non_probabilistic=["root"],
+        output_relation="result")
+    
+&gt;     results, _ = forward(
+        root=[
+          [(1, "Add(Const(5), Const(3))"), (2, "Const(3)")],
+          [(1, "Const(10)"), (2, "Add(Add(Const(1), Const(2)), Const(3))")],
+          [(1, "Add(Add(Const(10), Const(2)), Const(2))")],
+        ]
+      )
+
+tests/entity.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:117: in __call__
+    return self.forward_fn(*pos_args, **kw_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 3
+all_inputs = {'root': [[(None, (1, 'Add(Const(5), Const(3))')), (None, (2, 'Const(3)'))], [(None, (1, 'Const(10)')), (None, (2, 'Add(Add(Const(1), Const(2)), Const(3))'))], [(None, (1, 'Add(Add(Const(10), Const(2)), Const(2))'))]]}
+output_relations = [['result'], ['result'], ['result']]
+output_mappings = {'result': None}, parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.entity.TestEntity" name="test_entity_tuple_1" time="0.010" /><testcase classname="tests.failure.TestFailures" name="test_incorrect_input_mapping_1" time="0.003"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.failure.TestFailures" name="test_incorrect_input_mapping_2" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.failure.TestFailures" name="test_incorrect_input_mapping_3" time="0.003"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.failure.TestFailures" name="test_incorrect_output_mapping_1" time="0.008"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.failure.TestFailures" name="test_no_relation_1" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.failure.TestFailures" name="test_type_error_1" time="0.003"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.failure.TestFailures" name="test_type_error_2" time="0.003"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_attribute.TestForeignAttribute" name="test_register_function_1" time="0.004" /><testcase classname="tests.foreign_attribute.TestForeignAttribute" name="test_register_function_fail_2" time="0.003"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_attribute.TestForeignAttribute" name="test_register_function_type_check_fail_1" time="0.003"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_attribute.TestForeignAttribute" name="test_register_predicate_1" time="0.004" /><testcase classname="tests.foreign_attribute.TestForeignAttribute" name="test_register_predicate_2" time="0.004" /><testcase classname="tests.foreign_attribute.TestForeignAttribute" name="test_register_predicate_3" time="0.003" /><testcase classname="tests.foreign_attribute.TestForeignAttribute" name="test_register_predicate_fail_1" time="0.003"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_attribute.TestForeignAttribute" name="test_register_predicate_fail_2" time="0.003"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_function.TestForeignFunction" name="test_add_foreign_function_twice" time="0.001"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_function.TestForeignFunction" name="test_bad_foreign_function_1" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_function.TestForeignFunction" name="test_bad_foreign_function_2" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_function.TestForeignFunction" name="test_bad_foreign_function_3" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_function.TestForeignFunction" name="test_foreign_string_index_of" time="0.006" /><testcase classname="tests.foreign_function.TestForeignFunction" name="test_foreign_sum" time="0.011" /><testcase classname="tests.foreign_function.TestForeignFunction" name="test_register_non_foreign_function" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.foreign_predicate.TestForeignPredicate" name="test_foreign_predicate_range" time="0.004" /><testcase classname="tests.foreign_predicate.TestForeignPredicate" name="test_fp_entity" time="0.007" /><testcase classname="tests.foreign_predicate.TestForeignPredicate" name="test_fp_suppress_warning" time="0.004" /><testcase classname="tests.forward.TestForward" name="test_top_k_sample" time="0.009"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestForward testMethod=test_top_k_sample&gt;
+
+    def test_top_k_sample(self):
+      # First setup the symbols
+      symbols = [str(s) for s in range(10)] + ["+", "-", "*", "/"]
+    
+      # Next setup the forward function
+      ctx = scallopy.ScallopContext(provenance="difftopkproofs")
+      ctx.add_relation("symbol", (int, str), [(i, s) for i in range(3) for s in symbols])
+      ctx.add_rule("sampled_symbol(id, sym) :- sym = top&lt;3&gt;(s: symbol(id, s))")
+      forward = ctx.forward_function("sampled_symbol")
+    
+      # Setup the input vectors
+      predictions = torch.softmax(torch.randn((16, 3, 14)), dim=2)
+      symbol = predictions.reshape((16, -1))
+&gt;     (_, sampled_symbol_prob) = forward(symbol=symbol)
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/forward.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'symbol': [[((tensor(0.0152), None), (0, '0')), ((tensor(0.0712), None), (0, '1')), ((tensor(0.0255), None), (0, '2')...((tensor(0.0591), None), (0, '3')), ((tensor(0.1517), None), (0, '4')), ((tensor(0.0507), None), (0, '5')), ...], ...]}
+output_relations = [['sampled_symbol'], ['sampled_symbol'], ['sampled_symbol'], ['sampled_symbol'], ['sampled_symbol'], ['sampled_symbol'], ...]
+output_mappings = {'sampled_symbol': None}, parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.forward.TestDigitForward" name="test_forward_with_output_mapping" time="0.014"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestDigitForward testMethod=test_forward_with_output_mapping&gt;
+
+    def test_forward_with_output_mapping(self):
+      forward = self.ctx.forward_function("sum_2")
+      digit_1 = torch.softmax(torch.randn((16, 10)), dim=1)
+      digit_2 = torch.softmax(torch.randn((16, 10)), dim=1)
+&gt;     result_tensor = forward(
+        digit_1=digit_1, digit_2=digit_2,
+        output_mappings=[(i,) for i in range(19)])
+
+tests/forward.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_1': [[(tensor(0.1465), (0,)), (tensor(0.3061), (1,)), (tensor(0.0849), (2,)), (tensor(0.1387), (3,)), (tensor(...84), (1,)), (tensor(0.0151), (2,)), (tensor(0.0173), (3,)), (tensor(0.5081), (4,)), (tensor(0.0380), (5,)), ...], ...]}
+output_relations = [['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ...]
+output_mappings = {'sum_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...])}
+parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.forward.TestDigitForward" name="test_forward_with_output_mapping_2" time="0.013"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestDigitForward testMethod=test_forward_with_output_mapping_2&gt;
+
+    def test_forward_with_output_mapping_2(self):
+      forward = self.ctx.forward_function()
+      digit_1 = torch.softmax(torch.randn((16, 10)), dim=1)
+      digit_2 = torch.softmax(torch.randn((16, 10)), dim=1)
+&gt;     results = forward(
+        digit_1=digit_1,
+        digit_2=digit_2,
+        output_relations=[["sum_2", "mult_2"]] * 16,
+        output_mappings={
+          "sum_2": [(i,) for i in range(19)],
+          "mult_2": [(i,) for i in range(82)],
+        })
+
+tests/forward.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_1': [[(tensor(0.0221), (0,)), (tensor(0.0223), (1,)), (tensor(0.0255), (2,)), (tensor(0.0272), (3,)), (tensor(...42), (1,)), (tensor(0.0406), (2,)), (tensor(0.0620), (3,)), (tensor(0.0123), (4,)), (tensor(0.1072), (5,)), ...], ...]}
+output_relations = [['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ...]
+output_mappings = {'sum_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...]), 'mult_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...])}
+parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.forward.TestDigitForward" name="test_forward_without_output_mapping" time="0.013"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.forward.TestDigitForward" name="test_multi_result" time="0.013"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestDigitForward testMethod=test_multi_result&gt;
+
+    def test_multi_result(self):
+      forward = self.ctx.forward_function(output_mappings={"sum_2": list(range(19)), "mult_2": list(range(100))})
+      digit_1 = torch.softmax(torch.randn((16, 10)), dim=1)
+      digit_2 = torch.softmax(torch.randn((16, 10)), dim=1)
+&gt;     result = forward(digit_1=digit_1, digit_2=digit_2)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/forward.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_1': [[(tensor(0.0472), (0,)), (tensor(0.0201), (1,)), (tensor(0.0413), (2,)), (tensor(0.1534), (3,)), (tensor(...84), (1,)), (tensor(0.1100), (2,)), (tensor(0.0859), (3,)), (tensor(0.0798), (4,)), (tensor(0.1121), (5,)), ...], ...]}
+output_relations = [['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ...]
+output_mappings = {'sum_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...]), 'mult_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...])}
+parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.forward.TestDigitForward" name="test_multi_result_maybe_with_output_mapping" time="0.014"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestDigitForward testMethod=test_multi_result_maybe_with_output_mapping&gt;
+
+    def test_multi_result_maybe_with_output_mapping(self):
+      forward = self.ctx.forward_function(output_mappings={"sum_2": None, "mult_2": list(range(100))})
+      digit_1 = torch.softmax(torch.randn((16, 10)), dim=1)
+      digit_2 = torch.softmax(torch.randn((16, 10)), dim=1)
+&gt;     result = forward(digit_1=digit_1, digit_2=digit_2)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/forward.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_1': [[(tensor(0.0222), (0,)), (tensor(0.1007), (1,)), (tensor(0.1800), (2,)), (tensor(0.0525), (3,)), (tensor(...35), (1,)), (tensor(0.0269), (2,)), (tensor(0.1110), (3,)), (tensor(0.2214), (4,)), (tensor(0.0117), (5,)), ...], ...]}
+output_relations = [['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ['sum_2', 'mult_2'], ...]
+output_mappings = {'sum_2': None, 'mult_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...])}
+parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.forward.TestDigitForward" name="test_multi_result_non_parallel_dispatch" time="0.020" /><testcase classname="tests.forward.TestDigitForward" name="test_multi_result_single_dispatch" time="0.020" /><testcase classname="tests.forward.TestDigitForward" name="test_no_output_mapping" time="0.014"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestDigitForward testMethod=test_no_output_mapping&gt;
+
+    def test_no_output_mapping(self):
+      forward = self.ctx.forward_function("sum_2")
+      digit_1 = torch.softmax(torch.randn((16, 10)), dim=1)
+      digit_2 = torch.softmax(torch.randn((16, 10)), dim=1)
+&gt;     (result_mapping, result_tensor) = forward(digit_1=digit_1, digit_2=digit_2)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/forward.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_1': [[(tensor(0.1021), (0,)), (tensor(0.0305), (1,)), (tensor(0.0797), (2,)), (tensor(0.1170), (3,)), (tensor(...49), (1,)), (tensor(0.1427), (2,)), (tensor(0.1229), (3,)), (tensor(0.2287), (4,)), (tensor(0.0421), (5,)), ...], ...]}
+output_relations = [['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ...]
+output_mappings = {'sum_2': None}, parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.forward.TestDigitForward" name="test_normal" time="0.013"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestDigitForward testMethod=test_normal&gt;
+
+    def test_normal(self):
+      forward = self.ctx.forward_function("sum_2", list(range(19)))
+      digit_1 = torch.softmax(torch.randn((16, 10)), dim=1)
+      digit_2 = torch.softmax(torch.randn((16, 10)), dim=1)
+&gt;     sum_2 = forward(digit_1=digit_1, digit_2=digit_2)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/forward.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_1': [[(tensor(0.0083), (0,)), (tensor(0.0145), (1,)), (tensor(0.0167), (2,)), (tensor(0.0428), (3,)), (tensor(...06), (1,)), (tensor(0.0278), (2,)), (tensor(0.0128), (3,)), (tensor(0.1876), (4,)), (tensor(0.0771), (5,)), ...], ...]}
+output_relations = [['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ...]
+output_mappings = {'sum_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...])}
+parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.forward.TestDigitForward" name="test_serial_dispatch" time="0.016" /><testcase classname="tests.forward.TestDigitForward" name="test_single_dispatch" time="0.016" /><testcase classname="tests.forward.TestDigitForward" name="test_unknown_relation_1" time="0.011"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.forward.TestDirectForward" name="test_forward" time="0.005"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestDirectForward testMethod=test_forward&gt;
+
+    def test_forward(self):
+      sum_2_program = """
+      type digit_a(usize), digit_b(usize)
+      rel sum_2(a + b) = digit_a(a), digit_b(b)
+      """
+      compute_sum_2 = scallopy.ScallopForwardFunction(
+        program=sum_2_program,
+        provenance="difftopkproofs",
+        input_mappings={"digit_a": list(range(10)), "digit_b": list(range(10))},
+        output_mappings={"sum_2": list(range(19))},
+      )
+      digit_a, digit_b = torch.randn((16, 10)), torch.randn((16, 10))
+&gt;     result = compute_sum_2(digit_a=digit_a, digit_b=digit_b)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/forward.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:117: in __call__
+    return self.forward_fn(*pos_args, **kw_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_a': [[((tensor(-0.5525), None), (0,)), ((tensor(-0.0893), None), (1,)), ((tensor(1.3213), None), (2,)), ((tens...), (2,)), ((tensor(-1.2598), None), (3,)), ((tensor(0.3857), None), (4,)), ((tensor(-0.8271), None), (5,)), ...], ...]}
+output_relations = [['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ...]
+output_mappings = {'sum_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...])}
+parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.forward.TestDirectForward" name="test_forward_with_non_probabilistic" time="0.004" /><testcase classname="tests.forward.TestDirectForward" name="test_forward_with_probabilities" time="0.005"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;forward.TestDirectForward testMethod=test_forward_with_probabilities&gt;
+
+    def test_forward_with_probabilities(self):
+      def process_input(digit_tensor):
+        r = []
+        (batch_size, _) = digit_tensor.shape
+        for task_id in range(batch_size):
+          r.append([(p, (i,)) for (i, p) in enumerate(digit_tensor[task_id])])
+        return r
+    
+      sum_2_program = """
+      type digit_a(usize), digit_b(usize)
+      rel sum_2(a + b) = digit_a(a), digit_b(b)
+      """
+      compute_sum_2 = scallopy.ScallopForwardFunction(
+        program=sum_2_program,
+        provenance="difftopkproofs",
+        input_mappings={"digit_a": None, "digit_b": None},
+        output_mappings={"sum_2": list(range(19))},
+      )
+      digit_a, digit_b = torch.randn((16, 10)), torch.randn((16, 10))
+&gt;     result = compute_sum_2(digit_a=process_input(digit_a), digit_b=process_input(digit_b))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/forward.py:235: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:117: in __call__
+    return self.forward_fn(*pos_args, **kw_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_a': [[((tensor(-1.6036), None), (0,)), ((tensor(-1.4797), None), (1,)), ((tensor(-1.1941), None), (2,)), ((ten...ne), (2,)), ((tensor(0.5733), None), (3,)), ((tensor(1.4878), None), (4,)), ((tensor(1.8776), None), (5,)), ...], ...]}
+output_relations = [['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ...]
+output_mappings = {'sum_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...])}
+parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_cannot_set_property" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_categorical_retain_k_1" time="0.002" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_categorical_retain_k_2" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_1" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_2" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_3" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_failure_1" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_failure_2" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_failure_3" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_failure_4" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_failure_5" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_dict_failure_6" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_1" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_1_1" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_2" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_3" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_4" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_failure_1" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_failure_2" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_failure_3" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_list_failure_4" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_tuple_1" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_tuple_2" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_tuple_failure_1" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_construct_value_1" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_disjunction_1" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_disjunction_2" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_disjunction_3" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_disjunction_4" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_mult_dim_categorical_retain_k_1" time="0.001" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_mult_dim_categorical_retain_k_2" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_mult_dim_retain_k_1" time="0.001" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_mult_dim_retain_k_2" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_mult_dim_retain_k_3" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_process_tensor_1" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_process_tensor_2" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_process_tensor_3" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_retain_k_1" time="0.000" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_retain_k_2" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_retain_k_3" time="0.000"><skipped type="pytest.xfail" message="" /></testcase><testcase classname="tests.input_mapping.TestInputMapping" name="test_retain_threshold_1" time="0.001" /><testcase classname="tests.input_mapping.TestInputMapping" name="test_retain_threshold_2" time="0.000" /><testcase classname="tests.sparse_forward.TestSparseDigitForward" name="test_backward_with_sparse" time="0.014"><failure message="pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.">self = &lt;sparse_forward.TestSparseDigitForward testMethod=test_backward_with_sparse&gt;
+
+    def test_backward_with_sparse(self):
+      loss_fn = torch.nn.BCELoss()
+      forward = self.ctx.forward_function(
+        "sum_2",
+        list(range(19)),
+        sparse_jacobian=True)
+    
+      # Construct the digit
+      digit_1_base = torch.randn((16, 10), requires_grad=True)
+      digit_1 = torch.softmax(digit_1_base, dim=1)
+      digit_2_base = torch.randn((16, 10), requires_grad=True)
+      digit_2 = torch.softmax(digit_2_base, dim=1)
+    
+      # Call scallop and obtain loss
+&gt;     sum_2 = forward(digit_1=digit_1, digit_2=digit_2)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/sparse_forward.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scallopy/forward.py:299: in __call__
+    return self._call_with_dynamic_ctx(
+scallopy/forward.py:429: in _call_with_dynamic_ctx
+    (input_tags, output_results) = self._run_batch(batch_size, all_inputs, current_output_relations, current_output_mappings, parallel=True)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = InternalScallopForwardFunction(), batch_size = 16
+all_inputs = {'digit_1': [[((tensor(0.1737, grad_fn=&lt;SelectBackward0&gt;), None), (0,)), ((tensor(0.0911, grad_fn=&lt;SelectBackward0&gt;), ....0829, grad_fn=&lt;SelectBackward0&gt;), None), (4,)), ((tensor(0.0791, grad_fn=&lt;SelectBackward0&gt;), None), (5,)), ...], ...]}
+output_relations = [['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ['sum_2'], ...]
+output_mappings = {'sum_2': (False, [(0,), (1,), (2,), (3,), (4,), (5,), ...])}
+parallel = True
+
+    def _run_batch(self, batch_size, all_inputs, output_relations, output_mappings, parallel: bool):
+      """
+      Run a batch of tasks
+      """
+&gt;     results = self.ctx._internal.run_batch(output_relations, all_inputs, parallel)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E     pyo3_runtime.PanicException: Cannot clone pointer into Python heap without the thread being attached.
+
+scallopy/forward.py:557: PanicException</failure></testcase><testcase classname="tests.tensors.TensorTests" name="test_tensor_1" time="0.007" /><testcase classname="tests.tensors.TensorTests" name="test_tensor_2" time="0.006" /><testcase classname="tests.tensors.TensorTests" name="test_tensor_3" time="0.007" /><testcase classname="tests.tensors.TensorTests" name="test_tensor_backprop_4" time="0.380" /><testcase classname="tests.tensors.TensorTests" name="test_tensor_forward_backprop_1" time="0.020" /></testsuite></testsuites>

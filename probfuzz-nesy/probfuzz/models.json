@@ -1,0 +1,26 @@
+{
+    "models": [
+        {
+            "name": "bernoulli",
+            "scallop": "bernoulli",
+            "deepproblog": "bernoulli",
+            "problog": "bernoulli",
+            "neurasp": "bernoulli",
+            "oracle": "bernoulli",
+            "args": [{"name": "p", "type": "p"}],
+            "type": "D",
+            "support": "b"
+        },
+        {
+            "name": "categorical",
+            "scallop": "categorical",
+            "deepproblog": "categorical",
+            "problog": "categorical",
+            "neurasp": "categorical",
+            "oracle": "categorical",
+            "args": [{"name": "p", "type": "p", "variadic": true}],
+            "type": "D",
+            "support": "i+"
+        }
+    ]
+}

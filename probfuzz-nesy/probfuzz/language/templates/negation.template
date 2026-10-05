@@ -1,0 +1,5 @@
+n : int
+a := DISTX[n]
+b := DISTX[n]
+rule q(X) :- a(X), not b(X)
+posterior(q)

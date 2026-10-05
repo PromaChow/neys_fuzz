@@ -1,0 +1,9 @@
+template: noisy_or
+domain: ??DOM(2,3)
+fact a/1 : ??FACTS(1,3)
+fact b/1 : ??FACTS(1,3)
+fact c/1 : ??FACTS(1,3)
+idb q/1
+rule q(X) :- a(X).
+rule q(X) :- b(X).
+rule q(X) :- c(X).

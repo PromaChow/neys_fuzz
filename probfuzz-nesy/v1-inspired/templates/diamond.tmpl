@@ -1,0 +1,9 @@
+template: diamond
+domain: ??DOM(2,3)
+fact s/2 : ??FACTS(2,4)
+fact t/2 : ??FACTS(2,4)
+fact u/2 : ??FACTS(2,4)
+fact v/2 : ??FACTS(2,4)
+idb top/2
+rule top(X,Z) :- s(X,Y), t(Y,Z).
+rule top(X,Z) :- u(X,Y), v(Y,Z).

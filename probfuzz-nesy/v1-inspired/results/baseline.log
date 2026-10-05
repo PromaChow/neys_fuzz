@@ -1,0 +1,85 @@
+[chain] done  (7s)
+[diamond] done  (47s)
+[disjunction] done  (50s)
+[disjunction_join] done  (55s)
+[join] done  (61s)
+[negation] done  (62s)
+[nn_sum] done  (68s)
+[noisy_or] done  (70s)
+[reach] done  (76s)
+
+== chain
+   dpl_approx: ok x40
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== diamond
+   dpl_approx: ok x40
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== disjunction
+   dpl_approx: ok x40
+   dpl_approx~scallop_wmcdisj: disagree x36
+   dpl_exact: ok x40
+   dpl_exact~scallop_wmcdisj: disagree x36
+   neurasp: ok x40
+   neurasp~scallop_wmcdisj: disagree x36
+   problog: ok x40
+   problog~scallop_wmcdisj: disagree x36
+   scallop_topk: ok x40
+   scallop_topk~scallop_wmcdisj: disagree x36
+   scallop_wmcdisj: mismatch [known:F3-scallop-disjunction] x36
+   scallop_wmcdisj: ok x4
+
+== disjunction_join
+   dpl_approx: ok x40
+   dpl_approx~scallop_wmcdisj: disagree x40
+   dpl_exact: ok x40
+   dpl_exact~scallop_wmcdisj: disagree x40
+   neurasp: ok x40
+   neurasp~scallop_wmcdisj: disagree x40
+   problog: ok x40
+   problog~scallop_wmcdisj: disagree x40
+   scallop_topk: ok x40
+   scallop_topk~scallop_wmcdisj: disagree x40
+   scallop_wmcdisj: mismatch [known:F3-scallop-disjunction] x40
+
+== join
+   dpl_approx: ok x40
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== negation
+   dpl_approx: crash [candidate:dpl-approx-negation-unsupported] x40
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== nn_sum
+   dpl_approx_nn: ok x40
+   dpl_approx_nn~scallop_nn: disagree x40
+   dpl_exact_nn: ok x40
+   dpl_exact_nn~scallop_nn: disagree x40
+   scallop_nn: mismatch [known:F22-family-forward_function-categorical] x40
+
+== noisy_or
+   dpl_approx: ok x40
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+
+== reach
+   dpl_exact: ok x40
+   neurasp: ok x40
+   problog: ok x40
+   scallop_topk: ok x40
+results -> /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/probfuzz-nesy/results/run_special0.0_s1.jsonl

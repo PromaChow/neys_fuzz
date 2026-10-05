@@ -1,0 +1,620 @@
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 0.0, "float32": 0.49994999170303345, "float64": 0.49994999170303345, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 0.0, "float32": 0.0, "float64": 0.0, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 0.0, "float32": 0.5000500082969666, "float64": 0.5000500082969666, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 0.0, "float32": 0.0, "float64": 0.0, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 0.0, "float32": 0.749875009059906, "float64": 0.749875009059906, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 0.0, "float32": 0.0, "float64": 0.0, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 0.0, "float32": 0.25002503395080566, "float64": 0.25002503395080566, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 0.0, "float32": 0.0, "float64": 0.0, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 1.0, "float32": 0.5201725959777832, "float64": 0.5201725959777832, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 1.0, "float32": 0.03941630572080612, "float64": 0.03941631112455264, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 1.0, "float32": 0.6185088157653809, "float64": 0.6185088157653809, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 1.0, "float32": -0.09847955405712128, "float64": -0.09847953682842103, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 1.0, "float32": 0.8004716634750366, "float64": 0.8004716634750366, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 1.0, "float32": -0.06624100357294083, "float64": -0.0662410135096962, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 1.0, "float32": 0.3309794068336487, "float64": 0.3309794068336487, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 1.0, "float32": -0.039509233087301254, "float64": -0.039509231997404304, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 5.0, "float32": 0.3922949433326721, "float64": 0.3922949433326721, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 5.0, "float32": 0.05970940738916397, "float64": 0.05970941164056349, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 5.0, "float32": 0.754511296749115, "float64": 0.754511296749115, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 5.0, "float32": -0.04821203649044037, "float64": -0.048212009453244345, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 5.0, "float32": 0.9553387761116028, "float64": 0.9553387761116028, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 5.0, "float32": -0.09556637704372406, "float64": -0.09556637858174742, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 5.0, "float32": 0.36597925424575806, "float64": 0.36597925424575806, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 5.0, "float32": -0.006708944216370583, "float64": -0.006708943798858382, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 10.0, "float32": 0.3696642518043518, "float64": 0.3696642518043518, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 10.0, "float32": 0.010547585785388947, "float64": 0.010547586339007594, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 10.0, "float32": 0.7728668451309204, "float64": 0.7728668451309204, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 10.0, "float32": -0.008602436631917953, "float64": -0.008602424833905208, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 10.0, "float32": 0.9956664443016052, "float64": 0.9956664443016052, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 10.0, "float32": -0.02072792500257492, "float64": -0.020727925271147984, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 10.0, "float32": 0.3675305247306824, "float64": 0.3675305247306824, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 10.0, "float32": -0.00013781942834611982, "float64": -0.00013781967343343425, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 17.0, "float32": 0.36760878562927246, "float64": 0.36760878562927246, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 17.0, "float32": 0.0005466338479891419, "float64": 0.0005466337996919784, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 17.0, "float32": 0.7745441794395447, "float64": 0.7745441794395447, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 17.0, "float32": -0.00044613584759645164, "float64": -0.00044630950227390507, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 17.0, "float32": 0.9997015595436096, "float64": 0.9997015595436096, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 17.0, "float32": -0.0009339831303805113, "float64": -0.0009339831149874565, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 17.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 17.0, "float32": -2.2218293338482908e-07, "float64": -2.2218094155266713e-07, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 20.0, "float32": 0.3675588369369507, "float64": 0.3675588369369507, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 20.0, "float32": 0.00014352869766298681, "float64": 0.00014352869027578878, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 20.0, "float32": 0.774584949016571, "float64": 0.774584949016571, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 20.0, "float32": -0.0001172330230474472, "float64": -0.00011718979758674172, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 20.0, "float32": 0.9997806549072266, "float64": 0.9997806549072266, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 20.0, "float32": -0.0002031308104051277, "float64": -0.00020313081776743012, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 20.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 20.0, "float32": -1.3047060321014214e-08, "float64": -1.3044065196727814e-08, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 40.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 40.0, "float32": 1.3034576973325329e-08, "float64": 1.3033272862876985e-08, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 40.0, "float32": 0.7745966911315918, "float64": 0.7745966911315918, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 40.0, "float32": 1.0642905827473736e-12, "float64": -1.0641622330022954e-08, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 40.0, "float32": 0.9997999668121338, "float64": 0.9997999668121338, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 40.0, "float32": -1.648593261904807e-08, "float64": -1.648428323140897e-08, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 40.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 40.0, "float32": -2.1640675362810669e-16, "float64": -4.056652419529117e-16, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 88.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 88.0, "float32": 1.0825602189695867e-18, "float64": 1.0825601633877887e-18, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 88.0, "float32": 0.7745966911315918, "float64": 0.7745966911315918, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 88.0, "float32": 8.83906590505512e-23, "float64": 8.839066327111703e-23, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 88.0, "float32": 0.9997999668121338, "float64": 0.9997999668121338, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 88.0, "float32": -1.3692053913842719e-18, "float64": -1.3692054351687226e-18, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 88.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 88.0, "float32": -1.7960785090071997e-26, "float64": -1.7960602360674166e-26, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 100.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 100.0, "float32": 3.0493163079038154e-21, "float64": 3.0493163197383754e-21, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 100.0, "float32": 0.7745966911315918, "float64": 0.7745966911315918, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 100.0, "float32": 2.4897564434803757e-25, "float64": 2.4897562384120967e-25, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 100.0, "float32": 0.9997999668121338, "float64": 0.9997999668121338, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 100.0, "float32": -3.856728394338141e-21, "float64": -3.85672835537259e-21, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 100.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 100.0, "float32": -5.061035745058554e-29, "float64": -5.059077522245602e-29, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_P", "scale": 200.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_P", "scale": 200.0, "float32": 0.0, "float64": 1.1762736776178568e-42, "ok": true}
+{"dim": "D5", "check": "value", "formula": "exists_P", "scale": 200.0, "float32": 0.7745966911315918, "float64": 0.7745966911315918, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "exists_P", "scale": 200.0, "float32": 0.0, "float64": 9.604233932609093e-47, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_imp", "scale": 200.0, "float32": 0.9997999668121338, "float64": 0.9997999668121338, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_imp", "scale": 200.0, "float32": 0.0, "float64": -1.4877328458126028e-42, "ok": true}
+{"dim": "D5", "check": "value", "formula": "forall_and", "scale": 200.0, "float32": 0.3675444722175598, "float64": 0.3675444722175598, "ok": true}
+{"dim": "D5", "check": "gradient", "formula": "forall_and", "scale": 200.0, "float32": 0.0, "float64": -1.9515390003740682e-50, "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5781890153884888 vs 0.5781890153884888"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5836914777755737 vs 0.5836914777755737"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.759020984172821 vs 0.759020984172821"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3380618095397949 vs 0.3380618095397949"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.600749135017395 vs 0.600749135017395"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6145328283309937 vs 0.6145328283309937"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7675865292549133 vs 0.7675865292549133"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.36974674463272095 vs 0.36974674463272095"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6441495418548584 vs 0.6441495418548584"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.649052083492279 vs 0.649052083492279"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7733551859855652 vs 0.7733551859855652"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.41806697845458984 vs 0.41806697845458984"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6157945394515991 vs 0.6157945394515991"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6240734457969666 vs 0.6240734457969666"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.767905592918396 vs 0.767905592918396"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3846580982208252 vs 0.3846580386161804"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6148847937583923 vs 0.6148847937583923"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6176074743270874 vs 0.6176074743270874"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7645846009254456 vs 0.7645846009254456"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.37993788719177246 vs 0.37993788719177246"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5826663970947266 vs 0.5826663970947266"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5870610475540161 vs 0.5870610475540161"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.759101927280426 vs 0.759101927280426"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3424253463745117 vs 0.3424253463745117"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5717580318450928 vs 0.5717580318450928"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.57623690366745 vs 0.57623690366745"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7574401497840881 vs 0.7574401497840881"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.32990485429763794 vs 0.32990485429763794"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5972867608070374 vs 0.5972867608070374"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.609853982925415 vs 0.609853982925415"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.766307532787323 vs 0.766307532787323"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.36492908000946045 vs 0.36492908000946045"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5729584693908691 vs 0.5729584693908691"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5782201290130615 vs 0.5782201290130615"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7580176591873169 vs 0.7580176591873169"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3317120671272278 vs 0.3317120671272278"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6100845336914062 vs 0.6100845336914062"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.620442271232605 vs 0.620442271232605"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7678169012069702 vs 0.7678169012069702"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3791217803955078 vs 0.3791217803955078"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5698668956756592 vs 0.5698668956756592"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5804300308227539 vs 0.5804300308227539"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7601907849311829 vs 0.7601907849311829"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.33102887868881226 vs 0.33102887868881226"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6105287075042725 vs 0.6105287075042725"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.61679607629776 vs 0.61679607629776"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7655619382858276 vs 0.7655619382858276"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3768659830093384 vs 0.3768659830093384"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5915420055389404 vs 0.5915420055389404"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6029355525970459 vs 0.6029355525970459"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7644308805465698 vs 0.7644308805465698"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3571745753288269 vs 0.3571745753288269"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6336941123008728 vs 0.6336941123008728"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6405245065689087 vs 0.6405245065689087"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.771653413772583 vs 0.771653413772583"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.4062061309814453 vs 0.4062061309814453"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6110141277313232 vs 0.6110141277313232"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6249103546142578 vs 0.6249104142189026"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7696852087974548 vs 0.7696852087974548"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3818647265434265 vs 0.3818647265434265"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5733941197395325 vs 0.5733941197395325"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5809155106544495 vs 0.5809155106544495"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7593147158622742 vs 0.7593147158622742"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.33366191387176514 vs 0.33366191387176514"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.587949812412262 vs 0.587949812412262"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.603572428226471 vs 0.603572428226471"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7662553191184998 vs 0.7662553191184998"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3558628559112549 vs 0.3558628559112549"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6144307255744934 vs 0.6144307255744934"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.62265545129776 vs 0.62265545129776"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.767512857913971 vs 0.767512857913971"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.38285624980926514 vs 0.38285624980926514"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.653705894947052 vs 0.653705894947052"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6632541418075562 vs 0.6632541418075562"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7787449359893799 vs 0.7787449359893799"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.43326032161712646 vs 0.43326032161712646"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6153470873832703 vs 0.6153470873832703"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6222102642059326 vs 0.6222102642059326"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7669416666030884 vs 0.7669416666030884"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3830753564834595 vs 0.3830753564834595"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6516956090927124 vs 0.6516956090927124"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6613584756851196 vs 0.6613584756851196"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7786055207252502 vs 0.7786055207252502"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.4314735531806946 vs 0.4314735531806946"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6049182415008545 vs 0.6049182415008545"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.61566561460495 vs 0.61566561460495"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7666494846343994 vs 0.7666494846343994"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.37256574630737305 vs 0.37256574630737305"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6215148568153381 vs 0.6215148568153381"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6267110109329224 vs 0.6267110109329224"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7674899697303772 vs 0.7674899697303772"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3896326422691345 vs 0.3896326422691345"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6038225889205933 vs 0.6038225889205933"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6131657361984253 vs 0.6131656765937805"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.76592618227005 vs 0.7659261226654053"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3709229826927185 vs 0.3709229826927185"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6061305999755859 vs 0.6061305999755859"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6188268065452576 vs 0.6188268065452576"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7682478427886963 vs 0.7682478427886963"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3757825493812561 vs 0.3757825493812561"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5955549478530884 vs 0.5955549478530884"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6064731478691101 vs 0.6064731478691101"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7650527954101562 vs 0.7650527954101562"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3618181347846985 vs 0.3618181347846985"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.659900963306427 vs 0.659900963306427"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6630456447601318 vs 0.6630456447601318"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7771135568618774 vs 0.7771135568618774"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.43740200996398926 vs 0.43740200996398926"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6208752393722534 vs 0.6208752393722534"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6331010460853577 vs 0.6331011056900024"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7713624238967896 vs 0.7713624238967896"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3935045599937439 vs 0.3935045599937439"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5759842395782471 vs 0.5759842395782471"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.591422438621521 vs 0.591422438621521"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7637873888015747 vs 0.7637873888015747"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3411843180656433 vs 0.3411843180656433"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5787601470947266 vs 0.5787601470947266"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5861456394195557 vs 0.5861456394195557"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7600754499435425 vs 0.7600754499435425"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3397667407989502 vs 0.3397667407989502"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6454342603683472 vs 0.6454342603683472"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6483827829360962 vs 0.6483827829360962"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.772715151309967 vs 0.772715151309967"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.41863614320755005 vs 0.41863614320755005"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6279284954071045 vs 0.6279284954071045"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6290808916091919 vs 0.6290808916091919"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7668394446372986 vs 0.7668394446372986"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3950532078742981 vs 0.3950532078742981"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.649099588394165 vs 0.649099588394165"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6543915271759033 vs 0.6543914675712585"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7749258279800415 vs 0.7749258279800415"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.4245394468307495 vs 0.4245394468307495"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5495502352714539 vs 0.5495502352714539"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5496710538864136 vs 0.5496710538864136"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7523461580276489 vs 0.7523461580276489"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3020991086959839 vs 0.3020991086959839"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6463773250579834 vs 0.6463773250579834"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6570935845375061 vs 0.6570935845375061"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7773839235305786 vs 0.7773839235305786"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.424834668636322 vs 0.424834668636322"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6085838079452515 vs 0.6085838079452515"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.608823835849762 vs 0.608823835849762"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7617536783218384 vs 0.7617536783218384"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.37055081129074097 vs 0.37055081129074097"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6204032897949219 vs 0.6204032897949219"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6219184994697571 vs 0.6219184994697571"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7651779651641846 vs 0.7651779651641846"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.38590532541275024 vs 0.38590532541275024"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6112549901008606 vs 0.6112549901008606"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.615167498588562 vs 0.615167498588562"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7644016742706299 vs 0.7644016742706299"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3762015700340271 vs 0.3762015700340271"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5946518182754517 vs 0.5946518182754517"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6049134731292725 vs 0.6049135327339172"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7642763257026672 vs 0.7642763257026672"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.35990428924560547 vs 0.35990428924560547"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5651051998138428 vs 0.5651051998138428"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5725122690200806 vs 0.5725122690200806"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7579797506332397 vs 0.7579797506332397"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.32393258810043335 vs 0.32393258810043335"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6425279974937439 vs 0.6425279974937439"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.64930659532547 vs 0.64930659532547"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7739294171333313 vs 0.7739294171333313"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.41713863611221313 vs 0.41713863611221313"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6116306781768799 vs 0.6116306781768799"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6237039566040039 vs 0.6237039566040039"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7689670920372009 vs 0.7689670920372009"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.38176214694976807 vs 0.38176214694976807"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6290559768676758 vs 0.6290559768676758"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6350321173667908 vs 0.635032057762146"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.769838273525238 vs 0.769838273525238"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.39958101511001587 vs 0.39958101511001587"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5488933324813843 vs 0.5488933324813843"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5507187247276306 vs 0.5507187247276306"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7532073259353638 vs 0.7532073259353638"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3025442957878113 vs 0.3025442957878113"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6220192909240723 vs 0.622019350528717"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.627619206905365 vs 0.627619206905365"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7678283452987671 vs 0.7678284049034119"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.39049232006073 vs 0.39049232006073"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6042295694351196 vs 0.6042295694351196"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6156392097473145 vs 0.6156392097473145"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7670199871063232 vs 0.7670199871063232"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.37245625257492065 vs 0.37245625257492065"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5777153968811035 vs 0.5777153968811035"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5830361843109131 vs 0.5830361843109131"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.758813738822937 vs 0.758813738822937"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.33729642629623413 vs 0.33729642629623413"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.57060706615448 vs 0.57060706615448"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5772556066513062 vs 0.5772556066513062"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7584131360054016 vs 0.7584131360054016"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3298875689506531 vs 0.3298875689506531"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5991772413253784 vs 0.5991772413253784"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.605157732963562 vs 0.605157732963562"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7630800008773804 vs 0.7630800008773804"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.36311769485473633 vs 0.36311769485473633"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6422576308250427 vs 0.6422576308250427"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.652503490447998 vs 0.652503490447998"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7760463953018188 vs 0.7760463953018188"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.41951310634613037 vs 0.41951310634613037"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6285966634750366 vs 0.6285966634750366"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6386286020278931 vs 0.6386286020278931"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7718570232391357 vs 0.771856963634491"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.40133142471313477 vs 0.40133142471313477"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6261183023452759 vs 0.6261183023452759"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6300272941589355 vs 0.6300272345542908"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7680023908615112 vs 0.7680023908615112"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.39471709728240967 vs 0.39471709728240967"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.600702166557312 vs 0.600702166557312"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6109403967857361 vs 0.6109403371810913"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7655964493751526 vs 0.7655964493751526"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.36740559339523315 vs 0.36740559339523315"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6195051670074463 vs 0.6195051670074463"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.627915620803833 vs 0.627915620803833"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7688824534416199 vs 0.7688824534416199"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.38935065269470215 vs 0.38935065269470215"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6459379196166992 vs 0.6459379196166992"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.648181676864624 vs 0.6481817364692688"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7723939418792725 vs 0.7723939418792725"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.418698251247406 vs 0.418698251247406"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5955036878585815 vs 0.5955036878585815"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5959429144859314 vs 0.5959429144859314"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7591930627822876 vs 0.7591930627822876"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.35493004322052 vs 0.35493004322052"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.5795987844467163 vs 0.5795987844467163"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.5913054943084717 vs 0.5913054943084717"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7624004483222961 vs 0.7624004483222961"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.34315401315689087 vs 0.34315401315689087"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6258207559585571 vs 0.6258207559585571"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6348875164985657 vs 0.6348875164985657"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7705057859420776 vs 0.7705057859420776"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.3970685601234436 vs 0.3970685601234436"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.6170493364334106 vs 0.6170492768287659"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.6292230486869812 vs 0.6292230486869812"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7703689336776733 vs 0.7703689336776733"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.38867121934890747 vs 0.38867121934890747"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_P", "ok": true, "detail": "0.627151370048523 vs 0.627151370048523"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "exists_P", "ok": true, "detail": "0.637505292892456 vs 0.637505292892456"}
+{"dim": "D4", "check": "repeated_call", "formula": "exists_P", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_imp", "ok": true, "detail": "0.7718715071678162 vs 0.7718715071678162"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_imp", "ok": true}
+{"dim": "D4", "check": "individual_order", "formula": "forall_and", "ok": true, "detail": "0.4000951647758484 vs 0.4000951647758484"}
+{"dim": "D4", "check": "repeated_call", "formula": "forall_and", "ok": true}
+{"dim": "D4", "check": "batch_vs_single", "formula": "Imp(P(x),Q(x))", "ok": true}
