@@ -1,0 +1,516 @@
+{
+ "command": "/Users/promachowdhury/opt/anaconda3/envs/nesy/bin/python -m pytest src/deepproblog/tests -q -p no:cacheprovider --junitxml=/Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/fuzzing/deepproblog/result/deepproblog_tests.xml",
+ "exit_code": 0,
+ "secs": 4.19,
+ "totals": {
+  "skipped": 2,
+  "passed": 82
+ },
+ "n_tests": 84,
+ "tests": [
+  {
+   "test": "::src.deepproblog.tests.test_swi_program",
+   "outcome": "skipped",
+   "secs": 0.0,
+   "detail": "collection skipped"
+  },
+  {
+   "test": "src.deepproblog.tests.test_builtin::test_tensor_index",
+   "outcome": "passed",
+   "secs": 0.022,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_builtin::test_less_than",
+   "outcome": "passed",
+   "secs": 0.033,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_basic[cache_factory0]",
+   "outcome": "passed",
+   "secs": 0.003,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_basic[cache_factory1]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_basic[cache_factory2]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_basic[cache_factory3]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_hash_collision[cache_factory0]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_hash_collision[cache_factory1]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_hash_collision[cache_factory2]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_hash_collision[cache_factory3]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_invalidate[cache_factory0]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_invalidate[cache_factory1]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_invalidate[cache_factory2]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_invalidate[cache_factory3]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_unhashable[cache_factory0]",
+   "outcome": "skipped",
+   "secs": 0.001,
+   "detail": "Unsupported when cache is not used."
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_unhashable[cache_factory1]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_unhashable[cache_factory2]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_unhashable[cache_factory3]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_key_func[cache_factory0]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_key_func[cache_factory1]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_key_func[cache_factory2]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_cache::test_key_func[cache_factory3]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_dataset::test_query_dataset",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_dataset::test_dataset_write_to_file",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_dataset::test_subset",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_dataset::test_extension",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_dataset::test_mutating_dataset",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_dataset::test_noise_mutator",
+   "outcome": "passed",
+   "secs": 0.028,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_dataset::test_numeric_incorrect_output_mutator",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_dataset::test_dataloader",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_cache_error",
+   "outcome": "passed",
+   "secs": 0.011,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_ad",
+   "outcome": "passed",
+   "secs": 0.02,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_ad2",
+   "outcome": "passed",
+   "secs": 0.02,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_ad3",
+   "outcome": "passed",
+   "secs": 0.018,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_fact",
+   "outcome": "passed",
+   "secs": 0.018,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_fact2",
+   "outcome": "passed",
+   "secs": 0.019,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_foreign",
+   "outcome": "passed",
+   "secs": 0.025,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_foreign_text",
+   "outcome": "passed",
+   "secs": 0.01,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_engine::test_assignment",
+   "outcome": "passed",
+   "secs": 0.01,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_model::test_model_basics[model0]",
+   "outcome": "passed",
+   "secs": 0.003,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_model::test_model_basics[model1]",
+   "outcome": "passed",
+   "secs": 0.01,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_model::test_model_basics[model2]",
+   "outcome": "passed",
+   "secs": 0.01,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_model::test_solve[model0]",
+   "outcome": "passed",
+   "secs": 0.037,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_model::test_solve[model1]",
+   "outcome": "passed",
+   "secs": 0.061,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_model::test_solve[model2]",
+   "outcome": "passed",
+   "secs": 0.038,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_model_basics[model0]",
+   "outcome": "passed",
+   "secs": 0.003,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_model_basics[model1]",
+   "outcome": "passed",
+   "secs": 0.011,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_model_basics[model2]",
+   "outcome": "passed",
+   "secs": 0.01,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_ad_network[model0]",
+   "outcome": "passed",
+   "secs": 0.012,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_ad_network[model1]",
+   "outcome": "passed",
+   "secs": 0.109,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_ad_network[model2]",
+   "outcome": "passed",
+   "secs": 0.04,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_fact_network[model0]",
+   "outcome": "passed",
+   "secs": 0.005,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_fact_network[model1]",
+   "outcome": "passed",
+   "secs": 0.084,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_fact_network[model2]",
+   "outcome": "passed",
+   "secs": 0.029,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_det_network[model0]",
+   "outcome": "passed",
+   "secs": 0.006,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_det_network[model1]",
+   "outcome": "passed",
+   "secs": 0.068,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_det_network[model2]",
+   "outcome": "passed",
+   "secs": 0.084,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_det_network_substitution[model0]",
+   "outcome": "passed",
+   "secs": 0.026,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_det_network_substitution[model1]",
+   "outcome": "passed",
+   "secs": 0.026,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_det_network_substitution[model2]",
+   "outcome": "passed",
+   "secs": 0.01,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_multi_input_network[model0]",
+   "outcome": "passed",
+   "secs": 0.024,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_multi_input_network[model1]",
+   "outcome": "passed",
+   "secs": 0.026,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_neural_predicate::test_multi_input_network[model2]",
+   "outcome": "passed",
+   "secs": 0.024,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_small_probabilities_are_summed[1e-08]",
+   "outcome": "passed",
+   "secs": 0.023,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_small_probabilities_are_summed[1e-06]",
+   "outcome": "passed",
+   "secs": 0.019,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_small_probabilities_are_summed[5e-06]",
+   "outcome": "passed",
+   "secs": 0.017,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_small_probabilities_are_summed[1e-05]",
+   "outcome": "passed",
+   "secs": 0.018,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_small_probabilities_are_summed[1.0001e-05]",
+   "outcome": "passed",
+   "secs": 0.018,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_small_probabilities_are_summed[0.1]",
+   "outcome": "passed",
+   "secs": 0.019,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_small_probabilities_are_summed[0.3]",
+   "outcome": "passed",
+   "secs": 0.018,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_probabilities_near_one_are_multiplied[0.99999999]",
+   "outcome": "passed",
+   "secs": 0.018,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_probabilities_near_one_are_multiplied[0.999999]",
+   "outcome": "passed",
+   "secs": 0.017,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_probabilities_near_one_are_multiplied[0.99999]",
+   "outcome": "passed",
+   "secs": 0.017,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_probabilities_near_one_are_multiplied[0.9]",
+   "outcome": "passed",
+   "secs": 0.017,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_small_probabilities_keep_their_gradient",
+   "outcome": "passed",
+   "secs": 0.03,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_is_exact_zero_and_one",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_neutral_elements_keep_tensors_in_the_graph",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_saturated_network_keeps_gradient_and_finite_loss",
+   "outcome": "passed",
+   "secs": 0.025,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_exhaustive_ad_stays_a_probability",
+   "outcome": "passed",
+   "secs": 0.069,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_training_through_the_circuit_is_stable",
+   "outcome": "passed",
+   "secs": 1.084,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_loss_survives_round_off_probabilities[1.0--1.192093e-07]",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_loss_survives_round_off_probabilities[0.0-1.0000001192093]",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "src.deepproblog.tests.test_semiring::test_float_loss_survives_round_off_probabilities",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  }
+ ]
+}

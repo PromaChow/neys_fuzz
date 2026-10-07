@@ -1,0 +1,76 @@
+$ /Users/promachowdhury/opt/anaconda3/envs/nesy/bin/python -m pytest tests/tests.py -q -p no:cacheprovider --junitxml=/Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/fuzzing/ltn/result/ltn_tests.xml
+(cwd=/Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch)
+
+...........                                                              [100%]
+=============================== warnings summary ===============================
+ltn/core.py:363
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/core.py:363: SyntaxWarning: invalid escape sequence '\d'
+    """
+
+ltn/fuzzy_ops.py:189
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:189: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:233
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:233: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:279
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:279: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:336
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:336: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:424
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:424: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:484
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:484: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:541
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:541: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:629
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:629: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:687
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:687: SyntaxWarning: invalid escape sequence '\o'
+    """
+
+ltn/fuzzy_ops.py:744
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:744: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:889
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:889: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:977
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:977: SyntaxWarning: invalid escape sequence '\o'
+    """
+
+ltn/fuzzy_ops.py:1037
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:1037: SyntaxWarning: invalid escape sequence '\l'
+    """
+
+ltn/fuzzy_ops.py:1293
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:1293: SyntaxWarning: invalid escape sequence '\e'
+    """
+
+ltn/fuzzy_ops.py:1406
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:1406: SyntaxWarning: invalid escape sequence '\g'
+    """
+
+ltn/fuzzy_ops.py:1518
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/LTNtorch/ltn/fuzzy_ops.py:1518: SyntaxWarning: invalid escape sequence '\o'
+    """
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+11 passed, 17 warnings in 1.35s
+

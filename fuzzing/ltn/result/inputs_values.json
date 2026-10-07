@@ -1,0 +1,334 @@
+[
+ {
+  "kind": "values",
+  "seed": 1,
+  "test": "tests/tests.py::test_Connective",
+  "outcome": "failed",
+  "when": "call",
+  "exc_type": "AssertionError",
+  "exc_msg": "The output should be the same if the operator has done the things correctly.\nassert False\n +  where False = <built-in method equal of type object at 0x1087353a0>(tensor([0.2219, 0.5034, 0.1112, 0.4430, 0.2873, 0.5131, 0.5131, 0.1220, 0.5131,\\n        0.4827, 0.1874, 0.5131, 0.5008....1967, 0.1967, 0",
+  "applied": true,
+  "mutations": [
+   "AndMin: complement on 2 operand(s)"
+  ],
+  "programs": [
+   {
+    "op": "AndMin",
+    "before": {
+     "n": 360,
+     "first": [
+      0.486867905,
+      0.486867905,
+      0.486867905,
+      0.486867905,
+      0.486867905,
+      0.486867905,
+      0.486867905,
+      0.486867905
+     ]
+    },
+    "after": {
+     "n": 360,
+     "first": [
+      0.513132095,
+      0.513132095,
+      0.513132095,
+      0.513132095,
+      0.513132095,
+      0.513132095,
+      0.513132095,
+      0.513132095
+     ]
+    }
+   }
+  ],
+  "range_violations": [],
+  "divergences": [],
+  "trace": [
+   {
+    "call": 1,
+    "op": "AndMin",
+    "mutation": "AndMin: complement on 2 operand(s)",
+    "original_input": [
+     {
+      "n": 360,
+      "first": [
+       0.486867905,
+       0.486867905,
+       0.486867905,
+       0.486867905,
+       0.486867905,
+       0.486867905,
+       0.486867905,
+       0.486867905
+      ]
+     },
+     {
+      "n": 360,
+      "first": [
+       0.778146744,
+       0.496636868,
+       0.888790727,
+       0.556992114,
+       0.712687671,
+       0.033943832,
+       0.115115583,
+       0.877967
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 360,
+      "first": [
+       0.513132095,
+       0.513132095,
+       0.513132095,
+       0.513132095,
+       0.513132095,
+       0.513132095,
+       0.513132095,
+       0.513132095
+      ]
+     },
+     {
+      "n": 360,
+      "first": [
+       0.221853256,
+       0.503363132,
+       0.111209273,
+       0.443007886,
+       0.287312329,
+       0.966056168,
+       0.884884417,
+       0.122033
+      ]
+     }
+    ],
+    "extra": {},
+    "output_original_input": {
+     "n": 360,
+     "first": [
+      0.486867905,
+      0.486867905,
+      0.486867905,
+      0.486867905,
+      0.486867905,
+      0.033943832,
+      0.115115583,
+      0.486867905
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 360,
+     "first": [
+      0.221853256,
+      0.503363132,
+      0.111209273,
+      0.443007886,
+      0.287312329,
+      0.513132095,
+      0.513132095,
+      0.122033
+     ]
+    }
+   }
+  ],
+  "n_calls": 1,
+  "secs": 0.064
+ },
+ {
+  "kind": "values",
+  "seed": 1,
+  "test": "tests/tests.py::test_Quantifier",
+  "outcome": "failed",
+  "when": "call",
+  "exc_type": "AssertionError",
+  "exc_msg": "The output should be the same if everything is correct.\nassert False\n +  where False = <built-in method equal of type object at 0x10a9693a0>(tensor([0.1653, 0.8000, 0.5294, 0.1188]), tensor([0.7175, 0.1741, 0.3857, 0.8700]))\n +    where <built-in method equal of type object at 0x10a9693a0> = torch.e",
+  "applied": true,
+  "mutations": [
+   "AggregPMeanError: complement on 1 operand(s)",
+   "AggregPMeanError: perturb on 1 operand(s)"
+  ],
+  "programs": [
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "n": 8,
+     "first": [
+      0.914599538,
+      0.267674446,
+      0.598707139,
+      0.941774011,
+      0.746195257,
+      0.091192037,
+      0.29056704,
+      0.816186488
+     ]
+    },
+    "after": {
+     "n": 8,
+     "first": [
+      0.085400462,
+      0.732325554,
+      0.401292861,
+      0.058225989,
+      0.253804743,
+      0.908807993,
+      0.70943296,
+      0.183813512
+     ]
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "n": 8,
+     "first": [
+      0.914599538,
+      0.267674446,
+      0.598707139,
+      0.941774011,
+      0.746195257,
+      0.091192037,
+      0.29056704,
+      0.816186488
+     ]
+    },
+    "after": {
+     "n": 8,
+     "first": [
+      0.814599514,
+      0.267673433,
+      0.498707145,
+      1.0,
+      0.646195233,
+      0.090192035,
+      0.29056704,
+      0.816186488
+     ]
+    }
+   }
+  ],
+  "range_violations": [],
+  "divergences": [],
+  "trace": [
+   {
+    "call": 1,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: complement on 1 operand(s)",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.085400462,
+       0.732325554,
+       0.401292861,
+       0.058225989,
+       0.253804743,
+       0.908807993,
+       0.70943296,
+       0.183813512
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      0
+     ]
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.810575068,
+      0.174685419,
+      0.423623204,
+      0.863583922
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.165328443,
+      0.799973249,
+      0.529378772,
+      0.118767977
+     ]
+    }
+   },
+   {
+    "call": 2,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: perturb on 1 operand(s)",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.814599514,
+       0.267673433,
+       0.498707145,
+       1.0,
+       0.646195233,
+       0.090192035,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.810575068,
+      0.174685419,
+      0.423623204,
+      0.863583922
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.717487097,
+      0.174134314,
+      0.385719538,
+      0.869966447
+     ]
+    }
+   }
+  ],
+  "n_calls": 2,
+  "secs": 0.036
+ }
+]

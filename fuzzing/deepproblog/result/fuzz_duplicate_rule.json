@@ -1,0 +1,277 @@
+{
+ "kind": "duplicate_rule",
+ "description": "append a duplicate of one rule to each test's program (answers must not change)",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "secs": 43.9,
+ "baseline": {
+  "tests": 83,
+  "passed": 82
+ },
+ "category_counts": {
+  "not_applicable": 410,
+  "unchanged": 420
+ },
+ "per_test": {
+  "src/deepproblog/tests/test_builtin.py::test_less_than": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_builtin.py::test_tensor_index": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_basic[cache_factory0]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_basic[cache_factory1]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_basic[cache_factory2]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_basic[cache_factory3]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_hash_collision[cache_factory0]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_hash_collision[cache_factory1]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_hash_collision[cache_factory2]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_hash_collision[cache_factory3]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_invalidate[cache_factory0]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_invalidate[cache_factory1]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_invalidate[cache_factory2]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_invalidate[cache_factory3]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_key_func[cache_factory0]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_key_func[cache_factory1]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_key_func[cache_factory2]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_key_func[cache_factory3]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_unhashable[cache_factory0]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_unhashable[cache_factory1]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_unhashable[cache_factory2]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_cache.py::test_unhashable[cache_factory3]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_dataset.py::test_dataloader": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_dataset.py::test_dataset_write_to_file": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_dataset.py::test_extension": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_dataset.py::test_mutating_dataset": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_dataset.py::test_noise_mutator": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_dataset.py::test_numeric_incorrect_output_mutator": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_dataset.py::test_query_dataset": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_dataset.py::test_subset": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_ad": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_ad2": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_ad3": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_assignment": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_cache_error": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_fact": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_fact2": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_foreign": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_engine.py::test_foreign_text": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model0]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model1]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model2]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model0]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model1]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model2]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_ad_network[model0]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_ad_network[model1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_ad_network[model2]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_det_network[model0]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_det_network[model1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_det_network[model2]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_det_network_substitution[model0]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_det_network_substitution[model1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_det_network_substitution[model2]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_fact_network[model0]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_fact_network[model1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_fact_network[model2]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_model_basics[model0]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_model_basics[model1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_model_basics[model2]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_multi_input_network[model0]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_multi_input_network[model1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_neural_predicate.py::test_multi_input_network[model2]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_exhaustive_ad_stays_a_probability": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_float_loss_survives_round_off_probabilities": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_is_exact_zero_and_one": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_loss_survives_round_off_probabilities[0.0-1.0000001192093]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_loss_survives_round_off_probabilities[1.0--1.192093e-07]": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_neutral_elements_keep_tensors_in_the_graph": {
+   "not_applicable": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_probabilities_near_one_are_multiplied[0.99999999]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_probabilities_near_one_are_multiplied[0.999999]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_probabilities_near_one_are_multiplied[0.99999]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_probabilities_near_one_are_multiplied[0.9]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_saturated_network_keeps_gradient_and_finite_loss": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[0.1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[0.3]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[1.0001e-05]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[1e-05]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[1e-06]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[1e-08]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_small_probabilities_are_summed[5e-06]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_small_probabilities_keep_their_gradient": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_semiring.py::test_training_through_the_circuit_is_stable": {
+   "unchanged": 10
+  }
+ },
+ "findings": []
+}

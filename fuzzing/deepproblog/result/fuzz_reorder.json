@@ -1,0 +1,45 @@
+{
+ "kind": "reorder",
+ "description": "shuffle the clause order of each test's program (answers must not change)",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "secs": 20.0,
+ "baseline": {
+  "tests": 6,
+  "passed": 6
+ },
+ "category_counts": {
+  "unchanged": 60
+ },
+ "per_test": {
+  "src/deepproblog/tests/test_model.py::test_model_basics[model0]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model2]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model0]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model1]": {
+   "unchanged": 10
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model2]": {
+   "unchanged": 10
+  }
+ },
+ "findings": []
+}

@@ -1,0 +1,37 @@
+{
+ "kind": "probability",
+ "description": "change one probability in each test's program (boundary 0/1/1e-9/0.99999, small perturbation, complement)",
+ "seeds": [
+  1
+ ],
+ "secs": 3.2,
+ "baseline": {
+  "tests": 6,
+  "passed": 6
+ },
+ "category_counts": {
+  "still_passes": 3,
+  "expected_value_changed": 3
+ },
+ "per_test": {
+  "src/deepproblog/tests/test_model.py::test_model_basics[model0]": {
+   "still_passes": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model1]": {
+   "still_passes": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model2]": {
+   "still_passes": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model0]": {
+   "expected_value_changed": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model1]": {
+   "expected_value_changed": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model2]": {
+   "expected_value_changed": 1
+  }
+ },
+ "findings": []
+}

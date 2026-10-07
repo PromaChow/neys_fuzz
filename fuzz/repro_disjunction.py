@@ -1,4 +1,3 @@
-"""Standalone reproduction (no harness code): mutually exclusive facts in Scallop."""
 import scallopy
 
 def run(k=300, wmc=False):

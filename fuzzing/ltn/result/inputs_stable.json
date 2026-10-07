@@ -1,0 +1,1949 @@
+[
+ {
+  "kind": "stable",
+  "seed": 1,
+  "test": "tests/tests.py::test_Connective",
+  "outcome": "failed",
+  "when": "call",
+  "exc_type": "AssertionError",
+  "exc_msg": "The output should be the same.\nassert False\n +  where False = <built-in method equal of type object at 0x1095593a0>(tensor([0.1290, 0.5184, 0.4555, 0.3293, 0.1198]), tensor([0.1290, 0.5183, 0.4555, 0.3292, 0.1197]))\n +    where <built-in method equal of type object at 0x1095593a0> = torch.equal\n +  ",
+  "applied": true,
+  "mutations": [
+   "AndProd: stable False -> True"
+  ],
+  "programs": [
+   {
+    "op": "AndProd",
+    "before": {
+     "stable": false
+    },
+    "after": {
+     "stable": true
+    }
+   }
+  ],
+  "range_violations": [],
+  "divergences": [],
+  "trace": [
+   {
+    "call": 5,
+    "op": "AndProd",
+    "mutation": "AndProd: stable False -> True",
+    "original_input": [
+     {
+      "n": 5,
+      "first": [
+       0.442133546,
+       0.71098721,
+       0.588801801,
+       0.840700209,
+       0.201390266
+      ]
+     },
+     {
+      "n": 5,
+      "first": [
+       0.29168427,
+       0.729046345,
+       0.773572803,
+       0.391629875,
+       0.594345927
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 5,
+      "first": [
+       0.442133546,
+       0.71098721,
+       0.588801801,
+       0.840700209,
+       0.201390266
+      ]
+     },
+     {
+      "n": 5,
+      "first": [
+       0.29168427,
+       0.729046345,
+       0.773572803,
+       0.391629875,
+       0.594345927
+      ]
+     }
+    ],
+    "extra": {
+     "stable_original": false,
+     "stable_fuzzed": true
+    },
+    "output_original_input": {
+     "n": 5,
+     "first": [
+      0.128963396,
+      0.518342614,
+      0.455481052,
+      0.329243332,
+      0.119695485
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 5,
+     "first": [
+      0.129010975,
+      0.518382967,
+      0.455526203,
+      0.329300702,
+      0.119751126
+     ]
+    }
+   }
+  ],
+  "n_calls": 5,
+  "secs": 0.036
+ },
+ {
+  "kind": "stable",
+  "seed": 1,
+  "test": "tests/tests.py::test_Quantifier",
+  "outcome": "failed",
+  "when": "call",
+  "exc_type": "AssertionError",
+  "exc_msg": "Without mask the output should be the same.\nassert False\n +  where False = <built-in method equal of type object at 0x1111993a0>(tensor(0.3109), tensor(0.3110))\n +    where <built-in method equal of type object at 0x1111993a0> = torch.equal\n +    and   tensor(0.3109) = AggregPMean(p=2, stable=True)(",
+  "applied": true,
+  "mutations": [
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMean: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMean: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMean: stable True -> False",
+   "AggregPMean: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMeanError: stable True -> False",
+   "AggregPMean: stable True -> False"
+  ],
+  "programs": [
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMean",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMean",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMean",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMean",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMeanError",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   },
+   {
+    "op": "AggregPMean",
+    "before": {
+     "stable": true
+    },
+    "after": {
+     "stable": false
+    }
+   }
+  ],
+  "range_violations": [
+   "AggregPMeanError -> min nan max nan",
+   "AggregPMeanError -> min nan max nan",
+   "AggregPMean -> min nan max nan",
+   "AggregPMean -> min nan max nan",
+   "AggregPMeanError -> min nan max nan",
+   "AggregPMeanError -> min nan max nan"
+  ],
+  "divergences": [],
+  "trace": [
+   {
+    "call": 1,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      0
+     ],
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.810575068,
+      0.174685419,
+      0.423623204,
+      0.863583922
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.8106457,
+      0.174702287,
+      0.423661947,
+      0.863659143
+     ]
+    }
+   },
+   {
+    "call": 2,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0,
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.810575068,
+      0.174685419,
+      0.423623204,
+      0.863583922
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.8106457,
+      0.174702287,
+      0.423661947,
+      0.863659143
+     ]
+    }
+   },
+   {
+    "call": 3,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      1
+     ],
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 2,
+     "first": [
+      0.579246461,
+      0.402597964
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 2,
+     "first": [
+      0.579280376,
+      0.402624249
+     ]
+    }
+   },
+   {
+    "call": 4,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 1,
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 2,
+     "first": [
+      0.579246461,
+      0.402597964
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 2,
+     "first": [
+      0.579280376,
+      0.402624249
+     ]
+    }
+   },
+   {
+    "call": 5,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      1,
+      0
+     ],
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.483316958
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.483345926
+     ]
+    }
+   },
+   {
+    "call": 6,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      0,
+      1
+     ],
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.483316958
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.483345926
+     ]
+    }
+   },
+   {
+    "call": 7,
+    "op": "AggregPMean",
+    "mutation": "AggregPMean: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      1
+     ],
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 2,
+     "first": [
+      0.733765006,
+      0.573550045
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 2,
+     "first": [
+      0.733745575,
+      0.573522627
+     ]
+    }
+   },
+   {
+    "call": 8,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 2,
+      "first": [
+       0.733745575,
+       0.573522627
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 2,
+      "first": [
+       0.733745575,
+       0.573522627
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      0
+     ],
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.644428372
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.644490242
+     ]
+    }
+   },
+   {
+    "call": 9,
+    "op": "AggregPMean",
+    "mutation": "AggregPMean: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 1,
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 2,
+     "first": [
+      0.733765006,
+      0.573550045
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 2,
+     "first": [
+      0.733745575,
+      0.573522627
+     ]
+    }
+   },
+   {
+    "call": 10,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 2,
+      "first": [
+       0.733745575,
+       0.573522627
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 2,
+      "first": [
+       0.733745575,
+       0.573522627
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0,
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.644428372
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.644490242
+     ]
+    }
+   },
+   {
+    "call": 11,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.914508045,
+      0.267647684,
+      0.598647237,
+      0.941679835
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.914599538,
+      0.267674446,
+      0.598707139,
+      0.941774011
+     ]
+    }
+   },
+   {
+    "call": 12,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0,
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.914508045,
+      0.267647684,
+      0.598647237,
+      0.941679835
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.914599538,
+      0.267674446,
+      0.598707139,
+      0.941774011
+     ]
+    }
+   },
+   {
+    "call": 13,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.746195257,
+       0.267674446,
+       0.091192037,
+       0.598707139,
+       0.29056704,
+       0.941774011,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.746195257,
+       0.267674446,
+       0.091192037,
+       0.598707139,
+       0.29056704,
+       0.941774011,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.914508045,
+      NaN,
+      NaN,
+      0.941679835
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.914599538,
+      NaN,
+      NaN,
+      0.941774011
+     ]
+    }
+   },
+   {
+    "call": 14,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0,
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.914508045,
+      NaN,
+      NaN,
+      0.941679835
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.914599538,
+      NaN,
+      NaN,
+      0.941774011
+     ]
+    }
+   },
+   {
+    "call": 15,
+    "op": "AggregPMean",
+    "mutation": "AggregPMean: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.746195257,
+       0.267674446,
+       0.091192037,
+       0.598707139,
+       0.29056704,
+       0.941774011,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.746195257,
+       0.267674446,
+       0.091192037,
+       0.598707139,
+       0.29056704,
+       0.941774011,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.914608061,
+      NaN,
+      NaN,
+      0.941779852
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.914599538,
+      NaN,
+      NaN,
+      0.941774011
+     ]
+    }
+   },
+   {
+    "call": 16,
+    "op": "AggregPMean",
+    "mutation": "AggregPMean: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0,
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 4,
+     "first": [
+      0.914608061,
+      NaN,
+      NaN,
+      0.941779852
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 4,
+     "first": [
+      0.914599538,
+      NaN,
+      NaN,
+      0.941774011
+     ]
+    }
+   },
+   {
+    "call": 17,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.926821709
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.926912725
+     ]
+    }
+   },
+   {
+    "call": 18,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      0,
+      1
+     ],
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.926821709
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.926912725
+     ]
+    }
+   },
+   {
+    "call": 19,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.579246461
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.579280376
+     ]
+    }
+   },
+   {
+    "call": 20,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      0,
+      1
+     ],
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.579246461
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.579280376
+     ]
+    }
+   },
+   {
+    "call": 21,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 2,
+     "first": [
+      0.579246461,
+      NaN
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 2,
+     "first": [
+      0.579280376,
+      NaN
+     ]
+    }
+   },
+   {
+    "call": 22,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 8,
+      "first": [
+       0.914599538,
+       0.267674446,
+       0.598707139,
+       0.941774011,
+       0.746195257,
+       0.091192037,
+       0.29056704,
+       0.816186488
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 1,
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 2,
+     "first": [
+      0.579246461,
+      NaN
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 2,
+     "first": [
+      0.579280376,
+      NaN
+     ]
+    }
+   },
+   {
+    "call": 23,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 3,
+      "first": [
+       0.002986542,
+       0.999407172,
+       0.978778005
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 3,
+      "first": [
+       0.002986542,
+       0.999407172,
+       0.978778005
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      0
+     ],
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.424242079
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.42424351
+     ]
+    }
+   },
+   {
+    "call": 24,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 3,
+      "first": [
+       0.002986542,
+       0.999407172,
+       0.978778005
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 3,
+      "first": [
+       0.002986542,
+       0.999407172,
+       0.978778005
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0,
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.424242079
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.42424351
+     ]
+    }
+   },
+   {
+    "call": 25,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 3,
+      "first": [
+       0.002986542,
+       0.999407172,
+       0.978778005
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 3,
+      "first": [
+       0.002986542,
+       0.999407172,
+       0.978778005
+      ]
+     }
+    ],
+    "extra": {
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.999307215
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.999407172
+     ]
+    }
+   },
+   {
+    "call": 26,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 3,
+      "first": [
+       0.002986542,
+       0.999407172,
+       0.978778005
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 3,
+      "first": [
+       0.002986542,
+       0.999407172,
+       0.978778005
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0,
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.999307215
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.999407172
+     ]
+    }
+   },
+   {
+    "call": 27,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 9,
+      "first": [
+       0.002986542,
+       0.212375343,
+       0.045766149,
+       0.949307203,
+       0.999407172,
+       0.996675968,
+       0.742304623,
+       0.996158183
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 9,
+      "first": [
+       0.002986542,
+       0.212375343,
+       0.045766149,
+       0.949307203,
+       0.999407172,
+       0.996675968,
+       0.742304623,
+       0.996158183
+      ]
+     }
+    ],
+    "extra": {
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.987526834
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.987593353
+     ]
+    }
+   },
+   {
+    "call": 28,
+    "op": "AggregPMeanError",
+    "mutation": "AggregPMeanError: stable True -> False",
+    "original_input": [
+     {
+      "n": 9,
+      "first": [
+       0.002986542,
+       0.212375343,
+       0.045766149,
+       0.949307203,
+       0.999407172,
+       0.996675968,
+       0.742304623,
+       0.996158183
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 9,
+      "first": [
+       0.002986542,
+       0.212375343,
+       0.045766149,
+       0.949307203,
+       0.999407172,
+       0.996675968,
+       0.742304623,
+       0.996158183
+      ]
+     }
+    ],
+    "extra": {
+     "dim": [
+      0,
+      1
+     ],
+     "mask": "tensor",
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.987526834
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.987593353
+     ]
+    }
+   },
+   {
+    "call": 51,
+    "op": "AggregPMean",
+    "mutation": "AggregPMean: stable True -> False",
+    "original_input": [
+     {
+      "n": 3,
+      "first": [
+       0.300000012,
+       0.200000003,
+       0.400000006
+      ]
+     }
+    ],
+    "fuzzed_input": [
+     {
+      "n": 3,
+      "first": [
+       0.300000012,
+       0.200000003,
+       0.400000006
+      ]
+     }
+    ],
+    "extra": {
+     "dim": 0,
+     "stable_original": true,
+     "stable_fuzzed": false
+    },
+    "output_original_input": {
+     "n": 1,
+     "first": [
+      0.310978055
+     ]
+    },
+    "output_fuzzed_input": {
+     "n": 1,
+     "first": [
+      0.310912639
+     ]
+    }
+   }
+  ],
+  "n_calls": 51,
+  "secs": 0.055
+ }
+]

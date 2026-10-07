@@ -1,0 +1,77 @@
+{
+ "command": "/Users/promachowdhury/opt/anaconda3/envs/nesy/bin/python -m pytest tests/tests.py -q -p no:cacheprovider --junitxml=/Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/fuzzing/ltn/result/ltn_tests.xml",
+ "exit_code": 0,
+ "secs": 1.77,
+ "totals": {
+  "passed": 11
+ },
+ "n_tests": 11,
+ "tests": [
+  {
+   "test": "tests.tests::test_LTNObject",
+   "outcome": "passed",
+   "secs": 0.01,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_Constant",
+   "outcome": "passed",
+   "secs": 0.014,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_Variable",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_process_ltn_objects",
+   "outcome": "passed",
+   "secs": 0.006,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_Predicate",
+   "outcome": "passed",
+   "secs": 0.008,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_Function",
+   "outcome": "passed",
+   "secs": 0.003,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_LambdaModel",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_diag",
+   "outcome": "passed",
+   "secs": 0.001,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_undiag",
+   "outcome": "passed",
+   "secs": 0.0,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_Connective",
+   "outcome": "passed",
+   "secs": 0.006,
+   "detail": ""
+  },
+  {
+   "test": "tests.tests::test_Quantifier",
+   "outcome": "passed",
+   "secs": 0.017,
+   "detail": ""
+  }
+ ]
+}

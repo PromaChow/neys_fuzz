@@ -1,0 +1,36 @@
+{
+ "kind": "rename",
+ "description": "consistently rename one predicate in the program and in the queries (answers must not change)",
+ "seeds": [
+  1
+ ],
+ "secs": 2.6,
+ "baseline": {
+  "tests": 6,
+  "passed": 6
+ },
+ "category_counts": {
+  "unchanged": 6
+ },
+ "per_test": {
+  "src/deepproblog/tests/test_model.py::test_model_basics[model0]": {
+   "unchanged": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model1]": {
+   "unchanged": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_model_basics[model2]": {
+   "unchanged": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model0]": {
+   "unchanged": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model1]": {
+   "unchanged": 1
+  },
+  "src/deepproblog/tests/test_model.py::test_solve[model2]": {
+   "unchanged": 1
+  }
+ },
+ "findings": []
+}

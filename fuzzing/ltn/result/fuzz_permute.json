@@ -1,0 +1,62 @@
+{
+ "kind": "permute",
+ "description": "shuffle the elements given to each fuzzy operator and shuffle the result back (answers must not change)",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "secs": 14.0,
+ "baseline": {
+  "tests": 11,
+  "passed": 11
+ },
+ "category_counts": {
+  "not_applicable": 90,
+  "unchanged": 10,
+  "assert_exact_only": 10
+ },
+ "per_test": {
+  "tests/tests.py::test_Connective": {
+   "unchanged": 10
+  },
+  "tests/tests.py::test_Constant": {
+   "not_applicable": 10
+  },
+  "tests/tests.py::test_Function": {
+   "not_applicable": 10
+  },
+  "tests/tests.py::test_LTNObject": {
+   "not_applicable": 10
+  },
+  "tests/tests.py::test_LambdaModel": {
+   "not_applicable": 10
+  },
+  "tests/tests.py::test_Predicate": {
+   "not_applicable": 10
+  },
+  "tests/tests.py::test_Quantifier": {
+   "assert_exact_only": 10
+  },
+  "tests/tests.py::test_Variable": {
+   "not_applicable": 10
+  },
+  "tests/tests.py::test_diag": {
+   "not_applicable": 10
+  },
+  "tests/tests.py::test_process_ltn_objects": {
+   "not_applicable": 10
+  },
+  "tests/tests.py::test_undiag": {
+   "not_applicable": 10
+  }
+ },
+ "findings": []
+}

@@ -1,7 +1,4 @@
-"""pytest plugin: record the inputs (program text, engine config, queries) used by DeepProbLog's own tests.
 
-Usage: PYTHONPATH=fuzz pytest -p trace_dpl ...   -> results/seeds/deepproblog_seeds.json
-"""
 import json
 import os
 import pytest
@@ -55,7 +52,6 @@ def pytest_configure(config):
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_setup(item):
-    # fixtures build their models during setup, so the test name must be set before setup, not only before the call
     CURRENT["test"] = item.nodeid
     yield
 

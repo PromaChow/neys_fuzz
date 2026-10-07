@@ -1,0 +1,14 @@
+$ /Users/promachowdhury/opt/anaconda3/envs/nesy/bin/python -m pytest src/deepproblog/tests -q -p no:cacheprovider --junitxml=/Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/fuzzing/deepproblog/result/deepproblog_tests.xml
+(cwd=/Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/deepproblog)
+
+..............s......................................................... [ 86%]
+...........                                                              [100%]
+=============================== warnings summary ===============================
+src/deepproblog/tests/test_neural_predicate.py::test_ad_network[model0]
+  /Users/promachowdhury/Claude/Projects/mutation/nesy-fuzz/frameworks/deepproblog/src/deepproblog/engines/approximate_engine.py:157: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+    output_var.unify([float(x) for x in probabilities])
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+82 passed, 2 skipped, 1 warning in 3.58s
+
